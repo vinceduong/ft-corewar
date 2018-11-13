@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/10/31 16:35:25 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/13 14:06:19 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,23 @@
 	ex = r1 = 0000 0001 = 0x01;
 */
 
+typedef struct s_proc
+{
+	int		r[REG_NUMBER];
+	int		id;
+	int		carry;
+	int		player;
+	int		opcode;
+	int		cycle;
+	int		PC;
+	char	*prog;
+	void	*next;
+}				t_proc;
 
 typedef struct	s_arena
 {
+	unsigned char ram[MEM_SIZE];
+	int player;
 
 }				t_arena;
 
