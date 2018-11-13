@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/13 16:02:02 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/13 18:27:10 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,15 @@ typedef struct	s_proc
 
 typedef struct	s_vm
 {
-	unsigned char ram[MEM_SIZE];
-	unsigned char instru[CHAMP_MAX_SIZE];
+	unsigned char	ram[MEM_SIZE];
+	unsigned char	instru[CHAMP_MAX_SIZE];
 	t_proc			*process;
 	t_player		player[MAX_PLAYERS];
-	int cycle;
-	int check_cycles;
-	int cycle_die;
-	int dump_cycle;
-	int pause;
+	int				cycle;
+	int				check_cycles;
+	int				cycle_die;
+	int				dump_cycle;
+	int				pause;
 }				t_vm;
 
 int ft_parser(char **av, t_vm *vm);
