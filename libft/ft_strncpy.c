@@ -1,11 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instruction.c                                      :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/31 15:51:57 by thescriv          #+#    #+#             */
-/*   Updated: 2018/10/31 15:51:58 by thescriv         ###   ########.fr       */
+/*   Created: 2017/11/17 14:50:46 by vduong            #+#    #+#             */
+/*   Updated: 2017/11/17 14:50:47 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_strncpy(char *dest, const char *src, size_t n)
+{
+	char *tmp;
+
+	tmp = (char *)dest;
+	while (n)
+	{
+		if (*src)
+			*tmp++ = *src++;
+		else
+			*tmp++ = '\0';
+		n--;
+	}
+	return (dest);
+}

@@ -14,7 +14,7 @@ SRCS = ./srcs/main.c\
 
 OBJS = $(SRCS:.c=.o)
 
-$(NAME) : $(OBJ) $(LIBFT)
+$(NAME) : $(OBJ)
 	@$(CC) $(OBJS) -o $(NAME) $(LIBFT)
 	@printf "\n\033[032mCOREWAR Compilation Successful\033[0m\n"
 

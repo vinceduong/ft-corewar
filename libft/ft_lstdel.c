@@ -1,11 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/31 15:50:56 by thescriv          #+#    #+#             */
-/*   Updated: 2018/10/31 15:50:56 by thescriv         ###   ########.fr       */
+/*   Created: 2017/11/21 10:59:00 by vduong            #+#    #+#             */
+/*   Updated: 2017/11/21 11:44:56 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+{
+	if (*alst && del)
+	{
+		ft_lstdel(&((*alst)->next), del);
+		ft_lstdelone(alst, del);
+	}
+}
