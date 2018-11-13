@@ -6,13 +6,21 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/13 15:48:03 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/13 16:02:02 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
+
+# include <string.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdarg.h>
+# include <wchar.h>
 #include "libft.h"
+#include "op.h"
 /*
 	live	= 0x01 = 	10 	cycles
 	ld		= 0x02 = 	5 	cycles
@@ -90,14 +98,7 @@ typedef struct	s_vm
 	int cycle_die;
 	int dump_cycle;
 	int pause;
-
-
 }				t_vm;
 
-typedef struct 	s_bin
-{
-
-}				t_bin;
-
-
+int ft_parser(char **av, t_vm *vm);
 #endif
