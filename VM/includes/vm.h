@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/13 14:06:19 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/13 14:19:53 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,14 @@
 	ex = r1 = 0000 0001 = 0x01;
 */
 
-typedef struct s_proc
+typedef struct	s_player
+{
+	int p[4];
+	int nb_live;
+	int last_live;
+}				t_player;
+
+typedef struct	s_proc
 {
 	int		r[REG_NUMBER];
 	int		id;
@@ -72,12 +79,20 @@ typedef struct s_proc
 	void	*next;
 }				t_proc;
 
-typedef struct	s_arena
+typedef struct	s_vm
 {
 	unsigned char ram[MEM_SIZE];
 	int player;
+	t_proc			*process;
+	t_player		*info;
+	int cycle;
+	int check_cycles;
+	int cycle_die;
+	int dump_cycle;
+	int pause;
 
-}				t_arena;
+
+}				t_vm;
 
 typedef struct 	s_bin
 {
