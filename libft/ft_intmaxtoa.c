@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_intmaxtoa.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 19:05:43 by apoque            #+#    #+#             */
-/*   Updated: 2018/08/23 15:57:42 by carmenia         ###   ########.fr       */
+/*   Created: 2018/08/22 19:17:43 by carmenia          #+#    #+#             */
+/*   Updated: 2018/08/22 19:19:46 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <limits.h>
 
-static int	ft_string_size(long long n, int signe, char **str)
+static int	ft_string_size(long long n, int signe)
 {
 	int	size;
 
@@ -23,11 +23,10 @@ static int	ft_string_size(long long n, int signe, char **str)
 		n = n / 10;
 		size++;
 	}
-	*str = ft_strnew(size);
 	return (size);
 }
 
-char		*ft_itoa(intmax_t n)
+char		*ft_intmaxtoa(intmax_t n)
 {
 	intmax_t	result;
 	char		*str;
@@ -37,14 +36,14 @@ char		*ft_itoa(intmax_t n)
 
 	signe = 0;
 	i = 0;
-	if (n == LLONG_MIN)
-		return (ft_strdup("-9223372036854775808"));
-	result = (intmax_t)n;
+	result = (long long)n;
 	if (result < 0)
 		signe = 1;
 	if (result < 0)
 		result = -result;
-	size = ft_string_size(result, signe, &str);
+	size = ft_string_size(result, signe);
+	if (!(str = ft_strnew(size)))
+		return (NULL);
 	if (signe == 1)
 		str[0] = '-';
 	while (i < size - signe)

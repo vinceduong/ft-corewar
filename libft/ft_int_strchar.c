@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_max.c                                           :+:      :+:    :+:   */
+/*   ft_int_strchar.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/22 11:47:01 by vduong            #+#    #+#             */
-/*   Updated: 2017/11/22 11:49:40 by vduong           ###   ########.fr       */
+/*   Created: 2018/08/21 21:23:29 by carmenia          #+#    #+#             */
+/*   Updated: 2018/08/21 21:28:29 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_max(int *tab, int size)
-{
-	int max;
+#include "libft.h"
 
-	max = tab[--size];
-	while (size--)
+int	ft_int_strchar(const char *src, const char find)
+{
+	while (*src)
 	{
-		if (tab[size] > max)
-			max = tab[size];
+		if (*src == find)
+			return (1);
+		src++;
 	}
-	return (max);
+	return (0);
 }

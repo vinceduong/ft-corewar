@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   ft_int_strstr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: carmenia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 15:44:54 by vduong            #+#    #+#             */
-/*   Updated: 2017/11/22 11:24:40 by vduong           ###   ########.fr       */
+/*   Created: 2018/08/21 20:54:53 by carmenia          #+#    #+#             */
+/*   Updated: 2018/08/21 21:23:00 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_factorial(int nb)
+#include "libft.h"
+
+int	ft_int_strstr(const char *src, const char *find)
 {
-	if (nb < 0 || nb > 12)
+	size_t	len;
+
+	len = ft_strlen(find);
+	if (*find == '\0' || !find)
 		return (0);
-	else if (nb == 0)
-		return (1);
-	else
-		return (nb * ft_factorial(nb - 1));
+	while (*src)
+	{
+		if (ft_strncmp(src, find, len) == 0)
+			return (1);
+		src++;
+	}
+	return (0);
 }

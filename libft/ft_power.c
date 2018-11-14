@@ -3,19 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/22 11:27:13 by vduong            #+#    #+#             */
-/*   Updated: 2017/11/22 11:36:49 by vduong           ###   ########.fr       */
+/*   Created: 2017/11/18 15:20:17 by apoque            #+#    #+#             */
+/*   Updated: 2017/11/18 15:20:44 by apoque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_power(int n, int exp)
+int	ft_power(int nb, int power)
 {
-	if (exp < 0)
-		return (0);
-	else if (exp == 1)
-		return (n);
+	int	res;
+
+	res = 1;
+	if (nb && power && power > 0)
+	{
+		while (power > 0)
+		{
+			res = res * nb;
+			power--;
+		}
+		return (res);
+	}
+	if (power == 0)
+		return (1);
 	else
-		return (n * (ft_power(n, exp - 1)));
+		return (0);
 }

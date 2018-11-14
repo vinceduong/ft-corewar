@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_strjoinfree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 19:17:44 by apoque            #+#    #+#             */
-/*   Updated: 2017/11/08 19:23:30 by apoque           ###   ########.fr       */
+/*   Created: 2018/03/13 18:09:23 by apoque            #+#    #+#             */
+/*   Updated: 2018/03/13 18:39:12 by apoque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,28 @@
 #include <string.h>
 #include <stdlib.h>
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char	*ft_strjoinfree(char *to_free, char const *s2)
 {
-	char	*str;
+	int		size;
 	int		i;
+	int		j;
+	char	*tmp;
 
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	i = 0;
-	if (!str || !s)
+	if (!to_free || !s2)
 		return (NULL);
-	str[len] = '\0';
-	while (len--)
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	return (&str[0]);
+	i = -1;
+	j = -1;
+	tmp = ft_strdup(to_free);
+	free(to_free);
+	size = (int)ft_strlen(tmp) + (int)ft_strlen(s2);
+	to_free = (char *)malloc(sizeof(char) * (size + 1));
+	if (!to_free)
+		return (NULL);
+	while (tmp[++i] != '\0')
+		to_free[i] = tmp[i];
+	while (s2[++j] != '\0')
+		to_free[i + j] = s2[j];
+	to_free[size] = '\0';
+	free(tmp);
+	return (&to_free[0]);
 }

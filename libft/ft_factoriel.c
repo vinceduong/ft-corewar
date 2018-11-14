@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_min.c                                           :+:      :+:    :+:   */
+/*   ft_factoriel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/22 11:40:19 by vduong            #+#    #+#             */
-/*   Updated: 2017/11/22 11:49:51 by vduong           ###   ########.fr       */
+/*   Created: 2017/11/18 15:20:58 by apoque            #+#    #+#             */
+/*   Updated: 2017/11/18 15:41:09 by apoque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_min(int *tab, int size)
+int	ft_factoriel(int nb)
 {
-	int min;
+	int	res;
 
-	min = tab[--size];
-	while (size--)
+	res = 1;
+	if (nb == 0)
+		return (1);
+	if (nb < 0 || nb > 12)
+		return (0);
+	else
 	{
-		if (tab[size] < min)
-			min = tab[size];
+		while (nb > 0)
+		{
+			res = res * nb;
+			nb--;
+		}
+		return (res);
 	}
-	return (min);
 }

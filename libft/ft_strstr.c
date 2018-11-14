@@ -3,40 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 14:52:53 by vduong            #+#    #+#             */
-/*   Updated: 2017/11/21 12:05:47 by vduong           ###   ########.fr       */
+/*   Created: 2017/11/08 19:17:24 by apoque            #+#    #+#             */
+/*   Updated: 2017/11/13 12:10:24 by apoque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-char	*ft_strstr(const char *big, const char *little)
+char	*ft_strstr(const char *src, const char *find)
 {
-	int		i;
-	int		j;
-	char	*pt;
+	size_t	len;
 
-	i = 0;
-	pt = 0;
-	if (little[i] == '\0')
-		return ((char *)big);
-	while (big[i] != '\0')
+	len = ft_strlen(find);
+	if (*find == '\0' || !find)
+		return ((char *)src);
+	while (*src)
 	{
-		if (big[i] == little[0])
-		{
-			pt = (char *)big + i;
-			j = 0;
-			while (big[i + j] == little[j])
-			{
-				if (little[j + 1] == '\0')
-					return (pt);
-				j++;
-			}
-			pt = 0;
-		}
-		i++;
+		if (ft_strncmp(src, find, len) == 0)
+			return ((char *)src);
+		src++;
 	}
-	return (0);
+	return (NULL);
 }
