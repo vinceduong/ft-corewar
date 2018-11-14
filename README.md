@@ -11,13 +11,18 @@
 
 ### Vincent :
 * VM
+  * Listes
 
 ## BUGS :
 
 ### Théo : 
+*
 
 ### Alizé :
+*
 
 ### Tintin :
+*
 
 ### Vincent :
+*
