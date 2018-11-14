@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 14:28:42 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/14 18:43:35 by thescriv         ###   ########.fr       */
+/*   Created: 2018/11/14 18:38:02 by thescriv          #+#    #+#             */
+/*   Updated: 2018/11/14 18:42:45 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/vm.h"
+#include "vm.h"
 
-int ft_parser(char **av, t_vm *vm)
+int ft_start(char **av, t_vm *vm)
 {
-	if (ft_check_arg(av, vm) == 0)
-	/*if (ft_flag(av, vm) == 0)
-	if (ft_check_champ(av, vm) == 0)
-	if (ft_init_player(vm) == 0)*/
+	if (ft_parser(av, vm) == 0)
+		return (0);
+	/*if (ft_init_map(vm) == 0)
+		return (0);
+	if (ft_prepare_champ(vm) == 0)
+		return (0);
+	if (ft_loop(vm) == 0)
+		return (0);
+	if (ft_winner(vm) == 0)
+		return (0);*/
 	return (1);
 }

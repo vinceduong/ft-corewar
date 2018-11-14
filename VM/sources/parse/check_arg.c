@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   check_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 14:28:42 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/14 18:43:35 by thescriv         ###   ########.fr       */
+/*   Created: 2018/11/14 18:43:59 by thescriv          #+#    #+#             */
+/*   Updated: 2018/11/14 18:51:27 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/vm.h"
+#include "vm.h"
 
-int ft_parser(char **av, t_vm *vm)
+int ft_check_arg(char **av, t_vm *vm)
 {
-	if (ft_check_arg(av, vm) == 0)
-	/*if (ft_flag(av, vm) == 0)
-	if (ft_check_champ(av, vm) == 0)
-	if (ft_init_player(vm) == 0)*/
-	return (1);
+	int fd;
+	int i;
+
+	i = 0;
+	while (av[++i])
+		fd = open(av[i], O_RDONLY, O_NOFOLLOW);
+
+
 }
