@@ -1,12 +1,29 @@
 # 42_Corewar
-## A faire : 
+## À faire : 
 ### Théo : 
+* VM
+  * Parsing
 
 ### Alizé :
+* VISU
 
 ### Tintin :
+* ASM
 
-###Vincent :
+### Vincent :
+* VM
+  * Parsing
 
 ## BUGS :
 
+### Théo : 
+*
+
+### Alizé :
+*
+
+### Tintin :
+*
+
+### Vincent :
+*
