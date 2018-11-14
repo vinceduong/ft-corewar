@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/13 18:27:10 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/14 15:53:12 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@
 
 typedef struct	s_player
 {
-	int p[4];
-	int nb_live[4];
-	int last_live[4];
+	int p;
+	int nb_live;
+	int last_live;
 	char *content;
 }				t_player;
 
