@@ -70,8 +70,9 @@
 typedef struct	s_player
 {
 	int p[4];
-	int nb_live;
-	int last_live;
+	int nb_live[4];
+	int last_live[4];
+	char *content;
 }				t_player;
 
 typedef struct	s_proc
@@ -83,17 +84,12 @@ typedef struct	s_proc
 	int				opcode;
 	int				cycle;
 	int				PC;
+	int				cursor;
+	int				alive;
 	char			*prog;
 	struct s_proc	*next;
 	struct s_proc	*previous;
 }				t_proc;
-
-typedef struct	cursor
-{
-	int				player;
-	int				adress;
-	struct cursor	*next;
-}				t_cursor;
 
 typedef struct	s_stack
 {
@@ -101,11 +97,6 @@ typedef struct	s_stack
 	t_proc	*end;
 	int		nbprocess;
 }				t_stack;
-
-typedef struct	s_cursorlist
-{
-	t_cursor *start;
-}				t_cursorlist;
 
 typedef struct	s_vm
 {
