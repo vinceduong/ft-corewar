@@ -2,6 +2,7 @@
 ## À faire : 
 ### Théo : 
 * VM
+ * Parsing
 
 ### Alizé :
 * VISU
@@ -11,7 +12,7 @@
 
 ### Vincent :
 * VM
-  * Listes
+  * Parsing
 
 ## BUGS :
 
