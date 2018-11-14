@@ -2,7 +2,7 @@
 ## À faire : 
 ### Théo : 
 * VM
- * Parsing
+  * Parsing
 
 ### Alizé :
 * VISU
