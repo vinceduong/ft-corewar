@@ -76,23 +76,44 @@ typedef struct	s_player
 
 typedef struct	s_proc
 {
-	int		r[REG_NUMBER];
-	int		id;
-	int		carry;
-	int		player;
-	int		opcode;
-	int		cycle;
-	int		PC;
-	char	*prog;
-	void	*next;
+	int				r[REG_NUMBER];
+	int				id;
+	int				carry;
+	int				player;
+	int				opcode;
+	int				cycle;
+	int				PC;
+	char			*prog;
+	struct s_proc	*next;
+	struct s_proc	*previous;
 }				t_proc;
+
+typedef struct	cursor
+{
+	int				player;
+	int				adress;
+	struct cursor	*next;
+}				t_cursor;
+
+typedef struct	s_stack
+{
+	t_proc	*start;
+	t_proc	*end;
+	int		nbprocess;
+}				t_stack;
+
+typedef struct	s_cursorlist
+{
+	t_cursor *start;
+}				t_cursorlist;
 
 typedef struct	s_vm
 {
 	unsigned char	ram[MEM_SIZE];
 	unsigned char	instru[CHAMP_MAX_SIZE];
-	t_proc			*process;
+	t_stack			stack;
 	t_player		player[MAX_PLAYERS];
+	int				nbplayers;
 	int				cycle;
 	int				check_cycles;
 	int				cycle_die;

@@ -14,9 +14,12 @@ SRCS = ./srcs/main.c\
 
 OBJS = $(SRCS:.c=.o)
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJS) $(LIBFT)
 	@$(CC) $(OBJS) -o $(NAME) $(LIBFT)
 	@printf "\n\033[032mCOREWAR Compilation Successful\033[0m\n"
+
+$(LIBFT) : 
+	make -C ../libft
 
 clean :
 	@rm -f $(OBJS)
