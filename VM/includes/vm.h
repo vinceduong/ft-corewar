@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/15 12:27:44 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/15 14:05:39 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,12 @@
 
 typedef struct	s_player
 {
-	int p;
-	int nb_live;
-	int last_live;
-	char *content;
+	int		p;
+	int		nb_live;
+	int		last_live;
+	unsigned char	*instruction;
+	char 	*name;
+	char	*comment;
 }				t_player;
 
 typedef struct	s_proc
@@ -105,12 +107,20 @@ typedef struct	s_stack
 	int		nbprocess;
 }				t_stack;
 
+typedef struct s_flag
+{
+	int		dump;
+	int		n;
+	int		visu;
+}				t_flag;
+
 typedef struct	s_vm
 {
 	unsigned char	ram[MEM_SIZE];
 	unsigned char	instru[CHAMP_MAX_SIZE];
 	t_stack			stack;
 	t_player		player[MAX_PLAYERS];
+	t_flag			flag;
 	int				nbplayers;
 	int				cycle;
 	int				check_cycles;
