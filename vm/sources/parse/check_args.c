@@ -22,30 +22,17 @@ int check_is_flag(char **av, int i)
 
 int check_n(char **av, int i)
 {
-	int j;
-
-	j = 1;
-	while (j < 2)
+	if (!av[i + 1] || !av[i + 2])
 	{
-		if (!av[i + j])
-		{
-			printf("ntm\n" );
-			return (-1);
-		}
-		if (j == 1)
-		{
-			if(!av[i + j][1])
-				return(-1);
-			else if (ft_atoi(av[i + j]) < 1 && ft_atoi(av[i + j]) > 4)
-				return (-1);
-		}
-		/*else
-		{
-			if (!check_is_cor(av[i + j]))
-				return (-1);
-		}*/
-		j++;
+		printf("ntm\n" );
+		return (-1);
 	}
+	if(av[i + 1][1])
+		return(-1);
+	if(ft_atoi(av[i + 1]) < 1 || ft_atoi(av[i + 1]) > 4)
+		return (-1);
+	/*if (!check_is_cor(av[i + 2]))
+		return (-1);*/
 	return (1);
 }
 
