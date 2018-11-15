@@ -12,7 +12,7 @@
 
 #include "vm.h"
 
-int check_is_flag(char **av, int i)
+static int check_is_flag(char **av, int i)
 {
 	if (av[i][0] == '-')
 		return (!ft_strcmp(av[i], "-dump") || !ft_strcmp(av[i], "-n") ? 1 : -1);
@@ -20,23 +20,40 @@ int check_is_flag(char **av, int i)
 		return (0);
 }
 
-int check_n(char **av, int i)
+static int check_is_cor(char *str)
+{
+	int i;
+	int len;
+
+	i = 0;
+	len = ft_strlen(str);
+	if (len < 5)
+		return (0);
+	while (i < len)
+	{
+		if (str[i] ==  '.' && len - i == 4)
+			return (!strcmp(&str[i], ".cor") ? 1 : 0);
+		i++;
+	}
+	return (0);
+}
+
+static int check_n(char **av, int i)
 {
 	if (!av[i + 1] || !av[i + 2])
-	{
-		printf("ntm\n" );
 		return (-1);
-	}
 	if(av[i + 1][1])
 		return(-1);
 	if(ft_atoi(av[i + 1]) < 1 || ft_atoi(av[i + 1]) > 4)
 		return (-1);
-	/*if (!check_is_cor(av[i + 2]))
-		return (-1);*/
+	if (!check_is_cor(av[i + 2]))
+	{
+		return (-1);
+	}
 	return (1);
 }
 
-int check_dump(char **av, int i)
+static int check_dump(char **av, int i)
 {
 	int j;
 
@@ -74,13 +91,11 @@ int check_args(char **av, t_vm *vm)
 		{
 			if (!ft_strcmp(av[i], "-n"))
 			{
-				printf("going to check_n\n");
 				if (check_n(av, i) < 0)
 					return (-1);
 			}
 			if (ft_strcmp(av[i], "-n"))
 			{
-				printf("going to check_dump\n");
 				if ((return_value = check_dump(av, i)) < 0)
 					return (return_value);
 			}
