@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/15 14:05:39 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/15 17:48:46 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,16 @@
 	0xf4:	11 11 01 00
 	0xb4:	10 11 01 00
 */
+#define PHEADER vm->players[i].header
 
 typedef struct	s_player
 {
-	int		p;
-	int		nb_live;
-	int		last_live;
-	unsigned char	*instruction;
-	char 	*name;
-	char	*comment;
+	char		*filename;
+	int			p;
+	int			nb_live;
+	int			last_live;
+	char		*instruction;
+	t_header	header;
 }				t_player;
 
 typedef struct	s_proc
@@ -119,7 +120,7 @@ typedef struct	s_vm
 	unsigned char	ram[MEM_SIZE];
 	unsigned char	instru[CHAMP_MAX_SIZE];
 	t_stack			stack;
-	t_player		player[MAX_PLAYERS];
+	t_player		players[MAX_PLAYERS];
 	t_flag			flag;
 	int				nbplayers;
 	int				cycle;
@@ -132,5 +133,8 @@ typedef struct	s_vm
 int ft_start(t_vm *vm, char **av);
 int ft_parser(t_vm *vm, char **av);
 int check_args(char **av, t_vm *vm);
+int fill_players(char **av, t_vm *vm);
+int swap_int(int n);
+unsigned int swap_uint(unsigned int n);
 
 #endif

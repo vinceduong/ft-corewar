@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 18:43:59 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/15 12:51:15 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/15 17:50:19 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int check_is_cor(char *str)
 	while (i < len)
 	{
 		if (str[i] ==  '.' && len - i == 4)
-			return (!strcmp(&str[i], ".cor") ? 1 : 0);
+			return (!ft_strcmp(&str[i], ".cor") ? 1 : 0);
 		i++;
 	}
 	return (0);
@@ -81,7 +81,6 @@ int check_args(char **av, t_vm *vm)
 	int i;
 	int return_value;
 
-	*vm = *vm;
 	i = 0;
 	while (av[i])
 	{
@@ -93,11 +92,16 @@ int check_args(char **av, t_vm *vm)
 			{
 				if (check_n(av, i) < 0)
 					return (-1);
+				if (vm->players[ft_atoi(av[i + 1]) - 1].p)
+					return (-1);
+				vm->players[ft_atoi(av[i + 1]) - 1].filename = ft_strdup(av[i + 2]);
+				vm->players[ft_atoi(av[i + 1]) - 1].p = 1;
 			}
-			if (ft_strcmp(av[i], "-n"))
+			if (!ft_strcmp(av[i], "-dump"))
 			{
 				if ((return_value = check_dump(av, i)) < 0)
 					return (return_value);
+				vm->flag.dump = ft_atoi(av[i + 1]);
 			}
 		}
 		i++;

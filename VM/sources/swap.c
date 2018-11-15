@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/15 16:50:46 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/15 17:23:13 by thescriv         ###   ########.fr       */
+/*   Created: 2018/11/15 16:42:36 by thescriv          #+#    #+#             */
+/*   Updated: 2018/11/15 16:45:36 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int ft_parser(t_vm *vm, char **av)
+int swap_int(int n)
 {
-	int error;
+	return (((n & 0x000000ff) << 24)
+		| ((n & 0x0000ff00) << 8)
+		| ((n & 0x00ff0000) >> 8)
+		| ((n & 0xff000000) >> 24));
+}
 
-	if ((error = check_args(av, vm)) < 0)
-	{
-		printf("check_args failed - Error Type = %d \n", 1);
-		return (error);
-	}
-	if ((error = fill_players(av, vm)) < 0)
-	{
-		printf("fill_players failed - Error Type = %d \n", 1);
-		return (error);
-	}
-	return (1);
+unsigned int swap_uint(unsigned int n)
+{
+	return (((n & 0x000000ff) << 24)
+		| ((n & 0x0000ff00) << 8)
+		| ((n & 0x00ff0000) >> 8)
+		| ((n & 0xff000000) >> 24));
 }
