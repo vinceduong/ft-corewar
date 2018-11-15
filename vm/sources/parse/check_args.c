@@ -12,14 +12,25 @@
 
 #include "vm.h"
 
-int ft_check_arg(char **av, t_vm *vm)
+int check_is_flag(char **av, int i)
 {
-	int fd;
+	if (av[i][0] == '-')
+		return (!strcmp(av[i], "dump") || !strcmp(av[i], "-n"));
+	else
+		return (0);
+}
+
+int check_args(char **av, t_vm *vm)
+{
 	int i;
+	int return_value;
 
 	i = 0;
-	while (av[++i])
-		fd = open(av[i], O_RDONLY, O_NOFOLLOW);
-
-
+	while (av[i])
+	{
+		if ((return_value = check_is_flag) < 0)
+			return (return_value);
+		i++;
+	}
+	return (1);
 }
