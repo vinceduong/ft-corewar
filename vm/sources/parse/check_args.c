@@ -35,17 +35,9 @@ int check_n(char **av, int i)
 		if (j == 1)
 		{
 			if(!av[i + j][1])
-			{
-				printf("cheking...\n");
-				if (ft_atoi(av[i + j]) < 1 && ft_atoi(av[i + j]) > 4)
-					return (-1);
-			}
-			else
-			{
-				printf("yo\n" );
 				return(-1);
-			}
-
+			else if (ft_atoi(av[i + j]) < 1 && ft_atoi(av[i + j]) > 4)
+				return (-1);
 		}
 		/*else
 		{
@@ -61,11 +53,11 @@ int check_dump(char **av, int i)
 {
 	int j;
 
+	j = 0;
 	if (av[i + 1])
 	{
 		if (ft_strlen(av[i + 1]) > 10)
 			return (-1);
-		j = 0;
 		while (av[i  + 1][j])
 		{
 			if (!ft_isdigit(av[i + 1][j]))
@@ -83,9 +75,9 @@ int check_dump(char **av, int i)
 int check_args(char **av, t_vm *vm)
 {
 	int i;
-	int j;
 	int return_value;
 
+	*vm = *vm;
 	i = 0;
 	while (av[i])
 	{
