@@ -6,13 +6,18 @@ FLAGS = -Wall -Wextra -Werror
 
 NAME = corewar
 
-INCLUDES = -I ./includes/
+INCLUDES = -I ./includes/ -I ../libft
 
 LIBFT = ../libft/libft.a
 
-SRCS = ./srcs/main.c\
+SRCS = ./sources/main.c \
+	   ./sources/start.c \
+	   ./sources/parse/check_args.c \
+	   ./sources/parse/parsing.c \
 
 OBJS = $(SRCS:.c=.o)
+
+all : $(NAME)
 
 $(NAME) : $(OBJS) $(LIBFT)
 	@$(CC) $(OBJS) -o $(NAME) $(LIBFT)
