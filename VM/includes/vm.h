@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/14 17:30:57 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/15 12:27:44 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,8 @@ typedef struct	s_vm
 	int				pause;
 }				t_vm;
 
-int parser(char **av, t_vm *vm);
+int ft_start(t_vm *vm, char **av);
+int ft_parser(t_vm *vm, char **av);
+int check_args(char **av, t_vm *vm);
 
 #endif

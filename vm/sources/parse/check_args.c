@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arg.c                                        :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 18:43:59 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/14 18:51:27 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/15 12:51:15 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int check_is_flag(char **av, int i)
 {
 	if (av[i][0] == '-')
-		return (!strcmp(av[i], "-dump") || !strcmp(av[i], "-n") ? 1 : -1);
+		return (!ft_strcmp(av[i], "-dump") || !ft_strcmp(av[i], "-n") ? 1 : -1);
 	else
 		return (0);
 }
@@ -28,21 +28,33 @@ int check_n(char **av, int i)
 	while (j < 2)
 	{
 		if (!av[i + j])
+		{
+			printf("ntm\n" );
 			return (-1);
+		}
 		if (j == 1)
 		{
 			if(!av[i + j][1])
-				return (-1);
-			if (ft_atoi(av[i + j]) <= 0 && ft_atoi(av[i + j] => 4))
-				return (-1);
+			{
+				printf("cheking...\n");
+				if (ft_atoi(av[i + j]) < 1 && ft_atoi(av[i + j]) > 4)
+					return (-1);
+			}
+			else
+			{
+				printf("yo\n" );
+				return(-1);
+			}
+
 		}
-		else
+		/*else
 		{
 			if (!check_is_cor(av[i + j]))
 				return (-1);
-		}
+		}*/
+		j++;
 	}
-	return (1);	
+	return (1);
 }
 
 int check_dump(char **av, int i)
@@ -51,20 +63,21 @@ int check_dump(char **av, int i)
 
 	if (av[i + 1])
 	{
-		if (ft_strlen(av[i + 1] > 10))
-			return (-2);
+		if (ft_strlen(av[i + 1]) > 10)
+			return (-1);
 		j = 0;
 		while (av[i  + 1][j])
 		{
 			if (!ft_isdigit(av[i + 1][j]))
-				return (-2);		
+				return (-1);
+			j++;
 		}
-		if (ft_atoi(av[i + 1] < 0))
-			return (-2);
-	}	
+		if (ft_atoi(av[i + 1]) < 0)
+			return (-1);
+	}
 	else
-		return (-1);	
-	return (1);	
+		return (-2);
+	return (1);
 }
 
 int check_args(char **av, t_vm *vm)
@@ -80,17 +93,19 @@ int check_args(char **av, t_vm *vm)
 			return (return_value);
 		else if (return_value)
 		{
-			if (strcmp(av[i], "-n")
+			if (!ft_strcmp(av[i], "-n"))
 			{
+				printf("going to check_n\n");
 				if (check_n(av, i) < 0)
 					return (-1);
 			}
-			if (strcmp(av[i], "-dump")
+			if (ft_strcmp(av[i], "-n"))
 			{
+				printf("going to check_dump\n");
 				if ((return_value = check_dump(av, i)) < 0)
 					return (return_value);
 			}
-		}	
+		}
 		i++;
 	}
 	return (1);
