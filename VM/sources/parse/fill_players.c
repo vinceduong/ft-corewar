@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 16:11:44 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/15 18:00:46 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/15 18:32:43 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int fill_players(char **av, t_vm *vm)
 		{
 			fd = open(vm->players[i].filename, O_RDONLY);
 			printf("OK1\n");
-			if (read(fd, &vm->players[i].header, sizeof(t_header)) != sizeof(t_header))
+			if (read(fd, &vm->players[i].header, sizeof(t_header)) > sizeof(t_header))
 				return (-1);
 			printf("OK2\n");
 			if (swap_int(PHEADER.magic) != COREWAR_EXEC_MAGIC)
