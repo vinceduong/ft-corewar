@@ -119,5 +119,6 @@ typedef struct	s_vm
 	int				pause;
 }				t_vm;
 
-int ft_parser(char **av, t_vm *vm);
+int parser(char **av, t_vm *vm);
+
 #endif
