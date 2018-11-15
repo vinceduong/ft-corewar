@@ -15,7 +15,12 @@
 int main(int ac, char **av)
 {
 	t_vm vm;
-
+	
+	if (ac < 2)
+	{
+		printf("ntm\n");
+		return (0);
+	}
 	/*if (ac == 1)
 		ft_error(0);*/
 	if (ft_start(&vm, av) == 0)
