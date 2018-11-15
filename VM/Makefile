@@ -14,6 +14,8 @@ SRCS = ./sources/main.c \
 	   ./sources/start.c \
 	   ./sources/parse/check_args.c \
 	   ./sources/parse/parsing.c \
+	   ./sources/swap.c \
+	   ./sources/parse/fill_players.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -23,7 +25,7 @@ $(NAME) : $(OBJS) $(LIBFT)
 	@$(CC) $(OBJS) -o $(NAME) $(LIBFT)
 	@printf "\n\033[032mCOREWAR Compilation Successful\033[0m\n"
 
-$(LIBFT) : 
+$(LIBFT) :
 	make -C ../libft
 
 clean :
