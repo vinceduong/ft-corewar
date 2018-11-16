@@ -13,6 +13,7 @@
 #ifndef VM_H
 # define VM_H
 #include "libft.h"
+#include "op.h"
 /*
 	live	= 0x01 = 	10 	cycles
 	ld		= 0x02 = 	5 	cycles
