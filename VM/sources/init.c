@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 14:28:42 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/13 15:50:50 by thescriv         ###   ########.fr       */
+/*   Created: 2018/11/16 16:14:27 by thescriv          #+#    #+#             */
+/*   Updated: 2018/11/16 17:04:58 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-/*void ft_check_hex(int fd, char *str, t_vm *vm)
-{
-	char **tab
-
-	tab = ft_strsplit(ft_read_data(fd). '\n');
-	printf("%s\n", tab[0]);
-}*/
-
-int ft_parser(char **av, t_vm *vm)
+void init_vm(t_vm *vm)
 {
 	int i;
 
-	i = 1;
-	while (av[i])
+	i = 0;
+	vm->nbplayers = 0;
+	while (i < MAX_PLAYERS)
 	{
-		int fd;
-		fd = open(av[i], O_RDONLY);
-		ft_check_hex(fd, av[i], vm);
-		close(fd);
+		vm->players[i].header = malloc(sizeof(t_header));
+		vm->players[i].p = 0;
+		vm->players[i].nb_live = 0;
+		vm->players[i].last_live = 0;
+		i++;
 	}
+	vm->flag.dump = 0;
+	vm->flag.n = 0;
+	vm->flag.visu = 0;
+	vm->cycle = 0;
+	vm->check_cycles = 0;
+	vm->cycle_die = 0;
+	vm->dump_cycle = 0;
+	vm->pause = 0;
 }

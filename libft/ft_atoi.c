@@ -3,58 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 14:32:36 by vduong            #+#    #+#             */
-/*   Updated: 2017/11/17 15:29:30 by vduong           ###   ########.fr       */
+/*   Created: 2017/11/08 19:01:02 by apoque            #+#    #+#             */
+/*   Updated: 2017/11/18 12:55:28 by apoque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	ft_check(int sign, int count)
+static int	limits_check(unsigned long long result, int sign, int count)
 {
-	if (count == 19 && sign == 1)
+	if ((result >= 9223372036854775807 || count > 19) && sign == 1)
 		return (-1);
-	else if (count == 19 && sign == -1)
-		return (0);
-	return (1);
-}
-
-static	int	ft_finalcheck(unsigned long long n, int sign)
-{
-	if (n >= 9223372036854775807 && sign == 1)
-		return (-1);
-	if (n > 9223372036854775807 && sign == -1)
+	else if ((result > 9223372036854775807 || count > 19) && sign == -1)
 		return (0);
 	else
-		return (n * sign);
+		return (1);
 }
 
-int			ft_atoi(const char *nptr)
+int			ft_atoi(const char *str)
 {
-	unsigned long long	n;
+	int					i;
+	int					start;
+	unsigned long long	result;
 	int					sign;
-	int					count;
 
-	n = 0;
+	i = 0;
+	result = 0;
 	sign = 1;
-	count = 0;
-	while (*nptr == 32 || (*nptr >= 9 && *nptr <= 13))
-		nptr++;
-	if (*nptr == '+' || *nptr == '-')
+	while (str[i] == 32 || (str[i] >= 8 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (*nptr == '-')
+		if (str[i] == '-')
 			sign = -1;
-		nptr++;
+		i++;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
+	start = i;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (ft_check(sign, count) != 1)
-			return (ft_check(sign, count));
-		n = n * 10 + (*nptr - '0');
-		nptr++;
-		count++;
+		result = result * 10 + str[i] - 48;
+		i++;
+		if (limits_check(result, sign, i - start) != 1)
+			return (limits_check(result, sign, i - start));
 	}
-	return (ft_finalcheck(n, sign));
+	return (sign * result);
 }

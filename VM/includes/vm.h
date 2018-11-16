@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/13 15:48:03 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/16 18:00:04 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
+
+# include <string.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdarg.h>
+# include <wchar.h>
 #include "libft.h"
 #include "op.h"
 /*
@@ -38,67 +45,87 @@
 
 	NUMBER MAGIC = 0xea83f3 = (0x00) 0xea 0x83 0xf3
 
-
-	1byte = 1octet = 8bits;
-	instruction = 1 byte = 0000 0000 + value;
-	ex = live = 0x01;
-
-	1byte = 1octet = 8bits;
-	Encoded byte = 1 byte = 0000 0000 + value;
-	ex = r1, 3, %3 = 0111 1000 = 0xB8;
-
-	4 byte = 4octet = 32bit;
-	Direct = 4byte = 0000 0000 / 0000 0000 / 0000 0000 / 0000 0000 + value;
-	ex = %3 = 0000 0000 / 0000 0000 / 0000 0000 / 0000 0011 = 0x3;
-
-	2 byte = 2octet = 16bit;
-	Indirect = 2byte = 00000 0000 / 0000 0000 + value;
-	ex = PC = 0 = (PC + 3) = 0000 0000 / 0000 0011 = 0x3;
-
-	1byte = 1octet = 8bits;
-	Register = 1byte = 0000 0000 + value;
-	ex = r1 = 0000 0001 = 0x01;
+	0xa4:	10 10 01 00
+	0x94:	10 01 01 00
+	0x54:	01 01 01 00
+	0x64:	01 10 01 00
+	0xf4:	11 11 01 00
+	0xb4:	10 11 01 00
 */
+#define PHEADER	vm->players[i].header
+#define USAGE	"Usage : ./corewar [-dump nbr_cycles] [[-n number] champion1.cor] ...\n"
 
 typedef struct	s_player
 {
-	int p[4];
-	int nb_live;
-	int last_live;
+	char			*filename;
+	int				p;
+	int				nb_live;
+	int				last_live;
+	unsigned char	prog[CHAMP_MAX_SIZE];
+	t_header		*header;
 }				t_player;
 
 typedef struct	s_proc
 {
-	int		r[REG_NUMBER];
-	int		id;
-	int		carry;
-	int		player;
-	int		opcode;
-	int		cycle;
-	int		PC;
-	char	*prog;
-	void	*next;
+	int				r[REG_NUMBER];
+	int				id;
+	int				carry;
+	int				player;
+	int				opcode;
+	int				cycle;
+	int				PC;
+	int				cursor;
+	int				alive;
+	char			*prog;
+	struct s_proc	*next;
+	struct s_proc	*previous;
 }				t_proc;
+
+typedef struct	s_stack
+{
+	t_proc	*start;
+	t_proc	*end;
+	int		nbprocess;
+}				t_stack;
+
+typedef struct s_flag
+{
+	int		dump;
+	int		n;
+	int		visu;
+}				t_flag;
 
 typedef struct	s_vm
 {
-	unsigned char ram[MEM_SIZE];
-	unsigned char instru[CHAMP_MAX_SIZE];
-	t_proc			*process;
-	t_player		player[MAX_PLAYERS];
-	int cycle;
-	int check_cycles;
-	int cycle_die;
-	int dump_cycle;
-	int pause;
-
-
+	unsigned char	ram[MEM_SIZE];
+	t_stack			stack;
+	t_player		players[MAX_PLAYERS];
+	t_flag			flag;
+	int				nbplayers;
+	int				cycle;
+	int				check_cycles;
+	int				cycle_die;
+	int				dump_cycle;
+	int				pause;
 }				t_vm;
 
-typedef struct 	s_bin
-{
+/*GENERAL*/
+int swap_int(int n);
+unsigned int swap_uint(unsigned int n);
+void init_vm(t_vm *vm);
+void error(char *msg);
+int start(t_vm *vm, char **av);
 
-}				t_bin;
+/*PARSING*/
+int parse(t_vm *vm, char **av);
+int check_args(char **av, t_vm *vm);
+int check_is_flag(char **av, int i);
+int check_is_cor(char *str);
+int check_n(char **av, int i);
+int check_dump(char **av, int i);
+int fill_players(char **av, t_vm *vm);
+
+
 
 
 #endif

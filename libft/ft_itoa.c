@@ -3,53 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 14:33:35 by vduong            #+#    #+#             */
-/*   Updated: 2017/11/17 14:33:36 by vduong           ###   ########.fr       */
+/*   Created: 2017/11/08 19:05:43 by apoque            #+#    #+#             */
+/*   Updated: 2018/08/23 15:57:42 by carmenia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
-static size_t	n_size(long n)
+static int	ft_string_size(long long n, int signe, char **str)
 {
-	size_t size;
+	int	size;
 
-	size = 1;
-	if (n < 0)
+	size = 1 + signe;
+	while (n / 10 > 0)
 	{
-		size++;
-		n *= -1;
-	}
-	while (n >= 10)
-	{
-		n /= 10;
+		n = n / 10;
 		size++;
 	}
+	*str = ft_strnew(size);
 	return (size);
 }
 
-char			*ft_itoa(int n)
+char		*ft_itoa(intmax_t n)
 {
-	long	ntmp;
-	char	*itoa;
-	size_t	size;
+	intmax_t	result;
+	char		*str;
+	int			signe;
+	int			size;
+	int			i;
 
-	ntmp = (long)n;
-	size = n_size(ntmp);
-	itoa = ft_strnew(size);
-	if (!itoa)
-		return (NULL);
-	if (ntmp < 0)
+	signe = 0;
+	i = 0;
+	if (n == LLONG_MIN)
+		return (ft_strdup("-9223372036854775808"));
+	result = (intmax_t)n;
+	if (result < 0)
+		signe = 1;
+	if (result < 0)
+		result = -result;
+	size = ft_string_size(result, signe, &str);
+	if (signe == 1)
+		str[0] = '-';
+	while (i < size - signe)
 	{
-		*itoa = '-';
-		ntmp *= (-1);
+		str[size - 1 - i] = result % 10 + 48;
+		result = result / 10;
+		i++;
 	}
-	while ((size && n >= 0) || (size > 1 && n < 0))
-	{
-		itoa[--size] = ntmp % 10 + 48;
-		ntmp /= 10;
-	}
-	return (itoa);
+	return (str);
 }
