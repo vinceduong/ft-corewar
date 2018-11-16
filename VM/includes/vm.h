@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/15 17:48:46 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/16 12:26:34 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,27 +44,6 @@
 	PART 3 = COMMENt = 2048byte;
 
 	NUMBER MAGIC = 0xea83f3 = (0x00) 0xea 0x83 0xf3
-
-
-	1byte = 1octet = 8bits;
-	instruction = 1 byte = 0000 0000 + value;
-	ex = live = 0x01;
-
-	1byte = 1octet = 8bits;
-	Encoded byte = 1 byte = 0000 0000 + value;
-	ex = r1, 3, %3 = 0111 1000 = 0xB8;
-
-	4 byte = 4octet = 32bit;
-	Direct = 4byte = 0000 0000 / 0000 0000 / 0000 0000 / 0000 0000 + value;
-	ex = %3 = 0000 0000 / 0000 0000 / 0000 0000 / 0000 0011 = 0x3;
-
-	2 byte = 2octet = 16bit;
-	Indirect = 2byte = 00000 0000 / 0000 0000 + value;
-	ex = PC = 0 = (PC + 3) = 0000 0000 / 0000 0011 = 0x3;
-
-	1byte = 1octet = 8bits;
-	Register = 1byte = 0000 0000 + value;
-	ex = r1 = 0000 0001 = 0x01;
 
 	0xa4:	10 10 01 00
 	0x94:	10 01 01 00
