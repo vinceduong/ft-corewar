@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 18:43:59 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 17:04:47 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/16 17:09:02 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int check_is_cor(char *str)
 		return (0);
 	while (i < len)
 	{
-		if (str[i] ==  '.' && len - i == 4)
+		if (str[i] == '.' && len - i == 4)
 			return (!ft_strcmp(&str[i], ".cor") ? 1 : 0);
 		i++;
 	}
