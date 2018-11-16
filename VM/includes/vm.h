@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 17:53:46 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/16 17:57:21 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@
 	0xf4:	11 11 01 00
 	0xb4:	10 11 01 00
 */
-#define PHEADER vm->players[i].header
-#define USAGE "Usage : \n"
+#define PHEADER	vm->players[i].header
+#define USAGE	"Usage : \n"
 
 typedef struct	s_player
 {
-	char		*filename;
-	int			p;
-	int			nb_live;
-	int			last_live;
+	char			*filename;
+	int				p;
+	int				nb_live;
+	int				last_live;
 	unsigned char	prog[CHAMP_MAX_SIZE];
-	t_header	*header;
+	t_header		*header;
 }				t_player;
 
 typedef struct	s_proc
