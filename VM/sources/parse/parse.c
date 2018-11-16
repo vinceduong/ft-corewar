@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/31 15:50:56 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 18:08:46 by thescriv         ###   ########.fr       */
+/*   Created: 2018/11/16 18:08:21 by thescriv          #+#    #+#             */
+/*   Updated: 2018/11/16 18:08:38 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int main(int ac, char **av)
+int parse(t_vm *vm, char **av)
 {
-	t_vm vm;
+	int error;
 
-	init_vm(&vm);
-	if (ac < 2)
-		error(USAGE);
-	/*if (ac == 1)
-		ft_error(0);*/
-	if (start(&vm, av) == 0)
-		//ft_error(1);
-	//else
-		//ft_exit(&vm, 0);
-	return (0);
+	if ((error = check_args(av, vm)) < 0)
+	{
+		printf("check_args failed - Error Type = %d \n", 1);
+		return (error);
+	}
+	if ((error = fill_players(av, vm)) < 0)
+	{
+		printf("fill_players failed - Error Type = %d \n", 1);
+		return (error);
+	}
+	return (1);
 }

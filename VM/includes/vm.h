@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 12:26:34 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/16 18:09:06 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,17 @@
 	0xf4:	11 11 01 00
 	0xb4:	10 11 01 00
 */
-#define PHEADER vm->players[i].header
+#define PHEADER	vm->players[i].header
+#define USAGE	"Usage : ./corewar [-dump nbr_cycles] [[-n number] champion1.cor] ...\n"
 
 typedef struct	s_player
 {
-	char		*filename;
-	int			p;
-	int			nb_live;
-	int			last_live;
-	char		*instruction;
-	t_header	header;
+	char			*filename;
+	int				p;
+	int				nb_live;
+	int				last_live;
+	unsigned char	prog[CHAMP_MAX_SIZE];
+	t_header		*header;
 }				t_player;
 
 typedef struct	s_proc
@@ -97,7 +98,6 @@ typedef struct s_flag
 typedef struct	s_vm
 {
 	unsigned char	ram[MEM_SIZE];
-	unsigned char	instru[CHAMP_MAX_SIZE];
 	t_stack			stack;
 	t_player		players[MAX_PLAYERS];
 	t_flag			flag;
@@ -109,11 +109,23 @@ typedef struct	s_vm
 	int				pause;
 }				t_vm;
 
-int ft_start(t_vm *vm, char **av);
-int ft_parser(t_vm *vm, char **av);
-int check_args(char **av, t_vm *vm);
-int fill_players(char **av, t_vm *vm);
+/*GENERAL*/
 int swap_int(int n);
 unsigned int swap_uint(unsigned int n);
+void init_vm(t_vm *vm);
+void error(char *msg);
+int start(t_vm *vm, char **av);
+
+/*PARSING*/
+int parse(t_vm *vm, char **av);
+int check_args(char **av, t_vm *vm);
+int check_is_flag(char **av, int i);
+int check_is_cor(char *str);
+int check_n(char **av, int i);
+int check_dump(char **av, int i);
+int fill_players(char **av, t_vm *vm);
+
+
+
 
 #endif

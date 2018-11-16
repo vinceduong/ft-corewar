@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_is_cor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/31 15:50:56 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 18:08:46 by thescriv         ###   ########.fr       */
+/*   Created: 2018/11/16 17:36:24 by vduong            #+#    #+#             */
+/*   Updated: 2018/11/16 18:08:35 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int main(int ac, char **av)
+int check_is_cor(char *str)
 {
-	t_vm vm;
+	int i;
+	int len;
 
-	init_vm(&vm);
-	if (ac < 2)
-		error(USAGE);
-	/*if (ac == 1)
-		ft_error(0);*/
-	if (start(&vm, av) == 0)
-		//ft_error(1);
-	//else
-		//ft_exit(&vm, 0);
+	i = 0;
+	len = ft_strlen(str);
+	if (len < 5)
+		return (0);
+	while (i < len)
+	{
+		if (str[i] == '.' && len - i == 4)
+			return (!ft_strcmp(&str[i], ".cor") ? 1 : 0);
+		i++;
+	}
 	return (0);
 }
