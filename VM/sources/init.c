@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 16:14:27 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 16:19:06 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/16 17:04:58 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,13 @@ void init_vm(t_vm *vm)
 	{
 		vm->players[i].header = malloc(sizeof(t_header));
 		vm->players[i].p = 0;
+		vm->players[i].nb_live = 0;
+		vm->players[i].last_live = 0;
 		i++;
 	}
+	vm->flag.dump = 0;
+	vm->flag.n = 0;
+	vm->flag.visu = 0;
 	vm->cycle = 0;
 	vm->check_cycles = 0;
 	vm->cycle_die = 0;
