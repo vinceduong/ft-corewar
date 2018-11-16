@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 16:18:47 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/16 17:41:10 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,23 @@ typedef struct	s_vm
 	int				pause;
 }				t_vm;
 
-int ft_start(t_vm *vm, char **av);
-int ft_parser(t_vm *vm, char **av);
-int check_args(char **av, t_vm *vm);
-int fill_players(char **av, t_vm *vm);
+/*GENERAL*/
 int swap_int(int n);
 unsigned int swap_uint(unsigned int n);
 void init_vm(t_vm *vm);
 void error(char *msg);
+int ft_start(t_vm *vm, char **av);
+
+/*PARSING*/
+int parse(t_vm *vm, char **av);
+int check_args(char **av, t_vm *vm);
+int check_is_flag(char **av, int i);
+int check_is_cor(char *str);
+int check_n(char **av, int i);
+int check_dump(char **av, int i);
+int fill_players(char **av, t_vm *vm);
+
+
+
 
 #endif

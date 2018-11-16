@@ -13,11 +13,16 @@ LIBFT = ../libft/libft.a
 SRCS = ./sources/main.c \
 	   ./sources/start.c \
 	   ./sources/parse/check_args.c \
-	   ./sources/parse/parsing.c \
+	   ./sources/parse/parse.c \
+	   ./sources/parse/check_is_flag.c \
+	   ./sources/parse/check_is_cor.c \
+	   ./sources/parse/check_n.c \
+	   ./sources/parse/check_dump.c \
 	   ./sources/swap.c \
 	   ./sources/parse/fill_players.c \
 	   ./sources/init.c \
 	   ./sources/error.c \
+
 
 OBJS = $(SRCS:.c=.o)
 

@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   check_is_cor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 17:27:40 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/16 17:28:02 by vduong           ###   ########.fr       */
+/*   Created: 2018/11/16 17:36:24 by vduong            #+#    #+#             */
+/*   Updated: 2018/11/16 17:36:36 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void error(char *msg)
+int check_is_cor(char *str)
 {
-    ft_putstr(msg);
-    exit(1);
+	int i;
+	int len;
+
+	i = 0;
+	len = ft_strlen(str);
+	if (len < 5)
+		return (0);
+	while (i < len)
+	{
+		if (str[i] == '.' && len - i == 4)
+			return (!ft_strcmp(&str[i], ".cor") ? 1 : 0);
+		i++;
+	}
+	return (0);
 }
