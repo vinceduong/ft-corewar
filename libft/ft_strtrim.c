@@ -3,36 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 14:53:10 by vduong            #+#    #+#             */
-/*   Updated: 2017/11/17 14:53:13 by vduong           ###   ########.fr       */
+/*   Created: 2017/11/08 19:17:53 by apoque            #+#    #+#             */
+/*   Updated: 2017/11/08 19:32:21 by apoque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
+#include <stdlib.h>
 
 char	*ft_strtrim(char const *s)
 {
-	char	*trim;
-	size_t	len;
+	int	start;
+	int	end;
 
+	start = 0;
 	if (!s)
 		return (NULL);
-	while (*s == ' ' || *s == '\t' || *s == '\n')
-		s++;
-	if (!*s)
-		return (ft_strnew(0));
-	len = ft_strlen(s);
-	len--;
-	while (s[len] == ' ' || s[len] == '\t' || s[len] == '\n')
-		len--;
-	if (!(trim = ft_strnew(len + 1)))
-		return (NULL);
-	while (len + 1)
-	{
-		trim[len] = s[len];
-		len--;
-	}
-	return (trim);
+	end = (int)ft_strlen(s) - 1;
+	while ((s[start] == ' ' || s[start] == '\t' || s[start] == '\n') &&
+			s[start] != '\0')
+		start++;
+	while ((s[end] == ' ' || s[end] == '\t' || s[end] == '\n') &&
+			end > start)
+		end--;
+	return (ft_strsub(s, start, (end - start + 1)));
 }

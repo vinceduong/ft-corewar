@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_min.c                                           :+:      :+:    :+:   */
+/*   check_is_flag.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/22 11:40:19 by vduong            #+#    #+#             */
-/*   Updated: 2017/11/22 11:49:51 by vduong           ###   ########.fr       */
+/*   Created: 2018/11/16 17:34:27 by vduong            #+#    #+#             */
+/*   Updated: 2018/11/16 17:35:13 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_min(int *tab, int size)
-{
-	int min;
+#include "vm.h"
 
-	min = tab[--size];
-	while (size--)
-	{
-		if (tab[size] < min)
-			min = tab[size];
-	}
-	return (min);
+int check_is_flag(char **av, int i)
+{
+	if (av[i][0] == '-')
+		return (!ft_strcmp(av[i], "-dump") || !ft_strcmp(av[i], "-n") ? 1 : -1);
+	else
+		return (0);
 }

@@ -3,22 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 14:33:53 by vduong            #+#    #+#             */
-/*   Updated: 2017/11/17 14:33:55 by vduong           ###   ########.fr       */
+/*   Created: 2017/11/08 19:07:32 by apoque            #+#    #+#             */
+/*   Updated: 2017/11/13 10:20:59 by apoque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	while (n--)
+	while (n > 0)
 	{
 		*(unsigned char *)dest++ = *(unsigned char *)src;
 		if (*(unsigned char *)src++ == (unsigned char)c)
 			return (dest);
+		n--;
 	}
 	return (NULL);
 }

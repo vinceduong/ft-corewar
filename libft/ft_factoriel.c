@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   ft_factoriel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 15:44:54 by vduong            #+#    #+#             */
-/*   Updated: 2017/11/22 11:24:40 by vduong           ###   ########.fr       */
+/*   Created: 2017/11/18 15:20:58 by apoque            #+#    #+#             */
+/*   Updated: 2017/11/18 15:41:09 by apoque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_factorial(int nb)
+int	ft_factoriel(int nb)
 {
+	int	res;
+
+	res = 1;
+	if (nb == 0)
+		return (1);
 	if (nb < 0 || nb > 12)
 		return (0);
-	else if (nb == 0)
-		return (1);
 	else
-		return (nb * ft_factorial(nb - 1));
+	{
+		while (nb > 0)
+		{
+			res = res * nb;
+			nb--;
+		}
+		return (res);
+	}
 }
