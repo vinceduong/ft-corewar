@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   check_dump.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/15 16:50:46 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/15 17:23:13 by thescriv         ###   ########.fr       */
+/*   Created: 2018/11/16 17:39:15 by vduong            #+#    #+#             */
+/*   Updated: 2018/11/16 17:41:25 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int ft_parser(t_vm *vm, char **av)
+int check_dump(char **av, int i)
 {
-	int error;
+	int j;
 
-	if ((error = check_args(av, vm)) < 0)
+	j = 0;
+	if (av[i + 1])
 	{
-		printf("check_args failed - Error Type = %d \n", 1);
-		return (error);
+		if (ft_strlen(av[i + 1]) > 10)
+			return (-1);
+		while (av[i  + 1][j])
+		{
+			if (!ft_isdigit(av[i + 1][j]))
+				return (-1);
+			j++;
+		}
+		if (ft_atoi(av[i + 1]) < 0)
+			return (-1);
 	}
-	if ((error = fill_players(av, vm)) < 0)
-	{
-		printf("fill_players failed - Error Type = %d \n", 1);
-		return (error);
-	}
+	else
+		return (-2);
 	return (1);
 }

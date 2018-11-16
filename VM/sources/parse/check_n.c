@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   check_n.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 17:27:40 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/16 17:28:02 by vduong           ###   ########.fr       */
+/*   Created: 2018/11/16 17:38:01 by vduong            #+#    #+#             */
+/*   Updated: 2018/11/16 17:38:04 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void error(char *msg)
+int check_n(char **av, int i)
 {
-    ft_putstr(msg);
-    exit(1);
+	if (!av[i + 1] || !av[i + 2])
+		return (-1);
+	if(av[i + 1][1])
+		return(-1);
+	if(ft_atoi(av[i + 1]) < 1 || ft_atoi(av[i + 1]) > 4)
+		return (-1);
+	if (!check_is_cor(av[i + 2]))
+	{
+		return (-1);
+	}
+	return (1);
 }
