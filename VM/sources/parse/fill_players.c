@@ -6,16 +6,48 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 16:11:44 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/15 18:32:43 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/16 15:53:21 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+int get_info(t_player *info, char *file)
+{
+	//int ret;
+	int fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (-1);
+	/*ret = read(fd, &info->header, sizeof(t_header));
+	printf("%d %lu\n", ret, sizeof(t_header));*/
+	printf("%lu\n", sizeof(t_header));
+	info->header = malloc(sizeof(t_header));
+	if (read(fd, info->header, sizeof(t_header)) != sizeof(t_header))
+		return (-1);
+	printf("OK2\n");
+	if (swap_int(info->header->magic) != COREWAR_EXEC_MAGIC)
+		return (-1);
+	printf("OK3\n");
+	info->header->prog_size = swap_uint(info->header->prog_size);
+	info->header->prog_name[PROG_NAME_LENGTH] = '\0';
+	info->header->comment[COMMENT_LENGTH] = '\0';
+	printf("OK4\n");
+	if (info->header->prog_size > CHAMP_MAX_SIZE)
+		return (-1);
+	printf("OK5\n");
+	if (read(fd, &info->prog, info->header->prog_size)
+	!= info->header->prog_size)
+		return (-1);
+	printf("OK6\n");
+	close(fd);
+	return (1);
+}
+
 int fill_players(char **av, t_vm *vm)
 {
 	int			i;
-	int			fd;
 
 	i = 0;
 	(void)av;
@@ -24,27 +56,8 @@ int fill_players(char **av, t_vm *vm)
 		printf("HAHAHHAHAHA\n");
 		if (vm->players[i].p)
 		{
-			fd = open(vm->players[i].filename, O_RDONLY);
-			printf("OK1\n");
-			if (read(fd, &vm->players[i].header, sizeof(t_header)) > sizeof(t_header))
+			if (get_info(&vm->players[i], vm->players[i].filename) == -1)
 				return (-1);
-			printf("OK2\n");
-			if (swap_int(PHEADER.magic) != COREWAR_EXEC_MAGIC)
-				return (-1);
-			printf("OK3\n");
-			PHEADER.prog_size = swap_uint(PHEADER.prog_size);
-			PHEADER.prog_name[PROG_NAME_LENGTH] = '\0';
-			PHEADER.comment[COMMENT_LENGTH] = '\0';
-			printf("OK4\n");
-			if (PHEADER.prog_size > CHAMP_MAX_SIZE)
-				return (-1);
-				printf("OK5\n");
-			vm->players[i].instruction = ft_memalloc(PHEADER.prog_size + 1);
-			if (read(fd, vm->players[i].instruction, PHEADER.prog_size + 1)
-			!= PHEADER.prog_size)
-				return (-1);
-				printf("OK6\n");
-			close(fd);
 		}
 		i++;
 	}

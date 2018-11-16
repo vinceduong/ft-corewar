@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 12:26:34 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/16 16:18:47 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef struct	s_player
 	int			p;
 	int			nb_live;
 	int			last_live;
-	char		*instruction;
-	t_header	header;
+	unsigned char	prog[CHAMP_MAX_SIZE];
+	t_header	*header;
 }				t_player;
 
 typedef struct	s_proc
@@ -97,7 +97,6 @@ typedef struct s_flag
 typedef struct	s_vm
 {
 	unsigned char	ram[MEM_SIZE];
-	unsigned char	instru[CHAMP_MAX_SIZE];
 	t_stack			stack;
 	t_player		players[MAX_PLAYERS];
 	t_flag			flag;
@@ -115,5 +114,6 @@ int check_args(char **av, t_vm *vm);
 int fill_players(char **av, t_vm *vm);
 int swap_int(int n);
 unsigned int swap_uint(unsigned int n);
+void init_vm(t_vm *vm);
 
 #endif

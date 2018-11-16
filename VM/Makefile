@@ -16,6 +16,7 @@ SRCS = ./sources/main.c \
 	   ./sources/parse/parsing.c \
 	   ./sources/swap.c \
 	   ./sources/parse/fill_players.c \
+	   ./sources/init.c \
 
 OBJS = $(SRCS:.c=.o)
 
