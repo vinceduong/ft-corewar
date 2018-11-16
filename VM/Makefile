@@ -8,6 +8,9 @@ NAME = corewar
 
 INCLUDES = -I ./includes/ -I ../libft
 
+HEADERS = ./includes/vm.h\
+		  ./includes/op.h\
+
 LIBFT = ../libft/libft.a
 
 SRCS = ./sources/main.c \
@@ -28,7 +31,7 @@ OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) $(LIBFT)
+$(NAME) : $(OBJS) $(LIBFT) $(HEADERS)
 	@$(CC) $(OBJS) -o $(NAME) $(LIBFT)
 	@printf "\n\033[032mCOREWAR Compilation Successful\033[0m\n"
 
