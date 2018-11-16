@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:50:56 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 17:43:22 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/16 17:51:06 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ int main(int ac, char **av)
 
 	init_vm(&vm);
 	if (ac < 2)
-	{
-		printf("ntm\n");
-		return (0);
-	}
+		error(USAGE);
 	/*if (ac == 1)
 		ft_error(0);*/
 	if (start(&vm, av) == 0)
