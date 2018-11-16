@@ -6,16 +6,20 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 18:38:02 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 17:32:56 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/16 17:44:28 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int ft_start(t_vm *vm, char **av)
+int start(t_vm *vm, char **av)
 {
 	if (parse(vm, av) == 0)
+	{
+		printf("Parsing failed\n");
 		return (0);
+	}
+	printf("Parsing worked\n");
 	/*if (ft_init_map(vm) == 0)
 		return (0);
 	if (ft_prepare_champ(vm) == 0)

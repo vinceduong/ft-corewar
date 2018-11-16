@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 17:41:10 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/16 17:43:03 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int swap_int(int n);
 unsigned int swap_uint(unsigned int n);
 void init_vm(t_vm *vm);
 void error(char *msg);
-int ft_start(t_vm *vm, char **av);
+int start(t_vm *vm, char **av);
 
 /*PARSING*/
 int parse(t_vm *vm, char **av);
