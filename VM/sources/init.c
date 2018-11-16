@@ -20,7 +20,7 @@ void init_vm(t_vm *vm)
 	vm->nbplayers = 0;
 	while (i < MAX_PLAYERS)
 	{
-		vm->players[i]->header = malloc(sizeof(t_header));
+		vm->players[i].header = malloc(sizeof(t_header));
 		vm->players[i].p = 0;
 		i++;
 	}
