@@ -115,5 +115,6 @@ int fill_players(char **av, t_vm *vm);
 int swap_int(int n);
 unsigned int swap_uint(unsigned int n);
 void init_vm(t_vm *vm);
+void error(char *msg);
 
 #endif
