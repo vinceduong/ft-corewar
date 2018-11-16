@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/31 15:50:56 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 16:19:57 by thescriv         ###   ########.fr       */
+/*   Created: 2018/11/16 16:14:27 by thescriv          #+#    #+#             */
+/*   Updated: 2018/11/16 16:19:06 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int main(int ac, char **av)
+void init_vm(t_vm *vm)
 {
-	t_vm vm;
+	int i;
 
-	init_vm(&vm);
-	if (ac < 2)
+	i = 0;
+	vm->nbplayers = 0;
+	while (i < MAX_PLAYERS)
 	{
-		printf("ntm\n");
-		return (0);
+		vm->players[i]->header = malloc(sizeof(t_header));
+		vm->players[i].p = 0;
+		i++;
 	}
-	/*if (ac == 1)
-		ft_error(0);*/
-	if (ft_start(&vm, av) == 0)
-		//ft_error(1);
-	//else
-		//ft_exit(&vm, 0);
-	return (0);
+	vm->cycle = 0;
+	vm->check_cycles = 0;
+	vm->cycle_die = 0;
+	vm->dump_cycle = 0;
+	vm->pause = 0;
 }
