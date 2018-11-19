@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 16:11:44 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 18:08:37 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/19 12:47:02 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int fill_players(char **av, t_vm *vm)
 	{
 		if (vm->players[i].p)
 		{
+			printf("%d %d %s\n", i, vm->players[i].p, vm->players[i].filename);
 			fill_player(&vm->players[i], vm->players[i].filename);
 		}
 		i++;

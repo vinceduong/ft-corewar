@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 17:34:27 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/16 18:08:43 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/19 18:34:35 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,16 @@
 int check_is_flag(char **av, int i)
 {
 	if (av[i][0] == '-')
-		return (!ft_strcmp(av[i], "-dump") || !ft_strcmp(av[i], "-n") ? 1 : -1);
+	{
+		if (!ft_strcmp(av[i], "-dump"))
+			return (1);
+		else if (!ft_strcmp(av[i], "-n"))
+			return (2);
+		else if (!ft_strcmp(av[i], "-v"))
+			return (3);
+		else
+			return (-1);
+	}
 	else
 		return (0);
 }
