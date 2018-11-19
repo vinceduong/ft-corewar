@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/11/19 12:15:57 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/19 12:16:29 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 
 typedef char	t_arg_type;
 
-typedef	struct					s_op
+typedef	struct	s_op
 {
 	char	*name;
 	int		nb_param;
@@ -64,7 +64,7 @@ typedef	struct					s_op
 	char	*action;
 	int		ocp;
 	int		d2;
-} t_op;
+}				t_op;
 
 #define T_REG					1
 #define T_DIR					2
