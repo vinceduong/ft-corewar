@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop.c                                             :+:      :+:    :+:   */
+/*   increment_stack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 13:33:41 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/20 15:00:29 by vduong           ###   ########.fr       */
+/*   Created: 2018/11/20 15:00:57 by vduong            #+#    #+#             */
+/*   Updated: 2018/11/20 15:02:21 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "vm.h"
 
-void loop(t_vm *vm)
-{  
-    while (1)
-    {
-        if (vm->flag.visu)
-            display(vm);
-        else if (vm->cycle == vm->flag.dump)
-            dump(vm);
-        vm->cycle++;
-        increment_stack(vm);
-        vm->check_cycles--;
-        
-    }
+void increment_stack(t_vm *vm)
+{
+    t_proc *tmp;
+    t_proc *next;
 }
