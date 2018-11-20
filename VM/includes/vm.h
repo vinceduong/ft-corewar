@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/19 18:30:16 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/20 11:40:01 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ typedef struct s_flag
 typedef struct	s_case
 {
 	unsigned char	content;
-	int				id;
+	int				pid;
 	int				color;
 	int				glow;
 
@@ -122,6 +122,7 @@ typedef struct	s_vm
 int swap_int(int n);
 unsigned int swap_uint(unsigned int n);
 void init_vm(t_vm *vm);
+void init_ram(t_vm *vm);
 void error(char *msg);
 int start(t_vm *vm, char **av);
 

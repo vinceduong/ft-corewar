@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/17 08:34:09 by vduong            #+#    #+#              #
-#    Updated: 2018/11/17 08:34:10 by vduong           ###   ########.fr        #
+#    Updated: 2018/11/20 11:40:16 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ HEADERS = ./includes/vm.h\
 LIBFT = ../libft/libft.a
 
 SRCS = ./sources/main.c \
-	   ./sources/start.c \
 	   ./sources/parse/check_args.c \
 	   ./sources/parse/parse.c \
 	   ./sources/parse/check_is_flag.c \
