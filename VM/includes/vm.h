@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 16:16:25 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/20 17:42:19 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <stdarg.h>
 # include <wchar.h>
+# include <ncurse.h>
 #include "libft.h"
 #include "op.h"
 /*
@@ -113,6 +114,13 @@ typedef struct	s_case
 
 }				t_case;
 
+typedef struct	s_win
+{
+	WINDOW 		*win;
+	WINDOW		*win_left;
+	WINDOW		*win_right;
+}				t_win;
+
 typedef struct	s_vm
 {
 	t_case		ram[MEM_SIZE];
@@ -125,6 +133,7 @@ typedef struct	s_vm
 	int			cycle_die;
 	int			pause;
 	int			nb_lives;
+	t_win		display;
 }				t_vm;
 
 /*GENERAL*/
@@ -152,6 +161,8 @@ int	check_stack(t_vm *vm);
 void loop(t_vm *vm);
 
 /*DISPLAY*/
-int display(t_vm *vm);
+void			display(t_vm *vm, int step);
+void    		create_visualizer(t_win *display);
+void    		display_winner(t_win *display);
 
 #endif
