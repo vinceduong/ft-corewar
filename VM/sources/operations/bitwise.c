@@ -6,13 +6,13 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:47:45 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 19:31:40 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/20 20:42:06 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void corewar_and(t_vm *vm, t_proc *proc, t_operation *operation)
+void corewar_and(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	int a;
 	int b;
@@ -27,7 +27,7 @@ void corewar_and(t_vm *vm, t_proc *proc, t_operation *operation)
 	proc->carry = proc->r[ope->param[2]] == 0 ? 1 : 0;
 }
 
-void corewar_or(t_vm *vm, t_proc *proc, t_operation *operation)
+void corewar_or(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	int a;
 	int b;
@@ -42,7 +42,7 @@ void corewar_or(t_vm *vm, t_proc *proc, t_operation *operation)
 	proc->carry = proc->r[ope->param[2]] == 0 ? 1 : 0;
 }
 
-void corewar_xor(t_vm *vm, t_proc *proc, t_operation *operation)
+void corewar_xor(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	int a;
 	int b;

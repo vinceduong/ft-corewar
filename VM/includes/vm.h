@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 20:07:31 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 20:07:38 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/20 20:40:06 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,6 @@ typedef struct	s_vm
 	int			cycle_die;
 	int			pause;
 	int			nb_lives;
-	t_win		display;
 }				t_vm;
 
 void	(*ops[16])(t_vm*, t_proc*, t_operation*);
