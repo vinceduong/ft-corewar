@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 14:57:46 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/20 15:56:09 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ typedef struct	s_vm
 	int			check_cycles;
 	int			cycle_die;
 	int			pause;
+	int			nb_lives;
 }				t_vm;
 
 /*GENERAL*/
@@ -138,6 +139,9 @@ void add_process(t_stack *stack, t_proc *proc);
 void delete_process(t_stack *stack, t_proc *proc);
 t_proc *init_process(t_vm *vm, int pc, int player);
 void increment_stack(t_vm *vm);
+int	check_stack(t_vm *vm);
+void loop(t_vm *vm);
+
 /*DISPLAY*/
 int display(t_vm *vm);
 
