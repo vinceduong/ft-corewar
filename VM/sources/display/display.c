@@ -1,32 +1,23 @@
 #include "../../includes/vm.h"
 
-#define LEN 2048
+#define LEN 4096
 
-int    *ft_simulate_ram()
+void    ft_choose_color(int player)
 {
-    int     i;
-    int     fill;
-    int    *ram;
+    if (player == 0)
+        attron(COLOR_PAIR(3));
+    else if (player == 1)
+        attron(COLOR_PAIR(1));
+    else if (player == 2)
+        attron(COLOR_PAIR(4));
+    else if (player == 3)
+        attron(COLOR_PAIR(7));
+    else if (player == 4)
+        attron(COLOR_PAIR(8));
 
-    i = 0;
-    fill = 17;
-    if (!(ram = malloc(sizeof(int) * LEN)))
-        exit(0);
-    while (i < LEN)
-    {
-        if ((fill > 255) || fill == 10)
-            fill = 17;
-        if (i > 600 && i < 1200) 
-            ram[i] = 0;
-        else
-            ram[i] = fill;
-        fill++;
-        i++;
-    }
-    return (ram);
 }
 
-void    ft_print_ram(int *ram)
+void    print_ram(t_case *ram)
 {
     int i;
     int col;
@@ -36,7 +27,6 @@ void    ft_print_ram(int *ram)
     col = 2;
     stop = 3;
     move(col, 4);
-    attron(COLOR_PAIR(1));
     while (i < LEN)
     {
         if (stop > (COLS / 4) * 3 - 3)
@@ -44,14 +34,8 @@ void    ft_print_ram(int *ram)
             move(col++, 4);
             stop = 3;
         }
-        if (ram[i] == 0)
-        {
-            attron(COLOR_PAIR(3));
-            printw("00 ");
-            attron(COLOR_PAIR(4));
-        }
-        else
-            printw("%x ", ram[i]);
+        ft_choose_color(ram[i].pid);
+        printw("%.2x ", ram[i]);
         stop = stop + 3;
         i++;
     }
@@ -60,18 +44,27 @@ void    ft_print_ram(int *ram)
 
 void display(t_vm *vm, int step)
 {
-    int *ram;
+    //int *ram;
    // if (step == 3)
-    if (step == 1)
-        create_visualizer(&vm->display);
-    if (step == 2)
+   int COL = COLS;
+   int  LI = LINES;
+   printf("COLS = %d - cols = %d\n", COL, vm->display.cols);
+   printf("LINES = %d - lines = %d\n", LI, vm->display.lines);
+   getchar();
+    if (step == 1 || COLS != vm->display.cols || LINES != vm->display.lines)
     {
-        ram = ft_simulate_ram();
-        getchar();
-        ft_print_ram(ram);
+        create_visualizer(&vm->display);
+        vm->display.lines = LINES;
+        vm->display.cols = COLS;
+    }
+   // if (step == 2)
+   // {
+        //ram = ft_simulate_ram();
+       // getchar();
+    print_ram(vm->ram);
         //printw("hello");
         //refresh();
-    }
+  //  }
      //display_winner(&vm->display);
     //update_ram();
 }

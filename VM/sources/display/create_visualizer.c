@@ -46,6 +46,8 @@ void ft_init_colors()
     init_pair(4, COLOR_GREEN, COLOR_BLACK);
     init_pair(5, COLOR_WHITE, COLOR_BLACK);
     init_pair(6, COLOR_RED, COLOR_BLACK);
+    init_pair(7, COLOR_YELLOW, COLOR_BLACK);
+    init_pair(8, COLOR_CYAN, COLOR_BLACK);
 }
 
 void    ft_init_windows(WINDOW *win, WINDOW *win_left, WINDOW *win_right)
