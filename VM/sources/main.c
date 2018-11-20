@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:50:56 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 18:08:46 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/20 10:48:53 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int ac, char **av)
 	t_vm vm;
 
 	init_vm(&vm);
-	if (ac < 2)
+	if (ac < 2 || !parse(&vm, av))
 		error(USAGE);
 	/*if (ac == 1)
 		ft_error(0);*/
