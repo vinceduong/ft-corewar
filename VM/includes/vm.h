@@ -3,18 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/11/20 18:17:19 by thescriv         ###   ########.fr       */
-=======
-<<<<<<< HEAD
-/*   Updated: 2018/11/20 17:50:11 by vduong           ###   ########.fr       */
-=======
-/*   Updated: 2018/11/20 17:42:19 by vduong           ###   ########.fr       */
->>>>>>> visu
->>>>>>> fe42464514b998189d2987791bf6cbb0669ccb56
+/*   Created: 2018/11/20 20:07:31 by thescriv          #+#    #+#             */
+/*   Updated: 2018/11/20 20:07:38 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +19,7 @@
 # include <fcntl.h>
 # include <stdarg.h>
 # include <wchar.h>
-<<<<<<< HEAD
 # include <ncurses.h>
-=======
-# include <ncurse.h>
->>>>>>> visu
 #include "libft.h"
 #include "op.h"
 /*
