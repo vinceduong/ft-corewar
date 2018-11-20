@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/17 08:34:09 by vduong            #+#    #+#              #
-#    Updated: 2018/11/20 17:11:49 by thescriv         ###   ########.fr        #
+#    Updated: 2018/11/20 18:14:48 by thescriv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,10 @@ SRCS = 	./sources/error.c\
 		./sources/operations/fork.c\
 		./sources/operations/live.c\
 		./sources/operations/load.c\
-		./sources/operations/minus.c\
+		./sources/operations/sub.c\
 		./sources/operations/op.c\
 		./sources/operations/store.c\
-		./sources/operations/store_index.c\
+		./sources/operations/tab_function.c\
 		./sources/operations/zjump.c\
 		./sources/parse/check_args.c\
 		./sources/parse/check_dump.c\

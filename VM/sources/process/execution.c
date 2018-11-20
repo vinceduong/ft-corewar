@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:54:13 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 17:24:03 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/20 18:14:21 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void ft_get_param(t_operation *ope, int n, t_vm *vm, int *pc)
 			ope->error = 1;
 		*pc = (*pc + 1) % MEM_SIZE;
 	}
-	else if (ope->param_type[n] == IND_CODE/* || op_tab[ope->opcode - 1].d2*/)
+	else if (ope->param_type[n] == IND_CODE || op_tab[ope->opcode - 1].d2)
 	{
 		ope->param[n] = to_short(vm, pc);
 		*pc = (*pc + 2) % MEM_SIZE;
@@ -53,10 +53,10 @@ void execution_part2(t_vm *vm, t_proc *proc, t_operation *ope, int *pc)
 	ft_get_param(ope, 0, vm, pc);
 	ft_get_param(ope, 1, vm, pc);
 	ft_get_param(ope, 2, vm, pc);
-	/*if (!ope->error)
-		g_op_functions[inst->opcode - 1](vm, proc, ope);
-	if (!(op->opcode == 9 && proc->carry) || ope->error)
-		proc->pc = *pc;*/
+	if (!ope->error)
+		ops[ope->opcode - 1](vm, proc, ope);
+	if (!(ope->opcode == 9 && proc->carry) || ope->error)
+		proc->pc = *pc;
 }
 
 void execution(t_vm *vm, t_proc *proc)
