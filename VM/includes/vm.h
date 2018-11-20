@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 14:09:31 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/20 14:57:46 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ unsigned int swap_uint(unsigned int n);
 void init_vm(t_vm *vm);
 void init_ram(t_vm *vm);
 void error(char *msg);
-int start(t_vm *vm, char **av);
 
 /*PARSING*/
 int parse(t_vm *vm, char **av);
@@ -138,7 +137,7 @@ int fill_players(char **av, t_vm *vm);
 void add_process(t_stack *stack, t_proc *proc);
 void delete_process(t_stack *stack, t_proc *proc);
 t_proc *init_process(t_vm *vm, int pc, int player);
-
+void increment_stack(t_vm *vm);
 /*DISPLAY*/
 int display(t_vm *vm);
 
