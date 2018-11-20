@@ -6,14 +6,58 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:24 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 12:48:45 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/20 20:02:41 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void load();
+#include "vm.h"
 
-void load_index();
+void direct_load(t_vm *vm, t_proc *proc, t_operation *operation)
+{
+	proc->r[ope->param[1]] = vm->ram[proc->pc + (op->param[0] % IDX_MOD)];
+	proc->carry = !ope->param[1] ? 1 : 0;
+}
 
-void long_load_index();
+void indirect_load(t_vm *vm, t_proc *proc, t_operation *operation)
+{
+	int a;
+	int b;
 
-void long_load();
+	if (ope->param_type[0] == T_REG)
+		a = proc->r[ope->param[0]];
+	else if (ope->param_type[0] == T_IND)
+		a = proc->pc + (ope->param_type[0] % IDX_MOD);
+	else
+		a = ope->param[0];
+	if (ope->param_type[1] == T_IND)
+		b = proc->pc + (ope->param_type[1] % IDX_MOD);
+	else
+		b = ope->param[1];
+	proc->r[ope->param[2]] = vm->ram[a + b];
+	proc->carry = a + b == 0 ? 1 : 0;
+}
+
+void long_indirect_load(t_vm *vm, t_proc *proc, t_operation *operation)
+{
+	int a;
+	int b;
+
+	if (ope->param_type[0] == T_REG)
+		a = proc->r[ope->param[0]];
+	else if (ope->param_type[0] == T_IND)
+		a = proc->pc;
+	else
+		a = ope->param[0];
+	if (ope->param_type[1] == T_IND)
+		b = proc->pc;
+	else
+		b = ope->param[1];
+	proc->r[ope->param[2]] = vm->ram[a + b];
+	proc->carry = a + b == 0 ? 1 : 0;
+}
+
+void long_direct_load(t_vm *vm, t_proc *proc, t_operation *operation)
+{
+	proc->r[ope->param[1]] = vm->ram[proc->pc];
+	proc->carry = !ope->param[1] ? 1 : 0;
+}

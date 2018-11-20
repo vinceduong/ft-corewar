@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 16:14:27 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 17:29:21 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/20 18:43:26 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void fill_ram(t_vm *vm, int adress, int pId)
 	while (i < vm->players[pId].header->prog_size)
 	{
 		vm->ram[i + adress].content = vm->players[pId].prog[i];
-		vm->ram[i + adress].pid = pId;
+		vm->ram[i + adress].pid = pId + 1;
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 17:25:26 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/20 18:17:19 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ typedef struct	s_vm
 	int			nb_lives;
 }				t_vm;
 
+void	(*ops[16])(t_vm*, t_proc*, t_operation*);
+
 /*GENERAL*/
 int swap_int(int n);
 unsigned int swap_uint(unsigned int n);
@@ -154,6 +156,24 @@ void loop(t_vm *vm);
 short		to_short(t_vm *vm, int *pc);
 int			to_int(t_vm *vm, int *pc);
 void execution(t_vm *vm, t_proc *proc);
+
+/*INSTRUCTION*/
+void live(t_vm *vm, t_proc *proc, t_operation *ope);
+void direct_load(t_vm *vm, t_proc *proc, t_operation *operation);
+void indirect_load(t_vm *vm, t_proc *proc, t_operation *operation);
+void long_indirect_load(t_vm *vm, t_proc *proc, t_operation *operation);
+void long_direct_load(t_vm *vm, t_proc *proc, t_operation *operation);
+void sub(t_vm *vm, t_proc *proc, t_operation *operation);
+void zjump(t_vm *vm, t_proc *proc, t_operation *ope);
+void add(t_vm *vm, t_proc *proc, t_operation *operation);
+void aff(t_vm *vm, t_proc *proc, t_operation *operation);
+void corewar_and(t_vm *vm, t_proc *proc, t_operation *operation);
+void corewar_or(t_vm *vm, t_proc *proc, t_operation *operation);
+void corewar_xor(t_vm *vm, t_proc *proc, t_operation *operation);
+void corewar_fork(t_vm *vm, t_proc *proc, t_operation *operation);
+void lfork(t_vm *vm, t_proc *proc, t_operation *operation);
+void direct_store(t_vm *vm, t_proc *proc, t_operation *operation);
+void indirect_store(t_vm *vm, t_proc *proc, t_operation *operation);
 
 /*DISPLAY*/
 int display(t_vm *vm);
