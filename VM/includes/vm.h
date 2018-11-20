@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 16:16:25 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/20 17:25:26 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@
 typedef struct 	s_operation
 {
 	int ocp;
+	int opcode;
 	int pc;
 	char param_type[3];
 	char param[3];
@@ -110,7 +111,6 @@ typedef struct	s_case
 	int				pid;
 	int				color;
 	int				glow;
-
 }				t_case;
 
 typedef struct	s_vm
@@ -133,6 +133,7 @@ unsigned int swap_uint(unsigned int n);
 void init_vm(t_vm *vm);
 void init_ram(t_vm *vm);
 void error(char *msg);
+void dump(t_vm *vm);
 
 /*PARSING*/
 int parse(t_vm *vm, char **av);
@@ -150,6 +151,9 @@ t_proc *init_process(t_vm *vm, int pc, int player);
 void increment_stack(t_vm *vm);
 int	check_stack(t_vm *vm);
 void loop(t_vm *vm);
+short		to_short(t_vm *vm, int *pc);
+int			to_int(t_vm *vm, int *pc);
+void execution(t_vm *vm, t_proc *proc);
 
 /*DISPLAY*/
 int display(t_vm *vm);
