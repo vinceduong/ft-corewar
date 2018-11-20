@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:33:41 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/20 15:00:29 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/20 16:14:42 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void loop(t_vm *vm)
         vm->cycle++;
         increment_stack(vm);
         vm->check_cycles--;
-        
+        if (!vm->check_cycles && !check_stack(vm))
+            break;
     }
 }
