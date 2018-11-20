@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 11:40:01 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/20 13:01:53 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct	s_proc
 	int				player;
 	int				opcode;
 	int				cycle;
-	int				PC;
+	int				pc;
 	int				cursor;
 	int				alive;
 	char			*prog;
@@ -84,7 +84,6 @@ typedef struct	s_proc
 typedef struct	s_stack
 {
 	t_proc	*start;
-	t_proc	*end;
 	int		nbprocess;
 }				t_stack;
 
@@ -135,6 +134,10 @@ int check_n(char **av, int i);
 int check_dump(char **av, int i);
 int fill_players(char **av, t_vm *vm);
 
+/*PROCESS*/
+void add_process(t_stack *stack, t_proc *proc);
+void delete_process(t_stack *stack, t_proc *proc);
+t_proc *init_process(t_vm *vm, int pc, int player);
 
 /*DISPLAY*/
 int display(t_vm vm);
