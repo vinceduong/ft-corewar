@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 13:01:53 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/20 13:34:12 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct	s_proc
 typedef struct	s_stack
 {
 	t_proc	*start;
+	t_proc	*end;
 	int		nbprocess;
 }				t_stack;
 
