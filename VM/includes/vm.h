@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 15:56:09 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/20 16:16:25 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,15 @@
 */
 #define PHEADER	vm->players[i].header
 #define USAGE	"Usage : ./corewar [-dump nbr_cycles] [[-n number] champion1.cor] ...\n"
+
+typedef struct 	s_operation
+{
+	int ocp;
+	int pc;
+	char param_type[3];
+	char param[3];
+	int error;
+}				t_operation;
 
 typedef struct	s_player
 {
