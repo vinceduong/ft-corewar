@@ -6,7 +6,11 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/11/20 17:50:11 by vduong           ###   ########.fr       */
+=======
+/*   Updated: 2018/11/20 17:42:19 by vduong           ###   ########.fr       */
+>>>>>>> visu
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +23,11 @@
 # include <fcntl.h>
 # include <stdarg.h>
 # include <wchar.h>
+<<<<<<< HEAD
 # include <ncurses.h>
+=======
+# include <ncurse.h>
+>>>>>>> visu
 #include "libft.h"
 #include "op.h"
 /*
@@ -134,6 +142,7 @@ typedef struct	s_vm
 	int			cycle_die;
 	int			pause;
 	int			nb_lives;
+	t_win		display;
 }				t_vm;
 
 /*GENERAL*/
