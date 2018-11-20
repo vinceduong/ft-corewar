@@ -6,15 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/11/20 18:17:19 by thescriv         ###   ########.fr       */
-=======
-<<<<<<< HEAD
-/*   Updated: 2018/11/20 17:50:11 by vduong           ###   ########.fr       */
-=======
-/*   Updated: 2018/11/20 17:42:19 by vduong           ###   ########.fr       */
->>>>>>> visu
->>>>>>> fe42464514b998189d2987791bf6cbb0669ccb56
+/*   Updated: 2018/11/20 17:01:00 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +19,7 @@
 # include <fcntl.h>
 # include <stdarg.h>
 # include <wchar.h>
-<<<<<<< HEAD
 # include <ncurses.h>
-=======
-# include <ncurse.h>
->>>>>>> visu
 #include "libft.h"
 #include "op.h"
 /*
@@ -71,7 +59,6 @@
 typedef struct 	s_operation
 {
 	int ocp;
-	int opcode;
 	int pc;
 	char param_type[3];
 	char param[3];
@@ -124,6 +111,7 @@ typedef struct	s_case
 	int				pid;
 	int				color;
 	int				glow;
+
 }				t_case;
 
 typedef struct	s_win
@@ -145,58 +133,32 @@ typedef struct	s_vm
 	int			check_cycles;
 	int			cycle_die;
 	int			pause;
-	int			nb_lives;
-	t_win		display;
+	int			dump_cycle;
 }				t_vm;
 
-void	(*ops[16])(t_vm*, t_proc*, t_operation*);
 
+void 			loop(t_vm *vm);
 /*GENERAL*/
-int swap_int(int n);
-unsigned int swap_uint(unsigned int n);
-void init_vm(t_vm *vm);
-void init_ram(t_vm *vm);
-void error(char *msg);
-void dump(t_vm *vm);
+int 			swap_int(int n);
+unsigned int	swap_uint(unsigned int n);
+void 			init_vm(t_vm *vm);
+void 			init_ram(t_vm *vm);
+void 			error(char *msg);
 
 /*PARSING*/
-int parse(t_vm *vm, char **av);
-int check_args(char **av, t_vm *vm);
-int check_is_flag(char **av, int i);
-int check_is_cor(char *str);
-int check_n(char **av, int i);
-int check_dump(char **av, int i);
-int fill_players(char **av, t_vm *vm);
+int 			parse(t_vm *vm, char **av);
+int 			check_args(char **av, t_vm *vm);
+int 			check_is_flag(char **av, int i);
+int 			check_is_cor(char *str);
+int 			check_n(char **av, int i);
+int 			check_dump(char **av, int i);
+int 			fill_players(char **av, t_vm *vm);
 
 /*PROCESS*/
-void add_process(t_stack *stack, t_proc *proc);
-void delete_process(t_stack *stack, t_proc *proc);
-t_proc *init_process(t_vm *vm, int pc, int player);
-void increment_stack(t_vm *vm);
-int	check_stack(t_vm *vm);
-void loop(t_vm *vm);
-short		to_short(t_vm *vm, int *pc);
-int			to_int(t_vm *vm, int *pc);
-void execution(t_vm *vm, t_proc *proc);
-
-/*INSTRUCTION*/
-void live(t_vm *vm, t_proc *proc, t_operation *ope);
-void direct_load(t_vm *vm, t_proc *proc, t_operation *operation);
-void indirect_load(t_vm *vm, t_proc *proc, t_operation *operation);
-void long_indirect_load(t_vm *vm, t_proc *proc, t_operation *operation);
-void long_direct_load(t_vm *vm, t_proc *proc, t_operation *operation);
-void sub(t_vm *vm, t_proc *proc, t_operation *operation);
-void zjump(t_vm *vm, t_proc *proc, t_operation *ope);
-void add(t_vm *vm, t_proc *proc, t_operation *operation);
-void aff(t_vm *vm, t_proc *proc, t_operation *operation);
-void corewar_and(t_vm *vm, t_proc *proc, t_operation *operation);
-void corewar_or(t_vm *vm, t_proc *proc, t_operation *operation);
-void corewar_xor(t_vm *vm, t_proc *proc, t_operation *operation);
-void corewar_fork(t_vm *vm, t_proc *proc, t_operation *operation);
-void lfork(t_vm *vm, t_proc *proc, t_operation *operation);
-void direct_store(t_vm *vm, t_proc *proc, t_operation *operation);
-void indirect_store(t_vm *vm, t_proc *proc, t_operation *operation);
-
+void			add_process(t_stack *stack, t_proc *proc);
+void			delete_process(t_stack *stack, t_proc *proc);
+t_proc			*init_process(t_vm *vm, int pc, int player);
+void			increment_stack(t_vm *vm);
 /*DISPLAY*/
 void			display(t_vm *vm, int step);
 void    		create_visualizer(t_win *display);
