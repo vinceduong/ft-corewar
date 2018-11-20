@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 17:50:11 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/20 17:01:00 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@
 typedef struct 	s_operation
 {
 	int ocp;
-	int opcode;
 	int pc;
 	char param_type[3];
 	char param[3];
@@ -112,6 +111,7 @@ typedef struct	s_case
 	int				pid;
 	int				color;
 	int				glow;
+
 }				t_case;
 
 typedef struct	s_win
@@ -133,37 +133,32 @@ typedef struct	s_vm
 	int			check_cycles;
 	int			cycle_die;
 	int			pause;
-	int			nb_lives;
+	int			dump_cycle;
 }				t_vm;
 
+
+void 			loop(t_vm *vm);
 /*GENERAL*/
-int swap_int(int n);
-unsigned int swap_uint(unsigned int n);
-void init_vm(t_vm *vm);
-void init_ram(t_vm *vm);
-void error(char *msg);
-void dump(t_vm *vm);
+int 			swap_int(int n);
+unsigned int	swap_uint(unsigned int n);
+void 			init_vm(t_vm *vm);
+void 			init_ram(t_vm *vm);
+void 			error(char *msg);
 
 /*PARSING*/
-int parse(t_vm *vm, char **av);
-int check_args(char **av, t_vm *vm);
-int check_is_flag(char **av, int i);
-int check_is_cor(char *str);
-int check_n(char **av, int i);
-int check_dump(char **av, int i);
-int fill_players(char **av, t_vm *vm);
+int 			parse(t_vm *vm, char **av);
+int 			check_args(char **av, t_vm *vm);
+int 			check_is_flag(char **av, int i);
+int 			check_is_cor(char *str);
+int 			check_n(char **av, int i);
+int 			check_dump(char **av, int i);
+int 			fill_players(char **av, t_vm *vm);
 
 /*PROCESS*/
-void add_process(t_stack *stack, t_proc *proc);
-void delete_process(t_stack *stack, t_proc *proc);
-t_proc *init_process(t_vm *vm, int pc, int player);
-void increment_stack(t_vm *vm);
-int	check_stack(t_vm *vm);
-void loop(t_vm *vm);
-short		to_short(t_vm *vm, int *pc);
-int			to_int(t_vm *vm, int *pc);
-void execution(t_vm *vm, t_proc *proc);
-
+void			add_process(t_stack *stack, t_proc *proc);
+void			delete_process(t_stack *stack, t_proc *proc);
+t_proc			*init_process(t_vm *vm, int pc, int player);
+void			increment_stack(t_vm *vm);
 /*DISPLAY*/
 void			display(t_vm *vm, int step);
 void    		create_visualizer(t_win *display);
