@@ -6,13 +6,13 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:39 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 19:50:42 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/20 20:42:38 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void direct_store(t_vm *vm, t_proc *proc, t_operation *operation)
+void direct_store(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	if (ope->param_type[1] == T_IND)
 		vm->ram[proc->pc + (ope->param[1] % IDX_MOD)] = proc->r[ope->param[0]];
@@ -21,7 +21,7 @@ void direct_store(t_vm *vm, t_proc *proc, t_operation *operation)
 	proc->carry = !proc->r[ope->param[0]] ? 1 : 0;
 }
 
-void indirect_store(t_vm *vm, t_proc *proc, t_operation *operation)
+void indirect_store(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	int a;
 	int b;

@@ -6,19 +6,19 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:24 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 20:02:41 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/20 20:58:18 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void direct_load(t_vm *vm, t_proc *proc, t_operation *operation)
+void direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
-	proc->r[ope->param[1]] = vm->ram[proc->pc + (op->param[0] % IDX_MOD)];
+	proc->r[ope->param[1] - 1] = (int)vm->ram[proc->pc + (ope->param[0] % IDX_MOD)];
 	proc->carry = !ope->param[1] ? 1 : 0;
 }
 
-void indirect_load(t_vm *vm, t_proc *proc, t_operation *operation)
+void indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	int a;
 	int b;
@@ -37,7 +37,7 @@ void indirect_load(t_vm *vm, t_proc *proc, t_operation *operation)
 	proc->carry = a + b == 0 ? 1 : 0;
 }
 
-void long_indirect_load(t_vm *vm, t_proc *proc, t_operation *operation)
+void long_indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	int a;
 	int b;
@@ -56,7 +56,7 @@ void long_indirect_load(t_vm *vm, t_proc *proc, t_operation *operation)
 	proc->carry = a + b == 0 ? 1 : 0;
 }
 
-void long_direct_load(t_vm *vm, t_proc *proc, t_operation *operation)
+void long_direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	proc->r[ope->param[1]] = vm->ram[proc->pc];
 	proc->carry = !ope->param[1] ? 1 : 0;
