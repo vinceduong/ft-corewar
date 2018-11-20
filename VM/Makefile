@@ -6,15 +6,19 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/17 08:34:09 by vduong            #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2018/11/20 18:14:48 by thescriv         ###   ########.fr        #
+=======
+#    Updated: 2018/11/20 18:03:32 by vduong           ###   ########.fr        #
+>>>>>>> fe42464514b998189d2987791bf6cbb0669ccb56
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all clean fclean re
 
-CC = gcc $(INCLUDES) $(FLAGS)
+CC = gcc $(INCLUDES) $(FLAGS) -lncurses
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra
 
 NAME = corewar
 
@@ -56,6 +60,9 @@ SRCS = 	./sources/error.c\
 		./sources/process/increment_stack.c\
 		./sources/process/init_process.c\
 		./sources/swap.c\
+		./sources/display/display.c \
+		./sources/display/display_winner.c \
+		./sources/display/create_visualizer.c
 
 
 OBJS = $(SRCS:.c=.o)
