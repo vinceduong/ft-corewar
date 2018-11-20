@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 18:00:04 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/16 21:30:24 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,18 +95,27 @@ typedef struct s_flag
 	int		visu;
 }				t_flag;
 
+typedef struct	s_case
+{
+	unsigned char	content;
+	int				id;
+	int				color;
+	int				glow;
+
+}				t_case;
+
 typedef struct	s_vm
 {
-	unsigned char	ram[MEM_SIZE];
-	t_stack			stack;
-	t_player		players[MAX_PLAYERS];
-	t_flag			flag;
-	int				nbplayers;
-	int				cycle;
-	int				check_cycles;
-	int				cycle_die;
-	int				dump_cycle;
-	int				pause;
+	t_case		ram[MEM_SIZE];
+	t_stack		stack;
+	t_player	players[MAX_PLAYERS];
+	t_flag		flag;
+	int			nbplayers;
+	int			cycle;
+	int			check_cycles;
+	int			cycle_die;
+	int			dump_cycle;
+	int			pause;
 }				t_vm;
 
 /*GENERAL*/
@@ -126,6 +135,7 @@ int check_dump(char **av, int i);
 int fill_players(char **av, t_vm *vm);
 
 
-
+/*DISPLAY*/
+int display(t_vm vm);
 
 #endif
