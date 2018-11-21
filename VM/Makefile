@@ -3,18 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+         #
+#    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/20 20:07:24 by thescriv         ###   ########.fr        #
+#    Updated: 2018/11/21 14:22:41 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re up
 
-CC = gcc $(INCLUDES) $(FLAGS) -lncurses
+CC = gcc $(INCLUDES) $(FLAGS) 
 
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra -Werror
+
+NCURSES = -lncurses
 
 NAME = corewar
 
@@ -24,6 +26,10 @@ HEADERS = ./includes/vm.h\
 		  ./includes/op.h\
 
 LIBFT = ../libft/libft.a
+
+VISU = ./sources/display/display.c \
+		./sources/display/display_winner.c \
+		./sources/display/create_visualizer.c
 
 SRCS = 	./sources/error.c\
 		./sources/init.c\
@@ -56,9 +62,7 @@ SRCS = 	./sources/error.c\
 		./sources/process/increment_stack.c\
 		./sources/process/init_process.c\
 		./sources/swap.c\
-		./sources/display/display.c \
-		./sources/display/display_winner.c \
-		./sources/display/create_visualizer.c
+		
 
 
 OBJS = $(SRCS:.c=.o)
@@ -74,8 +78,13 @@ $(LIBFT) :
 
 clean :
 	@rm -f $(OBJS)
+	make clean -C ../libft
 
 fclean : clean
 	@rm -f $(NAME)
+	make fclean -C ../libft
+
+up : all clean
 
 re : fclean all
+	make re -C ../libft

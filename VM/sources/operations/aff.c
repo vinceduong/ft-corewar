@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aff.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 20:41:46 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/21 14:05:28 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void aff(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	char c;
 
-	c = proc->r[ope->param[0]] % 256;
+	(void)vm;
+	c = proc->r[(size_t)ope->param[0] - 1] % 256;
 	ft_putchar(c);
 	proc->carry = c == 0 ? 1 : 0;
 }
