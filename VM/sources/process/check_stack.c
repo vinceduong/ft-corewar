@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:18:42 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/20 16:14:56 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/21 17:07:10 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,18 @@ int check_stack(t_vm *vm)
         if (tmp->alive)
             tmp->alive = 0;
         else
+        {
+            printf("need to delete\n");
             delete_process(&vm->stack, tmp);
+           printf("deleted\n"); 
+        }
         tmp = next;
     }
-    if (vm->nb_lives >= NBR_LIVE || !(--vm->check_cycles))
+    if (vm->nb_lives >= NBR_LIVE || !(--vm->checks))
 	{
 		vm->cycle_die = vm->cycle_die > CYCLE_DELTA ? 
             vm->cycle_die - CYCLE_DELTA : 1;
-		vm->check_cycles = MAX_CHECKS;
+		vm->checks = MAX_CHECKS;
 	}
 	vm->check_cycles = vm->cycle_die;
 	vm->nb_lives = 0;

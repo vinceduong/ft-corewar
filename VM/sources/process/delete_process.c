@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:06:35 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/20 13:36:45 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/21 17:08:15 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void delete_process(t_stack *stack, t_proc *process)
     if (tmp == process)
     {
         stack->start = tmp->next;
-        stack->start->previous = NULL;
+        if (tmp->next)
+            stack->start->previous = NULL;
     }
     else
     {
