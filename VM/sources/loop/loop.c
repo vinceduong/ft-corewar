@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:33:41 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/20 20:07:45 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/21 14:08:54 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void loop(t_vm *vm)
     while (1)
     {
         if (vm->flag.visu)
-            display(vm, step);
+            /*display(vm, step)*/;
         else if (vm->cycle == vm->flag.dump)
             dump(vm);
         vm->cycle++;

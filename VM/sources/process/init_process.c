@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:18:09 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/20 13:31:09 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/21 13:46:00 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ t_proc *init_process(t_vm *vm, int pc, int player)
     new->pc = pc;
     new->carry = 0;
     new->opcode = vm->ram[pc].content;
+    new->cycle = op_tab[new->opcode].cycles;
     return (new);
 }

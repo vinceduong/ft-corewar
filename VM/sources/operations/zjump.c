@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zjump.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:45 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 18:23:13 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/21 14:15:43 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 void zjump(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	(void)vm;
-	if (proc->carr == 0)
+	if (proc->carry == 0)
 		proc->pc = ope->pc;
 }
