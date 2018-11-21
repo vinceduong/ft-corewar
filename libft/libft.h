@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:48:46 by thescriv          #+#    #+#             */
-/*   Updated: 2018/10/25 15:25:56 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/21 12:00:45 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,4 +147,6 @@ void			ft_print_c(va_list ag, t_arg *pf);
 void			ft_print_unsigned(va_list ag, t_arg *pf);
 void			ft_print_x(va_list ag, t_arg *pf);
 void			ft_print_d(va_list ag, t_arg *pf);
+int				ft_printf(const char *format, ...);
+
 #endif
