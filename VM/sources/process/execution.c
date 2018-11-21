@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:54:13 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/21 21:13:34 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/22 00:38:40 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ void execution_part2(t_vm *vm, t_proc *proc, t_operation *ope, int *pc)
 	ft_get_param(ope, 2, vm, pc);
 	if (!ope->error)
 		ops[ope->opcode - 1](vm, proc, ope);
-	else if (!(ope->opcode == 9 && proc->carry) || ope->error)
-		proc->pc = (proc->pc + 1) % MEM_SIZE;
+	if (!(ope->opcode == 9 && proc->carry) || ope->error)
+		proc->pc = *pc;
 }
 
 void execution(t_vm *vm, t_proc *proc)
@@ -107,13 +107,13 @@ void execution(t_vm *vm, t_proc *proc)
 
 	ft_bzero(&ope, sizeof(t_operation));
 	ope.opcode = proc->opcode;
-	printf("MY OPCODE IS = %d\n", ope.opcode);
-	printf("%#x\n", vm->ram[proc->pc].content);
 	if (ope.opcode < 1 || ope.opcode > 16)
 	{
 		proc->pc = (proc->pc + 1) % MEM_SIZE;
 		return ;
 	}
+	printf("MY OPCODE IS = %d\n", ope.opcode);
+	printf("%#x\n", vm->ram[proc->pc].content);
 	pc = (proc->pc + 1) % MEM_SIZE;
 	ope.error = 0;
 	if (op_tab[ope.opcode - 1].ocp)
