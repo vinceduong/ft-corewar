@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 16:14:27 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 18:43:26 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/21 15:44:51 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void fill_ram(t_vm *vm, int adress, int pId)
 		vm->ram[i + adress].pid = pId + 1;
 		i++;
 	}
+	printf("Mes clous\n");
+	add_process(&vm->stack, init_process(vm, adress, pId));
 }
 
 void init_ram(t_vm *vm)
@@ -55,11 +57,13 @@ void init_vm(t_vm *vm)
 		vm->players[i].last_live = 0;
 		i++;
 	}
-	vm->flag.dump = 0;
+	vm->stack.start = NULL;
+	vm->flag.dump = -1;
 	vm->flag.n = 0;
 	vm->flag.visu = 0;
 	vm->cycle = 0;
 	vm->check_cycles = CYCLE_TO_DIE;
 	vm->cycle_die = CYCLE_TO_DIE;
+	vm->checks = 0;
 	vm->pause = 0;
 }

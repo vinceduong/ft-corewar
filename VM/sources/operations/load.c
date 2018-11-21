@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:24 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/21 14:15:34 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/21 17:25:03 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	if (ope->param_type[0] == T_IND)
-		proc->r[(size_t)ope->param[1] - 1] = to_int(vm, proc->pc + (ope->param[0] % IDX_MOD));
+		proc->r[(size_t)ope->param[1] - 1] = to_int(vm, real_pc(proc->pc + (ope->param[0] % IDX_MOD)));
 	else
 		proc->r[(size_t)ope->param[1] - 1] = to_int(vm, proc->pc + ope->param[0]);
 	proc->carry = !ope->param[1] ? 1 : 0;
@@ -29,11 +29,11 @@ void indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 	if (ope->param_type[0] == T_REG)
 		a = proc->r[(size_t)ope->param[0] - 1];
 	else if (ope->param_type[0] == T_IND)
-		a = proc->pc + (ope->param_type[0] % IDX_MOD);
+		a = real_pc(proc->pc + (ope->param_type[0] % IDX_MOD));
 	else
 		a = ope->param[0];
 	if (ope->param_type[1] == T_IND)
-		b = proc->pc + (ope->param_type[1] % IDX_MOD);
+		b = real_pc(proc->pc + (ope->param_type[1] % IDX_MOD));
 	else
 		b = ope->param[1];
 	proc->r[(size_t)ope->param[2] - 1] = to_int(vm, a + b);

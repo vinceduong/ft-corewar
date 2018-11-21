@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 20:07:31 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/21 14:32:14 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/21 17:21:08 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ typedef struct	s_vm
 	int			cycle_die;
 	int			pause;
 	int			nb_lives;
+	int			checks;
 }				t_vm;
 
 void	(*ops[16])(t_vm*, t_proc*, t_operation*);
@@ -165,6 +166,7 @@ void loop(t_vm *vm);
 short		to_short(t_vm *vm, int pc);
 int			to_int(t_vm *vm, int pc);
 void execution(t_vm *vm, t_proc *proc);
+void load_next_instruction(t_vm *vm, t_proc *proc);
 
 /*INSTRUCTION*/
 void live(t_vm *vm, t_proc *proc, t_operation *ope);
@@ -189,4 +191,9 @@ void			display(t_vm *vm, int step);
 void    		create_visualizer(t_win *display);
 void    		display_winner(t_win *display);
 
+/*DEBUG*/
+
+void print_process(t_proc *process);
+void print_vm(t_vm *vm);
+int real_pc(int value);
 #endif

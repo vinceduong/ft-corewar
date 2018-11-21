@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/21 14:22:41 by vduong           ###   ########.fr        #
+#    Updated: 2018/11/21 15:58:30 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,8 @@ SRCS = 	./sources/error.c\
 		./sources/process/increment_stack.c\
 		./sources/process/init_process.c\
 		./sources/swap.c\
+		./sources/print/print.c\
+		./sources/operations/aim_pc.c\
 		
 
 
