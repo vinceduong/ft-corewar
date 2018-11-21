@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dump.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 17:11:06 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 17:12:21 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/21 11:22:34 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 void dump(t_vm *vm)
 {
-	(void)vm;
-	exit(0);
+	int i;
+
+	i = -1;
+	while (++i < MEM_SIZE)
+	{
+		i % 32 == 0 ? ft_printf("0x%.4x : ", i) : 0;
+		ft_printf("%.2x ", vm->ram[i].content);
+		(i + 1) % 32 == 0 ? ft_putendl("") : 0;
+	}
+	exit(1);
 }
