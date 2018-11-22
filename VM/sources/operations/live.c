@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:01:37 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/22 14:23:32 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/22 15:22:07 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void live(t_vm *vm, t_proc *proc, t_operation *ope)
 	vm->players[proc->player].nb_live++;
 	vm->players[proc->player].last_live = vm->cycle;
 	vm->nb_lives++;
-	ft_printf("The player \"%s\" ($%d) is alive ! ",
+	printf("The player \"%s\" ($%d) is alive !\n",
 		vm->players[proc->player].filename, proc->player);
 }
