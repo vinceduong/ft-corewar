@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:24 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/21 17:25:03 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/22 00:32:14 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 		proc->r[(size_t)ope->param[1] - 1] = to_int(vm, real_pc(proc->pc + (ope->param[0] % IDX_MOD)));
 	else
 		proc->r[(size_t)ope->param[1] - 1] = to_int(vm, proc->pc + ope->param[0]);
-	proc->carry = !ope->param[1] ? 1 : 0;
+	proc->carry = !ope->param[1]? 1 : 0;
 }
 
 void indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
