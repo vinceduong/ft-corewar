@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:54:13 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/22 15:28:16 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/22 18:01:03 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,19 @@ void ocp_to_type(t_operation *ope, unsigned char ocp)
 	type[2] = op.nb_param >= 3 ? (ocp >> 2) & 3 : 0;
 	while (++i < op.nb_param)
 	{
-		v = ope->param_type[i] == REG_CODE || ope->param_type[i] == DIR_CODE
-			|| ope->param_type[i] == IND_CODE ? 1 : 0;
+		v = 0;
+		if (ope->param_type[i] == REG_CODE)
+		{
+			v = T_REG;
+		}
+		else if (ope->param_type[i] == DIR_CODE)
+		{
+			v = T_DIR;
+		}
+		else if (ope->param_type[i] == IND_CODE)
+		{
+			v = T_IND;
+		}
 		!(v & op.arg[i]) ? ope->error = 1 : 0;
 	}
 }
@@ -90,9 +101,15 @@ void execution_part2(t_vm *vm, t_proc *proc, t_operation *ope, int *pc)
 	ft_get_param(ope, 1, vm, pc);
 	ft_get_param(ope, 2, vm, pc);
 	if (!ope->error)
+	{
 		ops[ope->opcode - 1](vm, proc, ope);
-	if (!(ope->opcode == 9 && proc->carry) || ope->error)
+		printf("No error\n");
+	}
+	if ((proc->opcode == 9 && proc->carry) || ope->error)
+	{
+		printf("error : ope->error = %d\n", ope->error);
 		proc->pc = *pc;
+	}	
 }
 
 void execution(t_vm *vm, t_proc *proc)
@@ -102,12 +119,12 @@ void execution(t_vm *vm, t_proc *proc)
 
 	ft_bzero(&ope, sizeof(t_operation));
 	ope.opcode = proc->opcode;
+	ope.opcode ? printf("MY OPCODE IS = %#x\n", ope.opcode) : 0;
 	if (ope.opcode < 1 || ope.opcode > 16)
 	{
 		proc->pc = (proc->pc + 1) % MEM_SIZE;
 		return ;
 	}
-	printf("MY OPCODE IS = %#x\n", ope.opcode);
 	pc = (proc->pc + 1) % MEM_SIZE;
 	ope.error = 0;
 	if (op_tab[ope.opcode - 1].ocp)
