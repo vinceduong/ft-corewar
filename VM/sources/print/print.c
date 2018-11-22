@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 15:19:52 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/21 16:54:08 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/22 14:02:49 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void print_process(t_proc *process)
     printf("cycle = %d\n", process->cycle);
     printf("pc = %d\n", process->pc);
     printf("alive = %d\n", process->alive);
+    printf("current = %p\n", process);
     printf("next = %p\n", process->next);
     printf("previous = %p\n", process->previous);
     printf("-------------\n");
@@ -40,4 +41,19 @@ void print_vm(t_vm *vm)
     printf("nb_lives = %d\n", vm->nb_lives);
     printf("checks = %d\n", vm->checks);
     printf("--------\n");
+}
+
+void print_stack(t_stack stack)
+{
+    t_proc *tmp;
+
+    tmp = stack.start;
+    printf("******THE STACK******\n");
+    while (tmp)
+    {
+        print_process(tmp);
+        tmp = tmp->next;
+    }
+    printf("*********************\n");
+
 }
