@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 20:07:31 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/22 14:02:48 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/22 14:09:20 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,6 @@ void    		display_winner(t_win *display);
 
 void print_process(t_proc *process);
 void print_vm(t_vm *vm);
-void print_stack(t_stack stack)
+void print_stack(t_stack stack);
 int real_pc(int value);
 #endif
