@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:39 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/21 15:59:57 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/22 17:07:53 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void direct_store(t_vm *vm, t_proc *proc, t_operation *ope)
 {
+	ft_putstr("In direct_store\n");
 	if (ope->param_type[1] == T_IND)
 	{
 		vm->ram[real_pc(proc->pc + 3 + (ope->param[1] % IDX_MOD))].content = 
@@ -43,6 +44,7 @@ void indirect_store(t_vm *vm, t_proc *proc, t_operation *ope)
 	int a;
 	int b;
 
+	ft_putstr("In indirect_store\n");
 	if (ope->param_type[1] == T_REG)
 		a = proc->r[(size_t)ope->param[1] - 1];
 	else if (ope->param_type[1] == T_IND)

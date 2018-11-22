@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:18:42 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/22 16:49:12 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/22 17:12:39 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int check_stack(t_vm *vm)
     t_proc *next;
 
     tmp = vm->stack.start;
+    print_vm(vm);
     print_stack(vm->stack);
     while (tmp)
     {

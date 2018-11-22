@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:18:09 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/22 15:37:21 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/22 17:22:26 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ t_proc *init_process(t_vm *vm, int pc, int player)
     new->player = player;
     new->next = NULL;
     new->previous = NULL;
+    printf("Process created with pc = %d, opcode = %#x, cycle = %d, current vm cycle = %d\n",
+     new->pc, new->opcode, new->cycle, vm->check_cycles);
     return (new);
 }

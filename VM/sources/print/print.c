@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 15:19:52 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/22 14:02:49 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/22 17:11:36 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void print_process(t_proc *process)
     printf("id = %d\n", process->id);
     printf("carry = %d\n", process->carry);
     printf("player = %d\n", process->player);
-    printf("opcode = %d\n", process->opcode);
+    printf("opcode = %#x\n", process->opcode);
     printf("cycle = %d\n", process->cycle);
     printf("pc = %d\n", process->pc);
     printf("alive = %d\n", process->alive);
