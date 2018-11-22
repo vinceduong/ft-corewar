@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:24 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/22 00:32:14 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/22 15:45:19 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ void long_indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 
 void long_direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
-	proc->r[(size_t)ope->param[1] - 1] = to_int(vm, proc->pc);
+	if (ope->param_type[0] == IND_CODE)
+		proc->r[(size_t)ope->param[1] - 1] = to_int(vm, proc->pc);
+	else
+		proc->r[(size_t)ope->param[1] - 1] = ope->param[0];
 	proc->carry = !ope->param[1] ? 1 : 0;
 }
