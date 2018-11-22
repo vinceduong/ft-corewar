@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:02:08 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/21 15:13:25 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/22 14:26:47 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void add_process(t_stack *stack, t_proc *process)
     if (!tmp)
     {
         stack->start = process;
+		stack->nbprocess++;
         return ;
     }
     while (tmp->next)

@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:54:13 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/22 14:12:41 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/22 14:17:38 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,8 @@ void ocp_to_type(t_operation *ope, unsigned char ocp)
 	type[2] = op.nb_param >= 3 ? (ocp >> 2) & 3 : 0;
 	while (++i < op.nb_param)
 	{
-		v = 0;
-		if (ope->param_type[i] == REG_CODE)
-			v = T_REG;
-		else if (ope->param_type[i] == DIR_CODE)
-			v = T_DIR;
-		else if (ope->param_type[i] == IND_CODE)
-			v = T_IND;
+		v = ope->param_type[i] == REG_CODE || ope->param_type[i] == DIR_CODE
+			|| ope->param_type[i] == IND_CODE ? 1 : 0;
 		!(v & op.arg[i]) ? ope->error = 1 : 0;
 	}
 }
@@ -128,7 +123,7 @@ void execution(t_vm *vm, t_proc *proc)
 
 void load_next_instruction(t_vm *vm, t_proc *proc)
 {
-	printf("%#x\n", vm->ram[proc->pc].content);
+	//printf("%#x\n", vm->ram[proc->pc].content);
 	proc->opcode = vm->ram[proc->pc].content;
 	proc->cycle = proc->opcode > 0 && proc->opcode <= 16 ?
 		op_tab[(int)proc->opcode - 1].cycles : 1;

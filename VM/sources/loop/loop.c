@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:33:41 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/21 15:06:14 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/22 14:19:15 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void loop(t_vm *vm)
             break;
         step = 2;
     }
-    printf("J'ai fait %d cycles \n", vm->cycle);
+    printf("J'ai fait %d cycles \nJe suis a %d cycle_to_die\n", vm->cycle, vm->cycle_die);
 }
