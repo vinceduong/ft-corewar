@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:54:13 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/22 00:38:40 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/22 14:12:41 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,7 @@ void execution(t_vm *vm, t_proc *proc)
 		proc->pc = (proc->pc + 1) % MEM_SIZE;
 		return ;
 	}
-	printf("MY OPCODE IS = %d\n", ope.opcode);
-	printf("%#x\n", vm->ram[proc->pc].content);
+	printf("MY OPCODE IS = %#x\n", ope.opcode);
 	pc = (proc->pc + 1) % MEM_SIZE;
 	ope.error = 0;
 	if (op_tab[ope.opcode - 1].ocp)
