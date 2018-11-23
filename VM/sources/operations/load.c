@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:24 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/22 17:07:18 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/23 01:17:03 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 void direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
-	ft_putstr("In direct_load\n");
-	if (ope->param_type[0] == T_IND)
+	//ft_putstr("In direct_load\n");
+	if (ope->param_type[0] == IND_CODE)
 		proc->r[(size_t)ope->param[1] - 1] = to_int(vm, real_pc(proc->pc + (ope->param[0] % IDX_MOD)));
 	else
-		proc->r[(size_t)ope->param[1] - 1] = to_int(vm, proc->pc + ope->param[0]);
-	proc->carry = !ope->param[1]? 1 : 0;
+		proc->r[(size_t)ope->param[1] - 1] = ope->param[0];
+	proc->pc = (proc->pc + 1) % MEM_SIZE;
+	proc->carry = !ope->param[1] ? 1 : 0;
 }
 
 void indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)

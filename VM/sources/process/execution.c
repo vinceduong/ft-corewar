@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:54:13 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/22 18:01:03 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/23 01:07:54 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,20 @@ void ocp_to_type(t_operation *ope, unsigned char ocp)
 	type = ope->param_type;
 	op = op_tab[ope->opcode - 1];
 	type[0] = ocp >> 6;
+	printf("type[0] = %#x\n", type[0]);
 	type[1] = op.nb_param >= 2 ? (ocp >> 4) & 3 : 0;
+	printf("type[1] = %#x\n", type[1]);
 	type[2] = op.nb_param >= 3 ? (ocp >> 2) & 3 : 0;
+	printf("type[2] = %#x\n", type[2]);
 	while (++i < op.nb_param)
 	{
 		v = 0;
 		if (ope->param_type[i] == REG_CODE)
-		{
 			v = T_REG;
-		}
 		else if (ope->param_type[i] == DIR_CODE)
-		{
 			v = T_DIR;
-		}
 		else if (ope->param_type[i] == IND_CODE)
-		{
 			v = T_IND;
-		}
 		!(v & op.arg[i]) ? ope->error = 1 : 0;
 	}
 }
@@ -74,7 +71,7 @@ void	tab_to_type(char param_types[3], char arg[3])
 
 void ft_get_param(t_operation *ope, int n, t_vm *vm, int *pc)
 {
-	if (ope->param_type[n])
+	if (!ope->param_type[n])
 		return ;
 	if (ope->param_type[n] == REG_CODE)
 	{
@@ -103,13 +100,13 @@ void execution_part2(t_vm *vm, t_proc *proc, t_operation *ope, int *pc)
 	if (!ope->error)
 	{
 		ops[ope->opcode - 1](vm, proc, ope);
-		printf("No error\n");
+		//printf("No error\n");
 	}
 	if ((proc->opcode == 9 && proc->carry) || ope->error)
 	{
-		printf("error : ope->error = %d\n", ope->error);
+		//printf("error : ope->error = %d\n", ope->error);
 		proc->pc = *pc;
-	}	
+	}
 }
 
 void execution(t_vm *vm, t_proc *proc)
@@ -119,13 +116,15 @@ void execution(t_vm *vm, t_proc *proc)
 
 	ft_bzero(&ope, sizeof(t_operation));
 	ope.opcode = proc->opcode;
-	ope.opcode ? printf("MY OPCODE IS = %#x\n", ope.opcode) : 0;
+	ope.opcode ? printf("MY OPCODE IS = %#x", ope.opcode) : 0;
 	if (ope.opcode < 1 || ope.opcode > 16)
 	{
 		proc->pc = (proc->pc + 1) % MEM_SIZE;
 		return ;
 	}
 	pc = (proc->pc + 1) % MEM_SIZE;
+	printf("  ocp = %#x\n", vm->ram[pc].content);
+	//printf("%d\n", op_tab[ope.opcode - 1].ocp);
 	ope.error = 0;
 	if (op_tab[ope.opcode - 1].ocp)
 	{

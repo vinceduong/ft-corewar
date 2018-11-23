@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:18:09 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/22 17:22:26 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/23 00:26:33 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ t_proc *init_process(t_vm *vm, int pc, int player)
         error("malloc failed\n");
     ft_bzero(new, sizeof(t_proc));
     new->r[0] = player;
+	int i = 1;
+	while (i++ < 16)
+	{
+		printf("%d\n", new->r[i]);
+	}
     new->id = id++;
     new->pc = pc;
     new->opcode = vm->ram[pc].content;
@@ -30,6 +35,6 @@ t_proc *init_process(t_vm *vm, int pc, int player)
     new->next = NULL;
     new->previous = NULL;
     printf("Process created with pc = %d, opcode = %#x, cycle = %d, current vm cycle = %d\n",
-     new->pc, new->opcode, new->cycle, vm->check_cycles);
+     new->pc, new->opcode, new->cycle, vm->cycle);
     return (new);
 }
