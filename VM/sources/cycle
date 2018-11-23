@@ -1,0 +1,28 @@
+	while (i < vm->players[pId].header->prog_size)
+		vm->ram[i + adress].content = vm->players[pId].prog[i];
+		vm->ram[i + adress].pid = pId + 1;
+	add_process(&vm->stack, init_process(vm, adress, pId));
+	printf("nbplayers = %d\n", vm->nbplayers);
+	while (i < vm->nbplayers)
+		adress = i * MEM_SIZE / vm->nbplayers;
+	vm->nbplayers = 0;
+		vm->players[i].header = malloc(sizeof(t_header));
+		vm->players[i].p = 0;
+		vm->players[i].nb_live = 0;
+		vm->players[i].last_live = 0;
+	vm->stack.start = NULL;
+	vm->stack.nbprocess = 0;
+	vm->flag.dump = -1;
+	vm->flag.n = 0;
+	vm->flag.visu = 0;
+	vm->cycle = 0;
+	vm->check_cycles = CYCLE_TO_DIE;
+	vm->cycle_die = CYCLE_TO_DIE;
+	vm->checks = 0;
+	vm->pause = 0;
+	tab[0] = vm->ram[(pc + 1) % MEM_SIZE].content;
+	tab[1] = vm->ram[pc].content;
+	tab[0] = vm->ram[(pc + 3) % MEM_SIZE].content;
+	tab[1] = vm->ram[(pc + 2) % MEM_SIZE].content;
+	tab[2] = vm->ram[(pc + 1) % MEM_SIZE].content;
+	tab[3] = vm->ram[pc].content;
