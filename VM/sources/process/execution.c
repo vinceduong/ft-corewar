@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:54:13 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/23 01:07:54 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/23 18:18:38 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void ocp_to_type(t_operation *ope, unsigned char ocp)
 	type = ope->param_type;
 	op = op_tab[ope->opcode - 1];
 	type[0] = ocp >> 6;
-	printf("type[0] = %#x\n", type[0]);
+	//printf("type[0] = %#x\n", type[0]);
 	type[1] = op.nb_param >= 2 ? (ocp >> 4) & 3 : 0;
-	printf("type[1] = %#x\n", type[1]);
+	//printf("type[1] = %#x\n", type[1]);
 	type[2] = op.nb_param >= 3 ? (ocp >> 2) & 3 : 0;
-	printf("type[2] = %#x\n", type[2]);
+	//printf("type[2] = %#x\n", type[2]);
 	while (++i < op.nb_param)
 	{
 		v = 0;
@@ -98,15 +98,9 @@ void execution_part2(t_vm *vm, t_proc *proc, t_operation *ope, int *pc)
 	ft_get_param(ope, 1, vm, pc);
 	ft_get_param(ope, 2, vm, pc);
 	if (!ope->error)
-	{
 		ops[ope->opcode - 1](vm, proc, ope);
-		//printf("No error\n");
-	}
-	if ((proc->opcode == 9 && proc->carry) || ope->error)
-	{
-		//printf("error : ope->error = %d\n", ope->error);
+	if (!(proc->opcode == 9 && proc->carry) || ope->error)
 		proc->pc = *pc;
-	}
 }
 
 void execution(t_vm *vm, t_proc *proc)
@@ -116,15 +110,12 @@ void execution(t_vm *vm, t_proc *proc)
 
 	ft_bzero(&ope, sizeof(t_operation));
 	ope.opcode = proc->opcode;
-	ope.opcode ? printf("MY OPCODE IS = %#x", ope.opcode) : 0;
 	if (ope.opcode < 1 || ope.opcode > 16)
 	{
 		proc->pc = (proc->pc + 1) % MEM_SIZE;
 		return ;
 	}
 	pc = (proc->pc + 1) % MEM_SIZE;
-	printf("  ocp = %#x\n", vm->ram[pc].content);
-	//printf("%d\n", op_tab[ope.opcode - 1].ocp);
 	ope.error = 0;
 	if (op_tab[ope.opcode - 1].ocp)
 	{
@@ -139,7 +130,6 @@ void execution(t_vm *vm, t_proc *proc)
 
 void load_next_instruction(t_vm *vm, t_proc *proc)
 {
-	//printf("%#x\n", vm->ram[proc->pc].content);
 	proc->opcode = vm->ram[proc->pc].content;
 	proc->cycle = proc->opcode > 0 && proc->opcode <= 16 ?
 		op_tab[(int)proc->opcode - 1].cycles : 1;

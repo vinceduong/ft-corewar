@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:24 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/23 01:17:03 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/23 18:45:01 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 		proc->r[(size_t)ope->param[1] - 1] = to_int(vm, real_pc(proc->pc + (ope->param[0] % IDX_MOD)));
 	else
 		proc->r[(size_t)ope->param[1] - 1] = ope->param[0];
-	proc->pc = (proc->pc + 1) % MEM_SIZE;
-	proc->carry = !ope->param[1] ? 1 : 0;
+	proc->carry = ope->param[0] == 0 ? 1 : 0;
 }
 
 void indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
@@ -28,7 +27,7 @@ void indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 	int a;
 	int b;
 
-	ft_putstr("In indirect_load\n");
+	//ft_putstr("In indirect_load\n");
 	if (ope->param_type[0] == T_REG)
 		a = proc->r[(size_t)ope->param[0] - 1];
 	else if (ope->param_type[0] == T_IND)
@@ -48,15 +47,15 @@ void long_indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 	int a;
 	int b;
 
-	ft_putstr("In long_indirect_load\n");
+	//ft_putstr("In long_indirect_load\n");
 	if (ope->param_type[0] == T_REG)
 		a = proc->r[(size_t)ope->param[0] - 1];
 	else if (ope->param_type[0] == T_IND)
-		a = proc->pc;
+		a = real_pc(proc->pc + ope->param[0]);
 	else
 		a = ope->param[0];
 	if (ope->param_type[1] == T_IND)
-		b = proc->pc;
+		b = real_pc(proc->pc + ope->param[1]);
 	else
 		b = ope->param[1];
 	proc->r[(size_t)ope->param[2] - 1] = to_int(vm, a + b);
@@ -65,10 +64,10 @@ void long_indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 
 void long_direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
-	ft_putstr("In long_direct_load\n");
+	//ft_putstr("In long_direct_load\n");
 	if (ope->param_type[0] == IND_CODE)
 		proc->r[(size_t)ope->param[1] - 1] = to_int(vm, proc->pc);
 	else
 		proc->r[(size_t)ope->param[1] - 1] = ope->param[0];
-	proc->carry = !ope->param[1] ? 1 : 0;
+	proc->carry = !ope->param[0] ? 1 : 0;
 }

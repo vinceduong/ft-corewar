@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:17 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/22 16:59:40 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/23 18:17:08 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void corewar_fork(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	t_proc *fork;
 
-	ft_putstr("In fork\n");
+	//ft_putstr("In fork\n");
 	fork = NULL;
 	fork = init_process(vm, real_pc(proc->pc + (ope->param[0] % IDX_MOD)) ,
 		proc->player);
@@ -31,6 +31,7 @@ void lfork(t_vm *vm, t_proc *proc, t_operation *ope)
 	t_proc *fork;
 
 	ft_putstr("In lfork\n");
+	//printf("%#x %#x\n", ope->param[0], vm->ram[proc->pc - 1].content);
 	fork = NULL;
 	fork = init_process(vm, real_pc(proc->pc + ope->param[0]), proc->player);
 	ft_memcpy((void*)proc->r, (void*)fork->r, (size_t)REG_NUMBER * sizeof(int));
