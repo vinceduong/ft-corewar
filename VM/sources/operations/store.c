@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:39 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/22 17:07:53 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/23 01:33:53 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@ void direct_store(t_vm *vm, t_proc *proc, t_operation *ope)
 	ft_putstr("In direct_store\n");
 	if (ope->param_type[1] == T_IND)
 	{
-		vm->ram[real_pc(proc->pc + 3 + (ope->param[1] % IDX_MOD))].content = 
+		vm->ram[real_pc(proc->pc + 3 + (ope->param[1] % IDX_MOD))].content =
 			proc->r[(size_t)ope->param[0] - 1] & 0x000000ff;
-		vm->ram[real_pc(proc->pc + 3 + (ope->param[1] % IDX_MOD))].pid = 
+		vm->ram[real_pc(proc->pc + 3 + (ope->param[1] % IDX_MOD))].pid =
 			proc->player;
-		vm->ram[real_pc(proc->pc + 2 + (ope->param[1] % IDX_MOD))].content = 
+		vm->ram[real_pc(proc->pc + 2 + (ope->param[1] % IDX_MOD))].content =
 			(proc->r[(size_t)ope->param[0] - 1] & 0x0000ff00) >> 8;
-		vm->ram[real_pc(proc->pc + 2 + (ope->param[1] % IDX_MOD))].pid = 
+		vm->ram[real_pc(proc->pc + 2 + (ope->param[1] % IDX_MOD))].pid =
 			proc->player;
-		vm->ram[real_pc(proc->pc + 1 + (ope->param[1] % IDX_MOD))].content = 
+		vm->ram[real_pc(proc->pc + 1 + (ope->param[1] % IDX_MOD))].content =
 			(proc->r[(size_t)ope->param[0] - 1] & 0x00ff0000) >> 16;
-		vm->ram[real_pc(proc->pc + 1 + (ope->param[1] % IDX_MOD))].pid = 
+		vm->ram[real_pc(proc->pc + 1 + (ope->param[1] % IDX_MOD))].pid =
 			proc->player;
-		vm->ram[real_pc(proc->pc + (ope->param[1] % IDX_MOD))].content = 
+		vm->ram[real_pc(proc->pc + (ope->param[1] % IDX_MOD))].content =
 			(proc->r[(size_t)ope->param[0] - 1] & 0xff000000) >> 24;
-		vm->ram[real_pc(proc->pc + (ope->param[1] % IDX_MOD))].pid = 
-			proc->player;	
-	}	
-	else 
+		vm->ram[real_pc(proc->pc + (ope->param[1] % IDX_MOD))].pid =
+			proc->player;
+	}
+	else
 		proc->r[(size_t)ope->param[1] - 1] = proc->r[(size_t)ope->param[0] - 1];
 	proc->carry = !proc->r[(size_t)ope->param[0] - 1] ? 1 : 0;
 }
