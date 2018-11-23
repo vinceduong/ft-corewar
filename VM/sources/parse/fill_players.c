@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 16:11:44 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/19 12:47:02 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/22 16:40:57 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int fill_player(t_player *player, char *file)
 {
 	int fd;
 
-	if ((fd = open(file, O_RDONLY)) < 0)
+	if ((fd = open(file, O_RDONLY, O_NOFOLLOW)) < 0)
 		error("File is not readable\n");
 	player->header = malloc(sizeof(t_header));
 	if (read(fd, player->header, sizeof(t_header)) != sizeof(t_header))

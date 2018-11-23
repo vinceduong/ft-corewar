@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 16:14:27 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/21 15:44:51 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/23 00:15:15 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void init_vm(t_vm *vm)
 		i++;
 	}
 	vm->stack.start = NULL;
+	vm->stack.nbprocess = 0;
 	vm->flag.dump = -1;
 	vm->flag.n = 0;
 	vm->flag.visu = 0;

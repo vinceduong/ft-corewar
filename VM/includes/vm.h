@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 20:07:31 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/21 17:21:08 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/23 12:19:57 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ typedef struct	s_player
 	char			*filename;
 	int				p;
 	int				nb_live;
-	int				last_live;
 	unsigned char	prog[CHAMP_MAX_SIZE];
 	t_header		*header;
 }				t_player;
@@ -129,6 +128,7 @@ typedef struct	s_vm
 	t_flag		flag;
 	t_win		display;
 	int			nbplayers;
+	int			winner;
 	int			cycle;
 	int			check_cycles;
 	int			cycle_die;
@@ -195,5 +195,6 @@ void    		display_winner(t_win *display);
 
 void print_process(t_proc *process);
 void print_vm(t_vm *vm);
+void print_stack(t_stack stack);
 int real_pc(int value);
 #endif

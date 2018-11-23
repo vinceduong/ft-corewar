@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:00:57 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/21 17:20:24 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/22 17:17:44 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@ void increment_stack(t_vm *vm)
     tmp = vm->stack.end;
     while (tmp)
     {
-        if (!tmp->cycle) 
+        if (!tmp->cycle)
             load_next_instruction(vm, tmp);
         tmp->cycle--;
         if (!tmp->cycle)
         {
-            print_vm(vm);
-            print_process(tmp);
             execution(vm, tmp);
         }
         tmp = tmp->previous;
