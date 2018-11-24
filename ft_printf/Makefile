@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/15 15:03:55 by apoque            #+#    #+#              #
-#    Updated: 2018/11/24 10:06:57 by vduong           ###   ########.fr        #
+#    Updated: 2018/11/24 11:14:37 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,17 +55,17 @@ $(NAME) : $(HANDLEROBJ) $(OBJ) libft/*.c libft/Makefile
 	@cp libft/libft.a ./$(NAME)
 	@ar -rc $(NAME) $(OBJ) $(HANDLEROBJ)
 	@ranlib $(NAME)
-	@echo "\033[32mPRINTF : libftprintf.a created\033[0m"
+	@echo "\033[32mPRINTF : libftprintf.a Created\033[0m"
 
 clean :
-	@cd libft ; make clean ; cd ..
+	@make clean -C libft
 	@rm -rf $(OBJ) $(HANDLEROBJ)
-	@echo "\033[32mPRINTF : Removed Object files\033[0m"
+	@echo "\033[32mPRINTF : Object Files Removed\033[0m"
 
 fclean : clean
-	@cd libft ; make fclean ; cd ..
+	@make fclean -C libft
 	@rm -rf libftprintf.a
-	@echo "\033[32mPRINTF : Removed Object files and library\033[0m"
+	@echo "\033[32mPRINTF : Object Files Removed\033[0m"
 
 re : fclean all
 

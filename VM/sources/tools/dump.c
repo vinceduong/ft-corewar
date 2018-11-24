@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 17:11:06 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/24 09:59:45 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/24 10:50:44 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void dump(t_vm *vm)
 	i = -1;
 	while (++i < MEM_SIZE)
 	{
-		i % 32 == 0 ? printf("0x%.4x : ", i) : 0;
-		printf("%.2x ", vm->ram[i].content);
-		(i + 1) % 32 == 0 ? printf("\n") : 0;
+		i % 32 == 0 ? ft_printf("0x%.4x : ", i) : 0;
+		ft_printf("%.2x ", vm->ram[i].content);
+		(i + 1) % 32 == 0 ? ft_printf("\n") : 0;
 	}
-	printf("\n\n");
+	ft_printf("\n\n");
 	exit(1);
 }

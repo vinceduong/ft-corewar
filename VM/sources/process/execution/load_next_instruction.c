@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   increment_stack.c                                  :+:      :+:    :+:   */
+/*   load_next_instruction.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 15:00:57 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/24 10:56:10 by vduong           ###   ########.fr       */
+/*   Created: 2018/11/24 11:26:30 by vduong            #+#    #+#             */
+/*   Updated: 2018/11/24 11:27:46 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void increment_stack(t_vm *vm)
+void load_next_instruction(t_vm *vm, t_proc *proc)
 {
-    t_proc *tmp;
-
-    tmp = vm->stack.end;
-    while (tmp)
-    {
-        if (!tmp->cycle)
-            load_next_instruction(vm, tmp);
-        tmp->cycle--;
-        if (!tmp->cycle)
-        {
-            execute_process(vm, tmp);
-        }
-        tmp = tmp->previous;
-    }
+	proc->opcode = vm->ram[proc->pc].content;
+	proc->cycle = proc->opcode > 0 && proc->opcode <= 16 ?
+		op_tab[(int)proc->opcode - 1].cycles : 1;
 }
