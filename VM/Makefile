@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/24 09:54:43 by vduong           ###   ########.fr        #
+#    Updated: 2018/11/24 10:36:38 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,14 @@ NCURSES = -lncurses
 
 NAME = corewar
 
-INCLUDES = -I ./includes/ -I ../libft
+INCLUDES = -I ./includes/ -I ../libft/includes -I ../ft_printf/
 
 HEADERS = ./includes/vm.h\
 		  ./includes/op.h\
 
 LIBFT = ../libft/libft.a
+
+PRINTF = ../ft_printf/libftprintf.a
 
 VISU = ./sources/display/display.c \
 		./sources/display/display_winner.c \
@@ -72,20 +74,23 @@ OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) $(LIBFT) $(HEADERS)
-	@$(CC) $(OBJS) -o $(NAME) $(LIBFT)
-	@printf "\n\033[032mCOREWAR Compilation Successful\033[0m\n"
+$(NAME) : $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF)
+	@$(CC) $(OBJS) -o $(NAME) $(LIBFT) $(PRINTF)
+	@printf "\033[032mCOREWAR : ./corewar Created\033[0m\n"
 
 $(LIBFT) :
 	@make -C ../libft
 
+$(PRINTF) :
+	@make -C ../ft_printf
+
 clean :
 	@rm -f $(OBJS)
-	@make clean -C ../libft
+	@echo "\033[32mCOREWAR : Object files Removed\033[0m"
 
 fclean : clean
 	@rm -f $(NAME)
-	@make fclean -C ../libft
+	@echo "\033[32mCOREWAR : ./corewar Removed\033[0m"
 
 up : all clean
 
