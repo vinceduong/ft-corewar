@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 16:14:27 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/23 00:15:15 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/24 09:21:04 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void init_vm(t_vm *vm)
 		vm->players[i].header = malloc(sizeof(t_header));
 		vm->players[i].p = 0;
 		vm->players[i].nb_live = 0;
-		vm->players[i].last_live = 0;
 		i++;
 	}
 	vm->stack.start = NULL;
@@ -62,9 +61,9 @@ void init_vm(t_vm *vm)
 	vm->flag.dump = -1;
 	vm->flag.n = 0;
 	vm->flag.visu = 0;
-	vm->cycle = 0;
-	vm->check_cycles = CYCLE_TO_DIE;
-	vm->cycle_die = CYCLE_TO_DIE;
-	vm->checks = 0;
+	vm->cycles_total = 0;
+	vm->cycles_left = CYCLE_TO_DIE;
+	vm->cycles_to_die = CYCLE_TO_DIE;
+	vm->die_rounds_left = 0;
 	vm->pause = 0;
 }

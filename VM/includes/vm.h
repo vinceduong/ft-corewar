@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 20:07:31 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/23 12:19:57 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/24 09:19:59 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,12 +129,12 @@ typedef struct	s_vm
 	t_win		display;
 	int			nbplayers;
 	int			winner;
-	int			cycle;
-	int			check_cycles;
-	int			cycle_die;
+	int			cycles_total;
+	int			cycles_left;
+	int			cycles_to_die;
+	int			die_rounds_left;
 	int			pause;
-	int			nb_lives;
-	int			checks;
+	int			lives;
 }				t_vm;
 
 void	(*ops[16])(t_vm*, t_proc*, t_operation*);
@@ -196,5 +196,5 @@ void    		display_winner(t_win *display);
 void print_process(t_proc *process);
 void print_vm(t_vm *vm);
 void print_stack(t_stack stack);
-int real_pc(int value);
+int mod_pc(int value);
 #endif

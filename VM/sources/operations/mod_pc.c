@@ -6,18 +6,18 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 15:52:44 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/21 16:06:50 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/24 08:57:42 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int real_pc(int value)
+int	mod_pc(int value)
 {
     int pc;
 
     pc = value % MEM_SIZE;
-    while (pc < 0)
+    if (pc < 0)
         pc += MEM_SIZE;
     return (pc);
 }

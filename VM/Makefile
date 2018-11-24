@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/21 15:58:30 by vduong           ###   ########.fr        #
+#    Updated: 2018/11/24 09:27:21 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ SRCS = 	./sources/error.c\
 		./sources/process/init_process.c\
 		./sources/swap.c\
 		./sources/print/print.c\
-		./sources/operations/aim_pc.c\
+		./sources/operations/mod_pc.c\
 		
 
 
@@ -89,4 +89,3 @@ fclean : clean
 up : all clean
 
 re : fclean all
-	make re -C ../libft

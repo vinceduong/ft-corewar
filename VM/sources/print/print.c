@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 15:19:52 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/22 17:11:36 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/24 09:26:43 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void print_vm(t_vm *vm)
     printf("---VM---\n");
     printf("nbprocess = %d\n", vm->stack.nbprocess);
     printf("nbplayers = %d\n", vm->nbplayers);
-    printf("cycle= %d\n", vm->cycle);
-    printf("check_cycles = %d\n", vm->check_cycles);
-    printf("cycle_die = %d\n", vm->cycle_die);
+    printf("cycle= %d\n", vm->cycles_total);
+    printf("check_cycles = %d\n", vm->cycles_left);
+    printf("cycle_die = %d\n", vm->cycles_to_die);
     printf("pause = %d\n", vm->pause);
-    printf("nb_lives = %d\n", vm->nb_lives);
-    printf("checks = %d\n", vm->checks);
+    printf("nb_lives = %d\n", vm->lives);
+    printf("checks = %d\n", vm->die_rounds_left);
     printf("--------\n");
 }
 

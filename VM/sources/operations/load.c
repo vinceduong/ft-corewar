@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:24 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/23 18:45:01 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/24 08:59:26 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	//ft_putstr("In direct_load\n");
 	if (ope->param_type[0] == IND_CODE)
-		proc->r[(size_t)ope->param[1] - 1] = to_int(vm, real_pc(proc->pc + (ope->param[0] % IDX_MOD)));
+		proc->r[(size_t)ope->param[1] - 1] = to_int(vm, mod_pc(proc->pc + (ope->param[0] % IDX_MOD)));
 	else
 		proc->r[(size_t)ope->param[1] - 1] = ope->param[0];
 	proc->carry = ope->param[0] == 0 ? 1 : 0;
@@ -31,11 +31,11 @@ void indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 	if (ope->param_type[0] == T_REG)
 		a = proc->r[(size_t)ope->param[0] - 1];
 	else if (ope->param_type[0] == T_IND)
-		a = real_pc(proc->pc + (ope->param_type[0] % IDX_MOD));
+		a = mod_pc(proc->pc + (ope->param_type[0] % IDX_MOD));
 	else
 		a = ope->param[0];
 	if (ope->param_type[1] == T_IND)
-		b = real_pc(proc->pc + (ope->param_type[1] % IDX_MOD));
+		b = mod_pc(proc->pc + (ope->param_type[1] % IDX_MOD));
 	else
 		b = ope->param[1];
 	proc->r[(size_t)ope->param[2] - 1] = to_int(vm, a + b);
@@ -51,11 +51,11 @@ void long_indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 	if (ope->param_type[0] == T_REG)
 		a = proc->r[(size_t)ope->param[0] - 1];
 	else if (ope->param_type[0] == T_IND)
-		a = real_pc(proc->pc + ope->param[0]);
+		a = mod_pc(proc->pc + ope->param[0]);
 	else
 		a = ope->param[0];
 	if (ope->param_type[1] == T_IND)
-		b = real_pc(proc->pc + ope->param[1]);
+		b = mod_pc(proc->pc + ope->param[1]);
 	else
 		b = ope->param[1];
 	proc->r[(size_t)ope->param[2] - 1] = to_int(vm, a + b);
