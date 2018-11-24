@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_players.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 16:11:44 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/22 16:40:57 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/24 10:40:07 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int fill_players(char **av, t_vm *vm)
 	{
 		if (vm->players[i].p)
 		{
-			printf("%d %d %s\n", i, vm->players[i].p, vm->players[i].filename);
+			ft_printf("%d %d %s\n", i, vm->players[i].p, vm->players[i].filename);
 			fill_player(&vm->players[i], vm->players[i].filename);
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 18:43:59 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 11:48:31 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/24 10:40:17 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int ft_get_player(char **av, t_vm *vm)
 		}
 	}
 	vm->nbplayers = champ;
-	printf("%d\n", champ);
+	ft_printf("%d\n", champ);
 	return (champ >= 1 && champ <= 4 ? 1 : -1);
 }
 
