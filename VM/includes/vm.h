@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 20:07:31 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/24 09:41:32 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/24 10:27:53 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # include <stdarg.h>
 # include <wchar.h>
 # include <ncurses.h>
-#include "libft.h"
-#include "op.h"
+# include "libft.h"
+# include "op.h"
+
 /*
 	live	= 0x01 = 	10 	cycles
 	ld		= 0x02 = 	5 	cycles
@@ -139,6 +140,7 @@ typedef struct	s_vm
 
 void	(*ops[16])(t_vm*, t_proc*, t_operation*);
 
+int						ft_printf(const char *format, ...);
 /*GENERAL*/
 int swap_int(int n);
 unsigned int swap_uint(unsigned int n);
