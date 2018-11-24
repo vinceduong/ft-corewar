@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:54:13 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/23 18:18:38 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/24 09:44:18 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ void ft_get_param(t_operation *ope, int n, t_vm *vm, int *pc)
 	}
 	else if (ope->param_type[n] == IND_CODE || op_tab[ope->opcode - 1].d2)
 	{
-		ope->param[n] = to_short(vm, *pc);
+		ope->param[n] = read_short(vm, *pc);
 		*pc = (*pc + 2) % MEM_SIZE;
 	}
 	else if (ope->param_type[n] == DIR_CODE)
 	{
-		ope->param[n] = to_int(vm, *pc);
+		ope->param[n] = read_int(vm, *pc);
 		*pc = (*pc + 4) % MEM_SIZE;
 	}
 }

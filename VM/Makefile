@@ -6,13 +6,13 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/24 09:27:21 by vduong           ###   ########.fr        #
+#    Updated: 2018/11/24 09:49:38 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all clean fclean re up
 
-CC = gcc $(INCLUDES) $(FLAGS) 
+CC = @gcc $(INCLUDES) $(FLAGS) 
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -31,12 +31,13 @@ VISU = ./sources/display/display.c \
 		./sources/display/display_winner.c \
 		./sources/display/create_visualizer.c
 
-SRCS = 	./sources/error.c\
-		./sources/init.c\
+SRCS = 	./sources/tools/error.c\
+		./sources/tools/init.c\
 		./sources/loop/loop.c\
 		./sources/main.c\
 		./sources/loop/dump.c\
-		./sources/oct_to_nb.c\
+		./sources/tools/read_int.c\
+		./sources/tools/read_short.c\
 		./sources/operations/add.c\
 		./sources/operations/aff.c\
 		./sources/operations/bitwise.c\
@@ -61,9 +62,9 @@ SRCS = 	./sources/error.c\
 		./sources/process/execution.c\
 		./sources/process/increment_stack.c\
 		./sources/process/init_process.c\
-		./sources/swap.c\
+		./sources/tools/swap.c\
 		./sources/print/print.c\
-		./sources/operations/mod_pc.c\
+		./sources/tools/mod_pc.c\
 		
 
 
@@ -76,15 +77,15 @@ $(NAME) : $(OBJS) $(LIBFT) $(HEADERS)
 	@printf "\n\033[032mCOREWAR Compilation Successful\033[0m\n"
 
 $(LIBFT) :
-	make -C ../libft
+	@make -C ../libft
 
 clean :
 	@rm -f $(OBJS)
-	make clean -C ../libft
+	@make clean -C ../libft
 
 fclean : clean
 	@rm -f $(NAME)
-	make fclean -C ../libft
+	@make fclean -C ../libft
 
 up : all clean
 
