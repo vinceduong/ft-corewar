@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/24 10:36:38 by vduong           ###   ########.fr        #
+#    Updated: 2018/11/24 11:32:35 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,11 @@ SRCS = 	./sources/tools/error.c\
 		./sources/process/add_process.c\
 		./sources/process/check_stack.c\
 		./sources/process/delete_process.c\
-		./sources/process/execution.c\
+		./sources/process/execution/load_next_instruction.c\
+		./sources/process/execution/read_params_type.c\
+		./sources/process/execution/execute_process.o\
+		./sources/process/execution/read_params_content.c\
+		./sources/process/execution/tab_to_type.c\
 		./sources/process/increment_stack.c\
 		./sources/process/init_process.c\
 		./sources/tools/swap.c\
