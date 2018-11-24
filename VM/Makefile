@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/24 09:49:38 by vduong           ###   ########.fr        #
+#    Updated: 2018/11/24 09:54:43 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SRCS = 	./sources/tools/error.c\
 		./sources/tools/init.c\
 		./sources/loop/loop.c\
 		./sources/main.c\
-		./sources/loop/dump.c\
+		./sources/tools/dump.c\
 		./sources/tools/read_int.c\
 		./sources/tools/read_short.c\
 		./sources/operations/add.c\
