@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:18:42 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/23 18:24:58 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/24 09:23:24 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ int check_stack(t_vm *vm)
         tmp = next;
     }
 	//print_vm(vm);
-	//printf("coucou %d\n", vm->checks);
-    if (vm->nb_lives >= NBR_LIVE || --vm->checks <= 0)
+	//printf("coucou %d\n", vm->die_rounds_left);
+    if (vm->lives >= NBR_LIVE || --vm->die_rounds_left <= 0)
 	{
-		vm->cycle_die = vm->cycle_die > CYCLE_DELTA ?
-			vm->cycle_die - CYCLE_DELTA : 1;
-		vm->checks = MAX_CHECKS;
+		vm->cycles_to_die = vm->cycles_to_die > CYCLE_DELTA ?
+			vm->cycles_to_die - CYCLE_DELTA : 1;
+		vm->die_rounds_left = MAX_CHECKS;
 	}
 	//print_vm(vm);
-	vm->check_cycles = vm->cycle_die;
-	vm->nb_lives = 0;
+	vm->cycles_left = vm->cycles_to_die;
+	vm->lives = 0;
 	return (vm->stack.start != NULL);
 }
