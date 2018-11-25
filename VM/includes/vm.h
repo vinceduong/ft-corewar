@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 20:07:31 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/24 11:30:18 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:23:58 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,30 +41,19 @@
 	lfork 	= 0x0f =	1000	cycles
 	aff 	= 0x10 = 	2	cycles
 
-	PART 1 = Number magic = 4bytes;
-	PART 2 = NAME = 128byte;
-	PART 3 = COMMENt = 2048byte;
-
 	NUMBER MAGIC = 0xea83f3 = (0x00) 0xea 0x83 0xf3
-
-	0xa4:	10 10 01 00
-	0x94:	10 01 01 00
-	0x54:	01 01 01 00
-	0x64:	01 10 01 00
-	0xf4:	11 11 01 00
-	0xb4:	10 11 01 00
 */
 #define PHEADER	vm->players[i].header
 #define USAGE	"Usage : ./corewar [-dump nbr_cycles] [[-n number] champion1.cor] ...\n"
 
-typedef struct 	s_operation
+typedef struct	s_operation
 {
-	int ocp;
-	int opcode;
-	int pc;
-	char param_type[3];
-	char param[3];
-	int error;
+	int			ocp;
+	int			opcode;
+	int			pc;
+	char		param_type[3];
+	char		param[3];
+	int			error;
 }				t_operation;
 
 typedef struct	s_player
@@ -142,64 +131,64 @@ void	(*ops[16])(t_vm*, t_proc*, t_operation*);
 
 int						ft_printf(const char *format, ...);
 /*GENERAL*/
-int swap_int(int n);
-unsigned int swap_uint(unsigned int n);
-void init_vm(t_vm *vm);
-void init_ram(t_vm *vm);
-void error(char *msg);
-void dump(t_vm *vm);
+int						swap_int(int n);
+unsigned int			swap_uint(unsigned int n);
+void					init_vm(t_vm *vm);
+void					init_ram(t_vm *vm);
+void					error(char *msg);
+void					dump(t_vm *vm);
 
 /*PARSING*/
-int parse(t_vm *vm, char **av);
-int check_args(char **av, t_vm *vm);
-int check_is_flag(char **av, int i);
-int check_is_cor(char *str);
-int check_n(char **av, int i);
-int check_dump(char **av, int i);
-int fill_players(char **av, t_vm *vm);
+int						parse(t_vm *vm, char **av);
+int						check_args(char **av, t_vm *vm);
+int						check_is_flag(char **av, int i);
+int						check_is_cor(char *str);
+int						check_n(char **av, int i);
+int						check_dump(char **av, int i);
+int						fill_players(char **av, t_vm *vm);
 
 /*PROCESS*/
-void add_process(t_stack *stack, t_proc *proc);
-void delete_process(t_stack *stack, t_proc *proc);
-t_proc *init_process(t_vm *vm, int pc, int player);
-void increment_stack(t_vm *vm);
-int	check_stack(t_vm *vm);
-void loop(t_vm *vm);
-short		read_short(t_vm *vm, int pc);
-int			read_int(t_vm *vm, int pc);
-void execute_process(t_vm *vm, t_proc *proc);
-void load_next_instruction(t_vm *vm, t_proc *proc);
-void read_params_content(t_operation *ope, int n, t_vm *vm, int *pc);
-void read_params_type(t_operation *ope, unsigned char ocp);
-void	tab_to_type(char param_types[3], char arg[3]);
+void					add_process(t_stack *stack, t_proc *proc);
+void					delete_process(t_stack *stack, t_proc *proc);
+t_proc					*init_process(t_vm *vm, int pc, int player);
+void					increment_stack(t_vm *vm);
+int						check_stack(t_vm *vm);
+void					loop(t_vm *vm);
+short					read_short(t_vm *vm, int pc);
+int						read_int(t_vm *vm, int pc);
+void					execute_process(t_vm *vm, t_proc *proc);
+void					load_next_instruction(t_vm *vm, t_proc *proc);
+void					read_params_content(t_operation *ope, int n, t_vm *vm, int *pc);
+void					read_params_type(t_operation *ope, unsigned char ocp);
+void					tab_to_type(char param_types[3], char arg[3]);
 
 /*INSTRUCTION*/
-void live(t_vm *vm, t_proc *proc, t_operation *ope);
-void direct_load(t_vm *vm, t_proc *proc, t_operation *operation);
-void indirect_load(t_vm *vm, t_proc *proc, t_operation *operation);
-void long_indirect_load(t_vm *vm, t_proc *proc, t_operation *operation);
-void long_direct_load(t_vm *vm, t_proc *proc, t_operation *operation);
-void sub(t_vm *vm, t_proc *proc, t_operation *operation);
-void zjump(t_vm *vm, t_proc *proc, t_operation *ope);
-void add(t_vm *vm, t_proc *proc, t_operation *operation);
-void aff(t_vm *vm, t_proc *proc, t_operation *operation);
-void corewar_and(t_vm *vm, t_proc *proc, t_operation *operation);
-void corewar_or(t_vm *vm, t_proc *proc, t_operation *operation);
-void corewar_xor(t_vm *vm, t_proc *proc, t_operation *operation);
-void corewar_fork(t_vm *vm, t_proc *proc, t_operation *operation);
-void lfork(t_vm *vm, t_proc *proc, t_operation *operation);
-void direct_store(t_vm *vm, t_proc *proc, t_operation *operation);
-void indirect_store(t_vm *vm, t_proc *proc, t_operation *operation);
+void					live(t_vm *vm, t_proc *proc, t_operation *ope);
+void					direct_load(t_vm *vm, t_proc *proc, t_operation *operation);
+void					indirect_load(t_vm *vm, t_proc *proc, t_operation *operation);
+void					long_indirect_load(t_vm *vm, t_proc *proc, t_operation *operation);
+void					long_direct_load(t_vm *vm, t_proc *proc, t_operation *operation);
+void					sub(t_vm *vm, t_proc *proc, t_operation *operation);
+void					zjump(t_vm *vm, t_proc *proc, t_operation *ope);
+void					add(t_vm *vm, t_proc *proc, t_operation *operation);
+void					aff(t_vm *vm, t_proc *proc, t_operation *operation);
+void					corewar_and(t_vm *vm, t_proc *proc, t_operation *operation);
+void					corewar_or(t_vm *vm, t_proc *proc, t_operation *operation);
+void					corewar_xor(t_vm *vm, t_proc *proc, t_operation *operation);
+void					corewar_fork(t_vm *vm, t_proc *proc, t_operation *operation);
+void					lfork(t_vm *vm, t_proc *proc, t_operation *operation);
+void					direct_store(t_vm *vm, t_proc *proc, t_operation *operation);
+void					indirect_store(t_vm *vm, t_proc *proc, t_operation *operation);
 
 /*DISPLAY*/
-void			display(t_vm *vm, int step);
-void    		create_visualizer(t_win *display);
-void    		display_winner(t_win *display);
+void					display(t_vm *vm, int step);
+void					create_visualizer(t_win *display);
+void					display_winner(t_win *display);
 
 /*DEBUG*/
 
-void print_process(t_proc *process);
-void print_vm(t_vm *vm);
-void print_stack(t_stack stack);
-int mod_pc(int value);
+void					print_process(t_proc *process);
+void					print_vm(t_vm *vm);
+void					print_stack(t_stack stack);
+int						mod_pc(int value);
 #endif

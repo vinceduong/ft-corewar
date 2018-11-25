@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   dump.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 17:11:06 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/24 10:50:44 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:26:56 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void dump(t_vm *vm)
+void	dump(t_vm *vm)
 {
 	int i;
 

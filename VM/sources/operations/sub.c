@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:32 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/24 08:59:28 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:28:43 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void sub(t_vm *vm, t_proc *proc, t_operation *ope)
+void		sub(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	(void)vm;
 

@@ -6,13 +6,13 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 17:36:24 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/16 18:08:35 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/25 13:26:21 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int check_is_cor(char *str)
+int		check_is_cor(char *str)
 {
 	int i;
 	int len;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fill_players.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 16:11:44 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/24 10:40:07 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:26:34 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int fill_player(t_player *player, char *file)
+int		fill_player(t_player *player, char *file)
 {
 	int fd;
 
@@ -35,7 +35,7 @@ int fill_player(t_player *player, char *file)
 	return (1);
 }
 
-int fill_players(char **av, t_vm *vm)
+int		fill_players(char **av, t_vm *vm)
 {
 	int	i;
 

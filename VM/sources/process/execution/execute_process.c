@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   execute_process.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:54:13 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/24 11:30:36 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:24:42 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-
-
-void execution_part2(t_vm *vm, t_proc *proc, t_operation *ope, int *pc)
+voids		execution_part2(t_vm *vm, t_proc *proc, t_operation *ope, int *pc)
 {
 	read_params_content(ope, 0, vm, pc);
 	read_params_content(ope, 1, vm, pc);
@@ -25,10 +23,10 @@ void execution_part2(t_vm *vm, t_proc *proc, t_operation *ope, int *pc)
 		proc->pc = *pc;
 }
 
-void execute_process(t_vm *vm, t_proc *proc)
+void		execute_process(t_vm *vm, t_proc *proc)
 {
-	t_operation ope;
-	int pc;
+	t_operation		ope;
+	int				pc;
 
 	ft_bzero(&ope, sizeof(t_operation));
 	ope.opcode = proc->opcode;

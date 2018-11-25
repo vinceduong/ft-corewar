@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 16:14:27 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/24 09:21:04 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:27:25 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void fill_ram(t_vm *vm, int adress, int pId)
+void	fill_ram(t_vm *vm, int adress, int pId)
 {
 	unsigned int i;
 
@@ -28,7 +28,7 @@ void fill_ram(t_vm *vm, int adress, int pId)
 	add_process(&vm->stack, init_process(vm, adress, pId));
 }
 
-void init_ram(t_vm *vm)
+void		init_ram(t_vm *vm)
 {
 	int			i;
 	int			adress;
@@ -43,7 +43,7 @@ void init_ram(t_vm *vm)
 	}
 }
 
-void init_vm(t_vm *vm)
+void		init_vm(t_vm *vm)
 {
 	int i;
 

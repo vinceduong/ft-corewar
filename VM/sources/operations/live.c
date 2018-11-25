@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   live.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:01:37 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/24 10:40:26 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:28:23 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void live(t_vm *vm, t_proc *proc, t_operation *ope)
+void		live(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	(void)ope;
 	proc->alive = 1;

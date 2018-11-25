@@ -6,13 +6,13 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:06:35 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/21 17:08:15 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:25:24 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void delete_process(t_stack *stack, t_proc *process)
+void		delete_process(t_stack *stack, t_proc *process)
 {
     t_proc *tmp;
 

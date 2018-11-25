@@ -6,13 +6,13 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 11:28:34 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/24 11:28:45 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:24:52 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void read_params_content(t_operation *ope, int n, t_vm *vm, int *pc)
+void	read_params_content(t_operation *ope, int n, t_vm *vm, int *pc)
 {
 	if (!ope->param_type[n])
 		return ;

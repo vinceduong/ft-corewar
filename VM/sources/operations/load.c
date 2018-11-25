@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   load.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:24 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/24 09:42:55 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:28:33 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
+void		direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	//ft_putstr("In direct_load\n");
 	if (ope->param_type[0] == IND_CODE)
@@ -22,7 +22,7 @@ void direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 	proc->carry = ope->param[0] == 0 ? 1 : 0;
 }
 
-void indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
+void		indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	int a;
 	int b;
@@ -42,7 +42,7 @@ void indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 	proc->carry = a + b == 0 ? 1 : 0;
 }
 
-void long_indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
+void		long_indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	int a;
 	int b;
@@ -62,7 +62,7 @@ void long_indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 	proc->carry = a + b == 0 ? 1 : 0;
 }
 
-void long_direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
+void		long_direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	//ft_putstr("In long_direct_load\n");
 	if (ope->param_type[0] == IND_CODE)

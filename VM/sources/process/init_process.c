@@ -6,16 +6,16 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:18:09 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/24 09:16:32 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:25:39 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-t_proc *init_process(t_vm *vm, int pc, int player)
+t_proc		*init_process(t_vm *vm, int pc, int player)
 {
-    static int id = 1;
-    t_proc *new;
+    static int		id = 1;
+    t_proc			*new;
 
     if (!(new = (t_proc *)malloc(sizeof(t_proc))))
         error("malloc failed\n");

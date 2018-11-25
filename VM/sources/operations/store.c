@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   store.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:39 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/24 08:59:26 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:28:39 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void direct_store(t_vm *vm, t_proc *proc, t_operation *ope)
+void		direct_store(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	ft_putstr("In direct_store\n");
 	if (ope->param_type[1] == IND_CODE)
@@ -39,7 +39,7 @@ void direct_store(t_vm *vm, t_proc *proc, t_operation *ope)
 	proc->carry = !proc->r[(size_t)ope->param[0] - 1] ? 1 : 0;
 }
 
-void indirect_store(t_vm *vm, t_proc *proc, t_operation *ope)
+void		indirect_store(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	int a;
 	int b;
