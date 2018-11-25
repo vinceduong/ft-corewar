@@ -6,13 +6,13 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:33:41 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/24 09:16:40 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:27:41 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void loop(t_vm *vm)
+void		loop(t_vm *vm)
 {
     int step;
 

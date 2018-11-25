@@ -6,18 +6,18 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 11:24:20 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/24 11:29:36 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:25:03 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void read_params_type(t_operation *ope, unsigned char ocp)
+void	read_params_type(t_operation *ope, unsigned char ocp)
 {
-	t_arg_type *type;
-	t_op		op;
-	int i;
-	int v;
+	t_arg_type		*type;
+	t_op			op;
+	int				i;
+	int				v;
 
 	i = -1;
 	type = ope->param_type;

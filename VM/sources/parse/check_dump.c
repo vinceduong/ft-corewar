@@ -6,13 +6,13 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 17:39:15 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/16 18:08:34 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/25 13:26:19 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int check_dump(char **av, int i)
+int		check_dump(char **av, int i)
 {
 	int j;
 

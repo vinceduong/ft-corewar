@@ -6,13 +6,13 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:18:42 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/24 09:23:24 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:25:14 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int check_stack(t_vm *vm)
+int		check_stack(t_vm *vm)
 {
     t_proc *tmp;
     t_proc *next;

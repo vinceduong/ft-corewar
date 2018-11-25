@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 18:43:59 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/24 10:40:17 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/25 13:26:14 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int ft_get_player(char **av, t_vm *vm)
+int			ft_get_player(char **av, t_vm *vm)
 {
-	int i;
-	int champ;
+	int		i;
+	int		champ;
 
 	i = 0;
 	champ = 0;
@@ -44,7 +44,7 @@ int ft_get_player(char **av, t_vm *vm)
 	return (champ >= 1 && champ <= 4 ? 1 : -1);
 }
 
-int ft_check_flag_value(t_vm *vm, char **av, int i, int return_value)
+int		ft_check_flag_value(t_vm *vm, char **av, int i, int return_value)
 {
 	if (return_value == 1)
 	{
@@ -62,10 +62,10 @@ int ft_check_flag_value(t_vm *vm, char **av, int i, int return_value)
 	return (1);
 }
 
-int check_args(char **av, t_vm *vm)
+int		check_args(char **av, t_vm *vm)
 {
-	int i;
-	int return_value;
+	int		i;
+	int		return_value;
 
 	i = 1;
 	while (av[i])

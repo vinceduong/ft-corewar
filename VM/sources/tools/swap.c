@@ -6,13 +6,13 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 16:42:36 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/16 18:08:48 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/25 13:27:15 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int swap_int(int n)
+int				swap_int(int n)
 {
 	return (((n & 0x000000ff) << 24)
 		| ((n & 0x0000ff00) << 8)
@@ -20,7 +20,7 @@ int swap_int(int n)
 		| ((n & 0xff000000) >> 24));
 }
 
-unsigned int swap_uint(unsigned int n)
+unsigned int	swap_uint(unsigned int n)
 {
 	return (((n & 0x000000ff) << 24)
 		| ((n & 0x0000ff00) << 8)
