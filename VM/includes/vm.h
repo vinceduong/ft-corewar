@@ -108,6 +108,8 @@ typedef struct	s_win
 	WINDOW 		*win;
 	WINDOW		*win_left;
 	WINDOW		*win_right;
+	int			lines;
+	int			cols;
 }				t_win;
 
 typedef struct	s_vm
