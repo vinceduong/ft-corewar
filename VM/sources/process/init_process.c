@@ -29,7 +29,7 @@ t_proc		*init_process(t_vm *vm, int pc, int player)
     new->player = player;
     new->next = NULL;
     new->previous = NULL;
-    printf("Process created with pc = %d, opcode = %#x, cycle = %d, current vm cycle = %d\n",
-     new->pc, new->opcode, new->cycle, vm->cycles_total);
+//    printf("Process created with pc = %d, opcode = %#x, cycle = %d, current vm cycle = %d\n",
+ //    new->pc, new->opcode, new->cycle, vm->cycles_total);
     return (new);
 }

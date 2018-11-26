@@ -12,7 +12,7 @@
 
 #include "vm.h"
 
-voids		execution_part2(t_vm *vm, t_proc *proc, t_operation *ope, int *pc)
+void		execution_part2(t_vm *vm, t_proc *proc, t_operation *ope, int *pc)
 {
 	read_params_content(ope, 0, vm, pc);
 	read_params_content(ope, 1, vm, pc);

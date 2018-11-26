@@ -44,7 +44,7 @@ void		indirect_store(t_vm *vm, t_proc *proc, t_operation *ope)
 	int a;
 	int b;
 
-	ft_putstr("In indirect_store\n");
+//	ft_putstr("In indirect_store\n");
 	if (ope->param_type[1] == T_REG)
 		a = proc->r[(size_t)ope->param[1] - 1];
 	else if (ope->param_type[1] == T_IND)

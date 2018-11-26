@@ -23,8 +23,8 @@ void		live(t_vm *vm, t_proc *proc, t_operation *ope)
 		{
 			vm->players[ope->param[0] - 1].nb_live++;
 			vm->winner = ope->param[0] - 1;
-			ft_printf("The player \"%s\" ($%d) is alive !\n",
-				vm->players[ope->param[0] - 1].filename, proc->player);
+		//	ft_printf("The player \"%s\" ($%d) is alive !\n",
+				//vm->players[ope->param[0] - 1].filename, proc->player);
 		}
 	}
 }

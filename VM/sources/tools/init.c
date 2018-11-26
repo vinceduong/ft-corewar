@@ -17,14 +17,14 @@ void	fill_ram(t_vm *vm, int adress, int pId)
 	unsigned int i;
 
 	i = 0;
-	printf("PID = %d, adress = %d\n", pId, adress);
+	//printf("PID = %d, adress = %d\n", pId, adress);
 	while (i < vm->players[pId].header->prog_size)
 	{
 		vm->ram[i + adress].content = vm->players[pId].prog[i];
 		vm->ram[i + adress].pid = pId + 1;
 		i++;
 	}
-	printf("Mes clous\n");
+//	printf("Mes clous\n");
 	add_process(&vm->stack, init_process(vm, adress, pId));
 }
 
@@ -34,7 +34,7 @@ void		init_ram(t_vm *vm)
 	int			adress;
 
 	i = 0;
-	printf("nbplayers = %d\n", vm->nbplayers);
+//	printf("nbplayers = %d\n", vm->nbplayers);
 	while (i < vm->nbplayers)
 	{
 		adress = i * MEM_SIZE / vm->nbplayers;
