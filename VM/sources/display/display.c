@@ -1,6 +1,6 @@
 #include "../../includes/vm.h"
 
-#define LEN 4096
+#define LEN 2048
 
 void    ft_choose_color(int player)
 {
@@ -46,25 +46,40 @@ void display(t_vm *vm, int step)
 {
     //int *ram;
    // if (step == 3)
-   int COL = COLS;
-   int  LI = LINES;
-   printf("COLS = %d - cols = %d\n", COL, vm->display.cols);
-   printf("LINES = %d - lines = %d\n", LI, vm->display.lines);
-   getchar();
-    if (step == 1 || COLS != vm->display.cols || LINES != vm->display.lines)
+  // int COL = COLS;
+   //int  LI = LINES;
+ //  printf("COLS = %d - cols = %d\n", COL, vm->display.cols);
+   //printf("LINES = %d - lines = %d\n", LI, vm->display.lines);
+   //getchar();
+    if (step == 1 /*|| COLS != vm->display.cols || LINES != vm->display.lines*/)
     {
         create_visualizer(&vm->display);
-        vm->display.lines = LINES;
-        vm->display.cols = COLS;
+        //print_ram(vm->ram);
+      //  vm->display.lines = LINES;
+        //vm->display.cols = COLS;
     }
    // if (step == 2)
    // {
         //ram = ft_simulate_ram();
        // getchar();
-    print_ram(vm->ram);
-        //printw("hello");
-        //refresh();
+   // print_ram(vm->ram);
+   // getchar();
+    //print_ram(vm->ram);
+  //  move(2, 4);
+    // delch(2, 4);
+     //printw("1");
+     print_ram(vm->ram);
+   //  mvdelch(2, 5);
+    //exit(0);
+    //printf("hey");
+    //printw("1");
+   // sleep(2);
+    move(2, 4);
+   // printw("hey\n");
+    printw("%.2x %.2x", vm->ram[0], vm->ram[1]);
+    refresh();
   //  }
-     //display_winner(&vm->display);
+    if (step == 10)
+     display_winner(&vm->display);
     //update_ram();
 }
