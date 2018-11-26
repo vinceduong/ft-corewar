@@ -28,7 +28,8 @@ void		loop(t_vm *vm)
         vm->cycles_left--;
         if (!vm->cycles_left && !check_stack(vm))
             break;
-        step = 2;
+        //printf("%d\n", step + 1);
+        step++;
     }
 	//dump(vm);
     printf("J'ai fait %d cycles \nJe suis a %d cycle_to_die\n", vm->cycles_total, vm->cycles_to_die);
