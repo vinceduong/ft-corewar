@@ -19,15 +19,20 @@ void loop(t_vm *vm)
     step = 1;
     while (1)
     {
-        if (vm->flag.visu)
+     /*   if (vm->flag.visu)
             display(vm, step);
         else if (vm->cycle == vm->flag.dump)
-            dump(vm);
+            dump(vm);*/
+        if (step == 3)
+            exit(0);
+        printf("tab = %d\n", vm->ram[0]);
         vm->cycle++;
         increment_stack(vm);
         vm->check_cycles--;
         if (!vm->check_cycles && !check_stack(vm))
             break;
-        step = 2;
+        //printf("%d\n", step + 1);
+        step++;
     }
+    printf("step = %d\n", step);
 }
