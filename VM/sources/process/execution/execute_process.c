@@ -6,13 +6,13 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:54:13 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/25 13:24:42 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/27 11:07:35 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-voids		execution_part2(t_vm *vm, t_proc *proc, t_operation *ope, int *pc)
+void		execution_part2(t_vm *vm, t_proc *proc, t_operation *ope, int *pc)
 {
 	read_params_content(ope, 0, vm, pc);
 	read_params_content(ope, 1, vm, pc);
