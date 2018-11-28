@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:33:41 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/25 13:27:41 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/28 17:30:07 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,10 @@ void		loop(t_vm *vm)
             /*display(vm, step)*/;
         //dump(vm);
         vm->cycles_total++;
-		//printf("Cycle = %d\n", vm->cycles_total);
         increment_stack(vm);
         vm->cycles_left--;
         if (!vm->cycles_left && !check_stack(vm))
             break;
-        //printf("%d\n", step + 1);
         step++;
     }
 	//dump(vm);

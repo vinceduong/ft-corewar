@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:17 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/25 13:28:20 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/28 15:09:09 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void		corewar_fork(t_vm *vm, t_proc *proc, t_operation *ope)
 	fork = NULL;
 	fork = init_process(vm, mod_pc(proc->pc + (ope->param[0] % IDX_MOD)) ,
 		proc->player);
+	fork->alive = proc->alive;
 	ft_memcpy((void*)proc->r, (void*)fork->r, (size_t)REG_NUMBER * sizeof(int));
 	fork->carry = proc->carry;
 	fork->alive = proc->alive;

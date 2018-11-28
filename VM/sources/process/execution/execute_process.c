@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:54:13 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/27 11:07:35 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/28 14:55:54 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		execute_process(t_vm *vm, t_proc *proc)
 	if (op_tab[ope.opcode - 1].ocp)
 	{
 		ope.ocp = vm->ram[pc].content;
-		pc =mod_pc(pc + 1);
+		pc = mod_pc(pc + 1);
 		read_params_type(&ope, ope.ocp);
 	}
 	else

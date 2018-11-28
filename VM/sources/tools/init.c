@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 16:14:27 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/28 12:57:28 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/28 14:04:21 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	fill_ram(t_vm *vm, int adress, int pId)
 		vm->ram[i + adress].pid = pId + 1;
 		i++;
 	}
-	printf("Mes clous\n");
 	add_process(&vm->stack, init_process(vm, adress, pId));
 }
 
