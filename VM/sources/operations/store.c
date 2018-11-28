@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:39 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/25 13:28:39 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/28 16:56:42 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void		direct_store(t_vm *vm, t_proc *proc, t_operation *ope)
 	}
 	else
 		proc->r[(size_t)ope->param[1] - 1] = proc->r[(size_t)ope->param[0] - 1];
-	proc->carry = !proc->r[(size_t)ope->param[0] - 1] ? 1 : 0;
 }
 
 void		indirect_store(t_vm *vm, t_proc *proc, t_operation *ope)

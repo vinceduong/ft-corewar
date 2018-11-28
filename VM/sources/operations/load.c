@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:24 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/25 13:28:33 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/28 16:50:54 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 		proc->r[(size_t)ope->param[1] - 1] = read_int(vm, mod_pc(proc->pc + (ope->param[0] % IDX_MOD)));
 	else
 		proc->r[(size_t)ope->param[1] - 1] = ope->param[0];
-	proc->carry = ope->param[0] == 0 ? 1 : 0;
+	proc->carry = !ope->param[0] ? 1 : 0;
 }
 
 void		indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
