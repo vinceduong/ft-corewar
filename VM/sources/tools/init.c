@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 16:14:27 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/25 13:27:25 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/28 12:57:28 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void		init_vm(t_vm *vm)
 	vm->cycles_total = 0;
 	vm->cycles_left = CYCLE_TO_DIE;
 	vm->cycles_to_die = CYCLE_TO_DIE;
-	vm->die_rounds_left = 0;
+	vm->die_rounds_left = MAX_CHECKS;
 	vm->pause = 0;
 }
