@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 15:53:10 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/20 17:01:00 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/28 10:38:06 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 	0xb4:	10 11 01 00
 */
 #define PHEADER	vm->players[i].header
-#define USAGE	"Usage : ./corewar [-dump nbr_cycles] [[-n number] champion1.cor] ...\n"
+#define USAGE	"Usage : ./corewar [-dump nbr_cycles] [-v] [[-n number] champion1.cor] ...\n"
 
 typedef struct 	s_operation
 {
