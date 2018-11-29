@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:18:42 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/29 17:43:26 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/29 18:19:13 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void reset_players(t_vm *vm)
         i++;
     }
 }
+
 int		check_stack(t_vm *vm)
 {
     t_proc *tmp;
