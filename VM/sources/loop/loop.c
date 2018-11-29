@@ -31,6 +31,8 @@ void		loop(t_vm *vm)
         //printf("%d\n", step + 1);
         step++;
     }
+    if (vm->flag.visu)
+        display_winner(&vm->display);
 	//dump(vm);
   //  printf("J'ai fait %d cycles \nJe suis a %d cycle_to_die\n", vm->cycles_total, vm->cycles_to_die);
 }
