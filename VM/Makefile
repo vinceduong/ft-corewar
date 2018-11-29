@@ -6,15 +6,15 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/24 11:32:35 by vduong           ###   ########.fr        #
+#    Updated: 2018/11/29 17:05:11 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all clean fclean re up
 
-CC = @gcc $(INCLUDES) $(FLAGS) $(NCURSES)
+CC = @gcc $(INCLUDES)
 
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra -Werror
 
 NCURSES = -lncurses
 
@@ -29,18 +29,11 @@ LIBFT = ../libft/libft.a
 
 PRINTF = ../ft_printf/libftprintf.a
 
-VISU = ./sources/display/display.c \
-		./sources/display/display_winner.c \
-		./sources/display/create_visualizer.c
 
 SRCS = 	./sources/tools/error.c\
 		./sources/tools/init.c\
 		./sources/loop/loop.c\
 		./sources/main.c\
-		./sources/display/display.c\
-		./sources/display/display_winner.c\
-		./sources/display/create_visualizer.c\
-		./sources/display/display_players.c\
 		./sources/tools/dump.c\
 		./sources/tools/read_int.c\
 		./sources/tools/read_short.c\
@@ -75,15 +68,18 @@ SRCS = 	./sources/tools/error.c\
 		./sources/tools/swap.c\
 		./sources/print/print.c\
 		./sources/tools/mod_pc.c\
+		./sources/display/display.c \
+		./sources/display/display_winner.c \
+		./sources/display/create_visualizer.c\
+		./sources/display/display_players.c
 		
 
 
 OBJS = $(SRCS:.c=.o)
-
 all : $(NAME)
 
-$(NAME) : $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF)
-	@$(CC) $(OBJS) -o $(NAME) $(LIBFT) $(PRINTF)
+$(NAME) : $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF) 
+	@$(CC) $(FLAGS) $(NCURSES) $(OBJS) -o $(NAME) $(LIBFT) $(PRINTF)
 	@printf "\033[032mCOREWAR : ./corewar Created\033[0m\n"
 
 $(LIBFT) :
@@ -93,7 +89,7 @@ $(PRINTF) :
 	@make -C ../ft_printf
 
 clean :
-	@rm -f $(OBJS)
+	@rm -f $(OBJS) $(VISUOBJS)
 	@echo "\033[32mCOREWAR : Object files Removed\033[0m"
 
 fclean : clean
