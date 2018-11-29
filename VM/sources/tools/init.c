@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 16:14:27 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/28 14:04:21 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/29 16:35:35 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	fill_ram(t_vm *vm, int adress, int pId)
 	unsigned int i;
 
 	i = 0;
-	printf("PID = %d, adress = %d\n", pId, adress);
+	//printf("PID = %d, adress = %d\n", pId, adress);
 	while (i < vm->players[pId].header->prog_size)
 	{
 		vm->ram[i + adress].content = vm->players[pId].prog[i];
@@ -33,7 +33,7 @@ void		init_ram(t_vm *vm)
 	int			adress;
 
 	i = 0;
-	printf("nbplayers = %d\n", vm->nbplayers);
+//	printf("nbplayers = %d\n", vm->nbplayers);
 	while (i < vm->nbplayers)
 	{
 		adress = i * MEM_SIZE / vm->nbplayers;
