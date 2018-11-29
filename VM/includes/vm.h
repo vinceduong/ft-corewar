@@ -108,6 +108,7 @@ typedef struct	s_win
 	WINDOW 		*win;
 	WINDOW		*win_left;
 	WINDOW		*win_right;
+	WINDOW		*win_down;
 	int			lines;
 	int			cols;
 }				t_win;
@@ -184,8 +185,10 @@ void					indirect_store(t_vm *vm, t_proc *proc, t_operation *operation);
 
 /*DISPLAY*/
 void					display(t_vm *vm, int step);
-void					create_visualizer(t_win *display);
+void					create_visualizer(t_vm *vm, t_win *display);
 void					display_winner(t_win *display);
+void    				init_players(t_vm *vm);
+void    				print_players_share(t_vm *vm);
 
 /*DEBUG*/
 

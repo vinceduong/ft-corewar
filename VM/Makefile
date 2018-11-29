@@ -12,9 +12,9 @@
 
 .PHONY : all clean fclean re up
 
-CC = @gcc $(INCLUDES) $(FLAGS) 
+CC = @gcc $(INCLUDES) $(FLAGS) $(NCURSES)
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra
 
 NCURSES = -lncurses
 
@@ -37,6 +37,10 @@ SRCS = 	./sources/tools/error.c\
 		./sources/tools/init.c\
 		./sources/loop/loop.c\
 		./sources/main.c\
+		./sources/display/display.c\
+		./sources/display/display_winner.c\
+		./sources/display/create_visualizer.c\
+		./sources/display/display_players.c\
 		./sources/tools/dump.c\
 		./sources/tools/read_int.c\
 		./sources/tools/read_short.c\

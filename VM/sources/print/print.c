@@ -14,24 +14,24 @@
 
 void print_process(t_proc *process)
 {
-    printf("---PROCESS---\n");
-    printf("registres = [%d][%d][%d][%d]\n", process->r[0],process->r[1],process->r[2],process->r[3]);
-    printf("id = %d\n", process->id);
-    printf("carry = %d\n", process->carry);
-    printf("player = %d\n", process->player);
-    printf("opcode = %#x\n", process->opcode);
-    printf("cycle = %d\n", process->cycle);
-    printf("pc = %d\n", process->pc);
-    printf("alive = %d\n", process->alive);
-    printf("current = %p\n", process);
-    printf("next = %p\n", process->next);
-    printf("previous = %p\n", process->previous);
-    printf("-------------\n");
+   // printf("---PROCESS---\n");
+   // printf("registres = [%d][%d][%d][%d]\n", process->r[0],process->r[1],process->r[2],process->r[3]);
+   // printf("id = %d\n", process->id);
+  //  printf("carry = %d\n", process->carry);
+    //printf("player = %d\n", process->player);
+   // printf("opcode = %#x\n", process->opcode);
+   // printf("cycle = %d\n", process->cycle);
+   // printf("pc = %d\n", process->pc);
+   // printf("alive = %d\n", process->alive);
+   // printf("current = %p\n", process);
+   // printf("next = %p\n", process->next);
+   // printf("previous = %p\n", process->previous);
+   // printf("-------------\n");
 }
 
 void print_vm(t_vm *vm)
 {
-    printf("---VM---\n");
+  /*  printf("---VM---\n");
     printf("nbprocess = %d\n", vm->stack.nbprocess);
     printf("nbplayers = %d\n", vm->nbplayers);
     printf("cycle= %d\n", vm->cycles_total);
@@ -40,7 +40,7 @@ void print_vm(t_vm *vm)
     printf("pause = %d\n", vm->pause);
     printf("nb_lives = %d\n", vm->lives);
     printf("checks = %d\n", vm->die_rounds_left);
-    printf("--------\n");
+    printf("--------\n");*/
 }
 
 void print_stack(t_stack stack)

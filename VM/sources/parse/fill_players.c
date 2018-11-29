@@ -45,7 +45,7 @@ int		fill_players(char **av, t_vm *vm)
 	{
 		if (vm->players[i].p)
 		{
-			ft_printf("%d %d %s\n", i, vm->players[i].p, vm->players[i].filename);
+			//ft_printf("%d %d %s\n", i, vm->players[i].p, vm->players[i].filename);
 			fill_player(&vm->players[i], vm->players[i].filename);
 		}
 		i++;

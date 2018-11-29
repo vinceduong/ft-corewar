@@ -20,7 +20,7 @@ void		loop(t_vm *vm)
     while (1)
     {
         if (vm->flag.visu)
-            /*display(vm, step)*/;
+            display(vm, step);
         //dump(vm);
         vm->cycles_total++;
         //printf("Cycles_total = %d\n", vm->cycles_total);
@@ -30,6 +30,13 @@ void		loop(t_vm *vm)
             break;
         step++;
     }
+<<<<<<< HEAD
 	dump(vm);
     printf("J'ai fait %d cycles \nJe suis a %d cycle_to_die\n", vm->cycles_total, vm->cycles_to_die);
+=======
+    if (vm->flag.visu)
+        display_winner(&vm->display);
+	//dump(vm);
+  //  printf("J'ai fait %d cycles \nJe suis a %d cycle_to_die\n", vm->cycles_total, vm->cycles_to_die);
+>>>>>>> visu
 }
