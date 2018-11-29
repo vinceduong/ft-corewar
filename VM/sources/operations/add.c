@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:13 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/25 13:27:49 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/29 15:06:13 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void		add(t_vm *vm, t_proc *proc, t_operation *ope)
 {
-	//ft_putstr("In add\n");
+	//printf("In add : arg1 = %#x arg2 = %#x\n", proc->r[ope->param[1] - 1] , proc->r[ope->param[0] - 1]);
 	(void)vm;
-	proc->r[(size_t)ope->param[2] - 1] = (proc->r[(size_t)ope->param[1] - 1]
-		+ proc->r[(size_t)ope->param[0] - 1]);
-	proc->carry = proc->r[(size_t)ope->param[2] - 1] == 0 ? 1 : 0;
+	proc->r[ope->param[2] - 1] = (proc->r[ope->param[1] - 1]
+		+ proc->r[ope->param[0] - 1]);
+	proc->carry = proc->r[ope->param[2] - 1] == 0 ? 1 : 0;
 }

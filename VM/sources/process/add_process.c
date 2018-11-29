@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:02:08 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/25 13:25:09 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/29 15:15:02 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,12 @@ void	add_process(t_stack *stack, t_proc *process)
 {
     t_proc *tmp;
 
-    tmp = stack->start;
-    if (!tmp)
-    {
+    if (!stack->start)
         stack->start = process;
-		stack->nbprocess++;
-        return ;
-    }
-    while (tmp->next)
-        tmp = tmp->next;
-    tmp->next = process;
-    process->previous = tmp;
-    process->next = NULL;
+    tmp = stack->end;
     stack->end = process;
-    stack->nbprocess++;
+    process->previous = tmp;
+    if (tmp)
+        tmp->next = stack->end;
+	stack->nbprocess++;
 }
