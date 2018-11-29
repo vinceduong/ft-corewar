@@ -50,14 +50,14 @@ void    print_players_share(t_vm *vm)
 
     i = 0;
     top = LINES / 4 * 3 + 4;
-    left = 30;
+    left = vm->display.name_len + 7;
     while (i < vm->nbplayers)
     {
         move(top, left);
         create_jauge(i + 1, vm->ram);
         i++;
         top = top + 2;
-        getch();
+       // getch();
     }
 }
 
@@ -70,13 +70,18 @@ void    init_players(t_vm *vm)
     i = 0;
     top = LINES / 4 * 3 + 4;
     left = 3;
+    vm->display.name_len = 0;
     attron(COLOR_PAIR(5));
+    getch();
     while (i < vm->nbplayers)
     {
         move(top, left);
-        printw("%s", vm->players[i].filename);
+        printw("%s", vm->players[i].header->prog_name);
+        if (ft_strlen(vm->players[i].header->prog_name) > vm->display.name_len)
+            vm->display.name_len = ft_strlen(vm->players[i].header->prog_name);
         top = top + 2;
         i++;
+        getch();
     }
     refresh();
 }

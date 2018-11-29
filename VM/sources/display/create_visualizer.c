@@ -17,7 +17,9 @@ void    init_infos()
     move(margin_top + 12, margin_left);
     printw("CYCLES TO DIE");
     move(margin_top + 16, margin_left);
-    printw("CURRENT CYCLE");
+    printw("CYCLES LEFT");
+    move(margin_top + 20, margin_left);
+    printw("CHECKS");
     refresh();
 }
 

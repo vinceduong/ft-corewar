@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 20:07:31 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/29 13:43:58 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/29 17:36:55 by aetchego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ typedef struct	s_win
 	WINDOW		*win_down;
 	int			lines;
 	int			cols;
+	int			name_len;
 }				t_win;
 
 typedef struct	s_vm
@@ -125,7 +126,7 @@ typedef struct	s_vm
 	int			cycles_total;
 	int			cycles_left;
 	int			cycles_to_die;
-	int			die_rounds_left;
+	int			die_rounds_left; // checks
 	int			pause;
 	int			lives;
 }				t_vm;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:18:42 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/28 16:40:30 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/29 17:24:33 by aetchego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		check_stack(t_vm *vm)
     t_proc *next;
 
     tmp = vm->stack.start;
-    print_vm(vm);
+    //print_vm(vm);
     //print_stack(vm->stack);
     while (tmp)
     {

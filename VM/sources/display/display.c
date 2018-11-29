@@ -1,6 +1,6 @@
 #include "../../includes/vm.h"
 
-#define LEN 1900
+#define LEN 4096
 
 void    ft_choose_color(int player)
 {
@@ -63,7 +63,8 @@ void    print_infos(t_vm *vm)
     move_clear_print(margin_top + 8, margin_left, vm->lives);
     move_clear_print(margin_top + 12, margin_left, vm->cycles_to_die);
     move_clear_print(margin_top + 16, margin_left, vm->cycles_left);
-    getch();
+    move_clear_print(margin_top + 20, margin_left, vm->die_rounds_left);
+  //  getch();
     refresh();
 }
 
