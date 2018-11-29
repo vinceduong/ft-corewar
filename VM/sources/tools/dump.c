@@ -23,6 +23,6 @@ void	dump(t_vm *vm)
 		ft_printf("%.2x ", vm->ram[i].content);
 		(i + 1) % 32 == 0 ? ft_printf("\n") : 0;
 	}
-	ft_printf("\n\n");
+//	ft_printf("\n\n");
 	exit(1);
 }

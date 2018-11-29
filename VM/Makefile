@@ -40,6 +40,7 @@ SRCS = 	./sources/tools/error.c\
 		./sources/display/display.c\
 		./sources/display/display_winner.c\
 		./sources/display/create_visualizer.c\
+		./sources/display/display_players.c\
 		./sources/tools/dump.c\
 		./sources/tools/read_int.c\
 		./sources/tools/read_short.c\

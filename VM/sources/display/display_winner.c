@@ -4,6 +4,7 @@ void    delete_display(t_win *display)
 {
     delwin(display->win_left);
     delwin(display->win_right);
+    delwin(display->win_down);
     delwin(display->win);
     endwin();
 }
