@@ -6,12 +6,23 @@
 /*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:18:42 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/29 17:24:33 by aetchego         ###   ########.fr       */
+/*   Updated: 2018/11/29 17:51:19 by aetchego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+void reset_players(t_vm *vm)
+{
+    int i;
+
+    i = 0;
+    while (i < MAX_PLAYERS)
+    { 
+        vm->players[i].nb_live = 0;
+        i++;
+    }
+}
 int		check_stack(t_vm *vm)
 {
     t_proc *tmp;
@@ -40,5 +51,6 @@ int		check_stack(t_vm *vm)
 	//print_vm(vm);
 	vm->cycles_left = vm->cycles_to_die;
 	vm->lives = 0;
+    reset_players(vm);
 	return (vm->stack.start != NULL ? 1 : 0);
 }
