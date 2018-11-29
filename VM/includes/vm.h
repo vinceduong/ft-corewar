@@ -6,7 +6,7 @@
 /*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 20:07:31 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/29 17:36:55 by aetchego         ###   ########.fr       */
+/*   Updated: 2018/11/29 18:47:20 by aetchego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,7 @@ void					create_visualizer(t_vm *vm, t_win *display);
 void					display_winner(t_win *display);
 void    				init_players(t_vm *vm);
 void    				print_players_share(t_vm *vm);
+void					ft_choose_color(int player);
 
 /*DEBUG*/
 

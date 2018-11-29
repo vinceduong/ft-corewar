@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:33:41 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/29 16:36:35 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/29 18:28:01 by aetchego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void		loop(t_vm *vm)
     }
     if (vm->flag.visu)
         display_winner(&vm->display);
+   // display(vm, step);
 	//dump(vm);
   //  printf("J'ai fait %d cycles \nJe suis a %d cycle_to_die\n", vm->cycles_total, vm->cycles_to_die);
 }
