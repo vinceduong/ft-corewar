@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 20:07:31 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/25 13:23:58 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/29 13:43:58 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct	s_operation
 	int			opcode;
 	int			pc;
 	char		param_type[3];
-	char		param[3];
+	int 		param[3];
 	int			error;
 }				t_operation;
 

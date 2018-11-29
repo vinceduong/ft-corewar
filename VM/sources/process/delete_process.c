@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:06:35 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/25 13:25:24 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/29 15:24:50 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void		delete_process(t_stack *stack, t_proc *process)
 {
     t_proc *tmp;
+    t_proc *previous;
+    t_proc *next;
 
     tmp = stack->start;
     if (tmp == process)
@@ -25,13 +27,13 @@ void		delete_process(t_stack *stack, t_proc *process)
     }
     else
     {
-        while (tmp->next != process)
-            tmp = tmp->next;
-        tmp->next = process->next;
-        if (process->next)
-            process->next->previous = tmp;
+        previous = process->previous;
+        next = process->next;
+        previous->next = next;
+        if (next)
+            next->previous = previous;
         else
-            stack->end = tmp;
+            stack->end = previous;
     }
     stack->nbprocess--;
     free(process);
