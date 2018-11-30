@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/30 17:45:34 by vduong           ###   ########.fr        #
+#    Updated: 2018/11/30 18:14:05 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NCURSES = -lncurses
 
 NAME = corewar
 
-INCLUDES = -I ./includes/ -I ../libft/includes -I ../ft_printf/
+INCLUDES = -I ./includes/ -I ../libft -I ../ft_printf/
 
 HEADERS = ./includes/vm.h\
 		  ./includes/op.h\
@@ -30,7 +30,18 @@ LIBFT = ../libft/libft.a
 PRINTF = ../ft_printf/libftprintf.a
 
 
-SRCS = 	instructions/aff.c\
+SRCS = 	op.c\
+		check.c\
+		dump.c\
+		execute_instruction.c\
+		init.c\
+		loop.c\
+		main.c\
+		ocp.c\
+		op_functions.c\
+		process.c\
+		swap.c\
+		instructions/aff.c\
 		instructions/aritmetical.c\
 		instructions/direct_load.c\
 		instructions/direct_store.c\
@@ -42,22 +53,15 @@ SRCS = 	instructions/aff.c\
 		instructions/logical.c\
 		instructions/two_octet_to_short.c\
 		instructions/zjmp.c\
+		ncurses/change_ram_color.c\
+		ncurses/display.c\
+		ncurses/display_players.c\
+		ncurses/init.c\
+		ncurses/sleep_display.c\
 		parser/invalid_int.c\
 		parser/load_player.c\
 		parser/parser.c\
-		./check.c\
-		dump.c\
-		execute_instruction.c\
-		init.c\
-		loop.c\
-		main.c\
-		ocp.c\
-		op_functions.c\
-		process.c\
-		swap.c\
 		
-
-
 OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)

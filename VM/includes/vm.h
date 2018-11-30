@@ -6,12 +6,13 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 20:10:14 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/11/30 17:50:31 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/30 18:05:09 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
+
 
 # include "op.h"
 # include "libft.h"
@@ -89,19 +90,8 @@ typedef struct	s_vm
 	int				winner;
 }				t_vm;
 
-typedef struct	s_win
-{
-	WINDOW 		*win;
-	WINDOW		*win_left;
-	WINDOW		*win_right;
-	WINDOW		*win_down;
-	int			lines;
-	int			cols;
-}				t_win;
-
-int				ft_printf(const char *format, ...);
 void			(*g_op_functions[16])(t_vm*, t_proc*, t_instruction*);
-
+int				ft_printf(const char *format, ...);
 void			init_vm(t_vm *vm);
 void			handle_main_loop(t_vm *vm);
 
@@ -135,7 +125,7 @@ void			change_ram_color(t_vm *vm, int pc, int pc_dest, int p_id);
 void			display_players(t_vm *vm, WINDOW *info, int *line);
 void			clear_viewed(t_vm *vm, WINDOW *info, int line);
 
-//void			display_winner(t_vm *vm);
+void			display_winner(t_vm *vm);
 void			display_winner_ncurse(t_vm *vm, WINDOW *info, int line);
 
 /*

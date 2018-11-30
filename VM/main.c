@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/28 14:59:59 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/11/30 17:55:30 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/30 18:02:19 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ int		main(int argc, char **argv)
 
 	parse(argc, argv, &vm);
 	init_vm(&vm);
-	introduction(&vm);
+	if (vm.visu)
+		init_ncurses(&vm);
+	else
+		introduction(&vm);
 	handle_main_loop(&vm);
 	display_winner(&vm);
 	if (vm.visu)

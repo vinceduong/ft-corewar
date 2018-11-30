@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: gdelabro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 14:53:10 by vduong            #+#    #+#             */
-/*   Updated: 2017/11/17 14:53:13 by vduong           ###   ########.fr       */
+/*   Created: 2016/11/07 17:20:40 by gdelabro          #+#    #+#             */
+/*   Updated: 2017/03/21 16:20:54 by gdelabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,28 @@
 
 char	*ft_strtrim(char const *s)
 {
-	char	*trim;
-	size_t	len;
+	int		i;
+	int		i2;
+	int		n;
+	char	*str;
 
 	if (!s)
 		return (NULL);
-	while (*s == ' ' || *s == '\t' || *s == '\n')
-		s++;
-	if (!*s)
-		return (ft_strnew(0));
-	len = ft_strlen(s);
-	len--;
-	while (s[len] == ' ' || s[len] == '\t' || s[len] == '\n')
-		len--;
-	if (!(trim = ft_strnew(len + 1)))
-		return (NULL);
-	while (len + 1)
+	i = 0;
+	i2 = ft_strlen(s) - 1;
+	while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
+		i++;
+	while (s[i2] == ' ' || s[i2] == '\t' || s[i2] == '\n')
+		i2--;
+	if (i2 < 0)
 	{
-		trim[len] = s[len];
-		len--;
+		!(str = (char*)malloc(sizeof(*str) * 1)) ? exit(EXIT_FAILURE) : 0;
+		*str = 0;
+		return (str);
 	}
-	return (trim);
+	n = i2 - i + 1;
+	str = ft_strsub(s, i, n);
+	if (!str)
+		return (NULL);
+	return (str);
 }
