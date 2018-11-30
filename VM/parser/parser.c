@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/28 14:56:21 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/10/30 16:52:51 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:47:42 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 static void	error(const char *msg)
 {
@@ -80,7 +80,7 @@ void		parse(int argc, char **argv, t_vm *vm)
 	parse_players(argc, argv, &i, vm);
 	if (!vm->num_players)
 	{
-		ft_printf("Usage: ./corewar [-v] [-dump nbr_cycles] "
+		ft_printf("Usage: ./vm [-v] [-dump nbr_cycles] "
 					"[[-n number] champion1.cor] ...");
 		exit(1);
 	}

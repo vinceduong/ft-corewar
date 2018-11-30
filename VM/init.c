@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/02 17:17:26 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/10/30 20:47:32 by gdelabro         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:47:57 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 static void	init_player(int n, t_vm *vm)
 {

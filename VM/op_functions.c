@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   op_functions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/06 17:27:01 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/10/11 17:44:26 by afourcad         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:48:04 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 void	(*g_op_functions[16])(t_vm*, t_proc*, t_instruction*) =
 {

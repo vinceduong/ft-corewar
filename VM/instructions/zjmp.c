@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   zjmp.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/02 16:44:11 by afourcad          #+#    #+#             */
-/*   Updated: 2017/11/01 16:09:40 by gdelabro         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:45:08 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 int		mod_adr(int adr)
 {

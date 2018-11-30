@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   dump.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdelabro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 16:52:07 by gdelabro          #+#    #+#             */
-/*   Updated: 2017/10/30 19:57:08 by gdelabro         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:47:49 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 void	dump_ram(t_vm *vm)
 {

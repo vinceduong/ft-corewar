@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/02 17:56:20 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/11/01 17:42:57 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:48:07 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 void	create_process(t_vm *vm, int pc, int player_num, int no_init)
 {

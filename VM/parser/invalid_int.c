@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   invalid_int.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 19:41:35 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/10/26 16:50:28 by gdelabro         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:47:36 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 int	invalid_int(char *s)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   indirect_load.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdelabro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 17:36:12 by gdelabro          #+#    #+#             */
-/*   Updated: 2017/10/26 17:58:57 by gdelabro         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:45:03 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 void	indirect_load(t_vm *vm, t_proc *proc, t_instruction *inst)
 {
