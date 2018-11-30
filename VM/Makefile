@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
+#    By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/29 17:05:11 by vduong           ###   ########.fr        #
+#    Updated: 2018/11/30 17:22:19 by aetchego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,8 @@ SRCS = 	./sources/tools/error.c\
 		./sources/display/display.c \
 		./sources/display/display_winner.c \
 		./sources/display/create_visualizer.c\
-		./sources/display/display_players.c
+		./sources/display/display_players.c\
+		./sources/display/time_handler.c
 		
 
 

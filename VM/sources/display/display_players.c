@@ -74,7 +74,7 @@ void    init_players(t_vm *vm)
     left = 3;
     vm->display.name_len = 0;
   //  attron(COLOR_PAIR(5));
-    getch();
+ //   getch();
     while (i < vm->nbplayers)
     {
         ft_choose_color(i + 1);

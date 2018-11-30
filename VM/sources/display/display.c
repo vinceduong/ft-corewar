@@ -74,6 +74,8 @@ void    display(t_vm *vm, int step)
    //int  LI = LINES;
  //  printf("COLS = %d - cols = %d\n", COL, vm->display.cols);
    //printf("LINES = %d - lines = %d\n", LI, vm->display.lines);
+    display_pause(vm);
+    usleep(vm->speed);
     if (step == 1 /*|| COLS != vm->display.cols || LINES != vm->display.lines*/)
     {
         create_visualizer(vm, &vm->display);

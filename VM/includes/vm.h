@@ -6,7 +6,7 @@
 /*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 20:07:31 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/29 18:47:20 by aetchego         ###   ########.fr       */
+/*   Updated: 2018/11/30 18:47:50 by aetchego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ typedef struct	s_win
 	int			lines;
 	int			cols;
 	int			name_len;
+//	int			speed;
 }				t_win;
 
 typedef struct	s_vm
@@ -129,6 +130,7 @@ typedef struct	s_vm
 	int			die_rounds_left; // checks
 	int			pause;
 	int			lives;
+	int			speed;
 }				t_vm;
 
 void	(*ops[16])(t_vm*, t_proc*, t_operation*);
@@ -191,6 +193,7 @@ void					display_winner(t_win *display);
 void    				init_players(t_vm *vm);
 void    				print_players_share(t_vm *vm);
 void					ft_choose_color(int player);
+void					display_pause(t_vm *vm);
 
 /*DEBUG*/
 

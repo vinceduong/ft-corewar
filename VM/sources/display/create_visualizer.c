@@ -71,4 +71,7 @@ void    create_visualizer(t_vm *vm, t_win *display)
     init_windows(display->win, display->win_left, display->win_right, display->win_down);
     init_infos();
     init_players(vm);
+    vm->speed = 0;
+   // getch();
+    nodelay(stdscr, 1);
 }
