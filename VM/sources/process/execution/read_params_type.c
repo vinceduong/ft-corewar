@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 11:24:20 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/29 10:53:52 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/30 19:30:08 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	read_params_type(t_operation *ope, unsigned char ocp)
 		v = 0;
 		if (ope->param_type[i] == REG_CODE)
 			v = T_REG;
-		if (ope->param_type[i] == DIR_CODE)
-			v = T_DIR;
 		if (ope->param_type[i] == IND_CODE)
 			v = T_IND;
+		if (ope->param_type[i] == DIR_CODE)
+			v = T_DIR;
 		!(v & op.arg[i]) ? ope->error = 1 : 0;
 	}
 }
