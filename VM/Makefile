@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/29 17:05:11 by vduong           ###   ########.fr        #
+#    Updated: 2018/11/30 10:21:42 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS = 	./sources/tools/error.c\
 		./sources/main.c\
 		./sources/tools/dump.c\
 		./sources/tools/read_int.c\
+		./sources/tools/write_int.c\
 		./sources/tools/read_short.c\
 		./sources/operations/add.c\
 		./sources/operations/aff.c\
@@ -76,6 +77,7 @@ SRCS = 	./sources/tools/error.c\
 
 
 OBJS = $(SRCS:.c=.o)
+
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF) 

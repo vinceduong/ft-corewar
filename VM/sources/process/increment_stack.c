@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:00:57 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/27 11:23:34 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/30 10:47:40 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ void	increment_stack(t_vm *vm)
             load_next_instruction(vm, tmp);
         tmp->cycle--;
         if (!tmp->cycle)
-        {
             execute_process(vm, tmp);
-        }
         tmp = tmp->previous;
     }
 }

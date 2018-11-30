@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 11:28:34 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/25 13:24:52 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/11/30 15:01:11 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	read_params_content(t_operation *ope, int n, t_vm *vm, int *pc)
 {
 	if (!ope->param_type[n])
 		return ;
+	//  printf("pc = %d, op->opcode = %#x\n", *pc, ope->opcode);
 	if (ope->param_type[n] == REG_CODE)
 	{
 		ope->param[n] = vm->ram[*pc].content;
@@ -25,12 +26,21 @@ void	read_params_content(t_operation *ope, int n, t_vm *vm, int *pc)
 	}
 	else if (ope->param_type[n] == IND_CODE || op_tab[ope->opcode - 1].d2)
 	{
+		// printf("in IND\n");
 		ope->param[n] = read_short(vm, *pc);
 		*pc = mod_pc(*pc + 2);
 	}
 	else if (ope->param_type[n] == DIR_CODE)
 	{
+		// printf("in DIR\n");
 		ope->param[n] = read_int(vm, *pc);
 		*pc = mod_pc(*pc + 4);
 	}
+	/*if (ope->param[n] < 0)
+	{
+		printf("after error pc = %d\n", *pc);
+		printf("ope->param_type[%d] = %d\n", n, ope->param_type[n]);
+		printf("ope->param[%d] = %d\n", n, ope->param[n]);
+		exit(1);
+	}*/
 }

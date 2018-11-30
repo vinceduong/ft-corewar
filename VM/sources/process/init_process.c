@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:18:09 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/29 16:35:58 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/30 11:37:03 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_proc		*init_process(t_vm *vm, int pc, int player)
 	vm->ram[pc].glow = 1;
     new->cycle = new->opcode > 0 && new->opcode <= 16 ?
 		op_tab[(int)new->opcode - 1].cycles : 1;
+    ft_bzero(&new->r[1], (REG_NUMBER - 1) * sizeof(int));
     new->player = player;
     new->next = NULL;
     new->previous = NULL;

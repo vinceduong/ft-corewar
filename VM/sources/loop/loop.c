@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:33:41 by vduong            #+#    #+#             */
-/*   Updated: 2018/11/29 17:54:02 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/30 14:56:35 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void		loop(t_vm *vm)
     {
         if (vm->flag.visu)
             display(vm, step);
-        //dump(vm);
+        // if (vm->cycles_total == 101)
+            // dump(vm);
         vm->cycles_total++;
         //printf("Cycles_total = %d\n", vm->cycles_total);
         increment_stack(vm);
