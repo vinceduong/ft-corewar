@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 20:07:31 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/29 13:43:58 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/30 11:11:29 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ int						check_stack(t_vm *vm);
 void					loop(t_vm *vm);
 short					read_short(t_vm *vm, int pc);
 int						read_int(t_vm *vm, int pc);
+void					 write_int(t_vm *vm, int adress, int n, int player);	
 void					execute_process(t_vm *vm, t_proc *proc);
 void					load_next_instruction(t_vm *vm, t_proc *proc);
 void					read_params_content(t_operation *ope, int n, t_vm *vm, int *pc);

@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:13:24 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/29 15:06:23 by vduong           ###   ########.fr       */
+/*   Updated: 2018/11/30 12:36:36 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,21 @@
 void		direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	int pc;
+	int n;
 
-	//ft_putstr("In direct_load\n");
+	// ft_putstr("In direct_load\n");
 	if (ope->param_type[0] == IND_CODE)
 	{
 		pc = mod_pc(proc->pc + (ope->param[0] % IDX_MOD));
+		n = read_int(vm, pc);
+		// printf("n = %d\n", n);
 		proc->r[ope->param[1] - 1] = read_int(vm, pc);
 	}
 	else
+	{
 		proc->r[ope->param[1] - 1] = ope->param[0];
+		// printf("ope->param[0] = %d\n", ope->param[0]);		
+	}
 	proc->carry = !ope->param[0] ? 1 : 0;
 }
 
@@ -32,7 +38,7 @@ void		indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 	int a;
 	int b;
 
-	//ft_putstr("In indirect_load\n");
+	// ft_putstr("In indirect_load\n");
 	if (ope->param_type[0] == REG_CODE)
 		a = proc->r[ope->param[0] - 1];
 	else
@@ -49,7 +55,7 @@ void		long_indirect_load(t_vm *vm, t_proc *proc, t_operation *ope)
 	int a;
 	int b;
 
-	//ft_putstr("In long_indirect_load\n");
+	// ft_putstr("In long_indirect_load\n");
 	if (ope->param_type[0] == REG_CODE)
 		a = proc->r[ope->param[0] - 1];
 	else
@@ -66,7 +72,7 @@ void		long_direct_load(t_vm *vm, t_proc *proc, t_operation *ope)
 {
 	int pc;
 
-	//ft_putstr("In direct_load\n");
+	// ft_putstr("In direct_load\n");
 	if (ope->param_type[0] == IND_CODE)
 	{
 		pc = mod_pc(proc->pc + ope->param[0]);

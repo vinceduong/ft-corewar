@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_process.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:54:13 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/28 14:55:54 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/11/30 13:03:13 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		execute_process(t_vm *vm, t_proc *proc)
 	ope.opcode = proc->opcode;
 	if (ope.opcode < 1 || ope.opcode > 16)
 	{
-		proc->pc = (proc->pc + 1) % MEM_SIZE;
+		proc->pc = mod_pc(pc + 1);
 		return ;
 	}
 	pc = mod_pc(proc->pc + 1);
