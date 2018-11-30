@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ocp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 17:06:30 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/11/01 16:46:18 by gdelabro         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:48:01 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 void	test_valid_param(t_instruction *inst, t_op o)
 {

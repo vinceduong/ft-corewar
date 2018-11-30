@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   aff.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 19:04:15 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/10/19 19:44:12 by gdelabro         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:46:12 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 void	aff(t_vm *vm, t_proc *proc, t_instruction *inst)
 {

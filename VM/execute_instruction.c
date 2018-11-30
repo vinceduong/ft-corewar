@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute_instruction.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 15:22:51 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/11/01 17:05:32 by gdelabro         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:47:52 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 static void	tab_to_param_types(char param_types[3], char arg[3])
 {

@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/30 10:21:42 by vduong           ###   ########.fr        #
+#    Updated: 2018/11/30 17:45:34 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,49 +30,31 @@ LIBFT = ../libft/libft.a
 PRINTF = ../ft_printf/libftprintf.a
 
 
-SRCS = 	./sources/tools/error.c\
-		./sources/tools/init.c\
-		./sources/loop/loop.c\
-		./sources/main.c\
-		./sources/tools/dump.c\
-		./sources/tools/read_int.c\
-		./sources/tools/write_int.c\
-		./sources/tools/read_short.c\
-		./sources/operations/add.c\
-		./sources/operations/aff.c\
-		./sources/operations/bitwise.c\
-		./sources/operations/fork.c\
-		./sources/operations/live.c\
-		./sources/operations/load.c\
-		./sources/operations/sub.c\
-		./sources/operations/op.c\
-		./sources/operations/store.c\
-		./sources/operations/tab_function.c\
-		./sources/operations/zjump.c\
-		./sources/parse/check_args.c\
-		./sources/parse/check_dump.c\
-		./sources/parse/check_is_cor.c\
-		./sources/parse/check_is_flag.c\
-		./sources/parse/check_n.c\
-		./sources/parse/fill_players.c\
-		./sources/parse/parse.c\
-		./sources/process/add_process.c\
-		./sources/process/check_stack.c\
-		./sources/process/delete_process.c\
-		./sources/process/execution/load_next_instruction.c\
-		./sources/process/execution/read_params_type.c\
-		./sources/process/execution/execute_process.o\
-		./sources/process/execution/read_params_content.c\
-		./sources/process/execution/tab_to_type.c\
-		./sources/process/increment_stack.c\
-		./sources/process/init_process.c\
-		./sources/tools/swap.c\
-		./sources/print/print.c\
-		./sources/tools/mod_pc.c\
-		./sources/display/display.c \
-		./sources/display/display_winner.c \
-		./sources/display/create_visualizer.c\
-		./sources/display/display_players.c
+SRCS = 	instructions/aff.c\
+		instructions/aritmetical.c\
+		instructions/direct_load.c\
+		instructions/direct_store.c\
+		instructions/fork.c\
+		instructions/four_octets_to_int.c\
+		instructions/indirect_load.c\
+		instructions/indirect_store.c\
+		instructions/live.c\
+		instructions/logical.c\
+		instructions/two_octet_to_short.c\
+		instructions/zjmp.c\
+		parser/invalid_int.c\
+		parser/load_player.c\
+		parser/parser.c\
+		./check.c\
+		dump.c\
+		execute_instruction.c\
+		init.c\
+		loop.c\
+		main.c\
+		ocp.c\
+		op_functions.c\
+		process.c\
+		swap.c\
 		
 
 

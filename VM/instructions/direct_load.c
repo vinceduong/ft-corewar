@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   direct_load.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afourcad <afourcad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/29 16:15:07 by afourcad          #+#    #+#             */
-/*   Updated: 2017/10/19 18:08:44 by gdelabro         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:44:57 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 void	direct_load(t_vm *vm, t_proc *proc, t_instruction *inst)
 {

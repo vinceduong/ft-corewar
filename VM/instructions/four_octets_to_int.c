@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   four_octets_to_int.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/02 18:45:56 by afourcad          #+#    #+#             */
-/*   Updated: 2017/10/19 19:44:32 by gdelabro         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:45:02 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 int	four_octets_to_int(unsigned char ram[MEM_SIZE], int pc)
 {

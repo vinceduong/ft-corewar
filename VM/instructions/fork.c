@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 16:20:24 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/11/01 17:18:47 by gdelabro         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:45:01 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 void	cor_fork(t_vm *vm, t_proc *proc, t_instruction *inst)
 {

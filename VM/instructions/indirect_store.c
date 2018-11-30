@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   indirect_store.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdelabro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 17:36:04 by gdelabro          #+#    #+#             */
-/*   Updated: 2017/11/01 17:09:32 by gdelabro         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:45:04 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vm.h"
 
 void	indirect_store(t_vm *vm, t_proc *proc, t_instruction *inst)
 {
@@ -36,6 +36,4 @@ void	indirect_store(t_vm *vm, t_proc *proc, t_instruction *inst)
 		(proc->r[inst->params[0] - 1] & 0x00ff0000) >> 16;
 	vm->ram[mod_adr(proc->pc + ((param_2 + param_3) % IDX_MOD))] =
 		(proc->r[inst->params[0] - 1] & 0xff000000) >> 24;
-	vm->visu ? change_ram_color(vm, proc->pc,
-		mod_adr(proc->pc + ((param_2 + param_3) % IDX_MOD)), proc->id) : 0;
 }
