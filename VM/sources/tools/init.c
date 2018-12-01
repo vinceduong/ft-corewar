@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/02 17:17:26 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/12/01 12:41:16 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/01 13:41:59 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	fill_player_in_ram(t_case *ram, t_player *player)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
 	while (i < player->header.prog_size)
@@ -34,9 +34,7 @@ static void	init_player(int n, t_vm *vm)
 	player->nb_live = 0;
 	player->last_live = 0;
 	pc = n * MEM_SIZE / vm->num_players;
-	printf("yo\n");
 	fill_player_in_ram(vm->ram + pc, player);
-	printf("yo\n");
 	create_process(vm, pc, player->number, 0);
 }
 

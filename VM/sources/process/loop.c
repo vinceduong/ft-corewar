@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/02 17:15:47 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/12/01 13:32:35 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/01 13:40:49 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		handle_processes(t_vm *vm)
 	while (process)
 	{
 		if (!process->cycles)
-			pre_execute_instruction(process, vm);
+			load_instruction(process, vm);
 		process->cycles--;
 		if (!process->cycles)
 			execute_instruction(process, vm);

@@ -6,13 +6,13 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/01 13:33:40 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/01 15:08:49 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all clean fclean re up
 
-CC = @gcc $(INCLUDES)
+CC = @gcc $(INCLUDES) $(FLAGS)
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -51,18 +51,22 @@ SRCS = 	sources/main.c\
 		sources/process/check.c\
 		sources/process/execute_instruction.c\
 		sources/process/loop.c\
-		sources/process/ocp.c\
-		sources/process/process.c\
+		sources/process/create_process.c\
+		sources/process/kill_process.c\
+		sources/process/load_instruction.c\
+		sources/process/read_dyn_params_types.c\
+		sources/process/read_static_params_types.c\
+		sources/process/read_param_content.c\
 		sources/tools/dump.c\
 		sources/tools/init.c\
 		sources/tools/swap.c\
-		
+
 OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF) 
-	@$(CC) $(FLAGS) $(NCURSES) $(OBJS) -o $(NAME) $(LIBFT) $(PRINTF)
+	@$(CC) $(NCURSES) $(OBJS) -o $(NAME) $(LIBFT) $(PRINTF)
 	@printf "\033[032mCOREWAR : ./corewar Created\033[0m\n"
 
 $(LIBFT) :

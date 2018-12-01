@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 20:10:14 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/12/01 13:30:13 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/01 15:07:08 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,12 @@ void			loop(t_vm *vm);
 void			create_process(t_vm *vm, int pc, int player_num, int no_init);
 void			kill_process(t_proc *process, t_vm *vm);
 void			execute_instruction(t_proc *process, t_vm *vm);
-void			pre_execute_instruction(t_proc *process, t_vm *vm);
+void			load_instruction(t_proc *process, t_vm *vm);
 void			ocp_to_param_types(t_instruction *inst, unsigned char ocp);
+void			read_dyn_params_types(t_instruction *inst, unsigned char ocp);
+void			read_static_params_types(char params_types[3], char arg[3]);
+void	read_param_content(t_instruction *inst, int n, 
+		t_case ram[MEM_SIZE], int *pc);
 int				check_processes(t_vm *vm);
 int				invalid_int(char *s);
 void			dump_ram(t_vm *vm);
