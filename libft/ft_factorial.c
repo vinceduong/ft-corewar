@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   two_octet_to_short.c                               :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/02 18:09:19 by afourcad          #+#    #+#             */
-/*   Updated: 2018/12/01 12:03:49 by vduong           ###   ########.fr       */
+/*   Created: 2017/11/06 15:44:54 by vduong            #+#    #+#             */
+/*   Updated: 2017/11/22 11:24:40 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vm.h"
-
-short	two_octets_to_short(t_case ram[MEM_SIZE], int pc)
+int	ft_factorial(int nb)
 {
-	char	tab[2];
-
-	tab[0] = ram[(pc + 1) % MEM_SIZE].content;
-	tab[1] = ram[pc].content;
-	return (*((short*)tab));
+	if (nb < 0 || nb > 12)
+		return (0);
+	else if (nb == 0)
+		return (1);
+	else
+		return (nb * ft_factorial(nb - 1));
 }

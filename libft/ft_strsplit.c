@@ -3,77 +3,74 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdelabro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 18:45:55 by gdelabro          #+#    #+#             */
-/*   Updated: 2017/03/21 16:19:54 by gdelabro         ###   ########.fr       */
+/*   Created: 2017/11/17 14:51:44 by vduong            #+#    #+#             */
+/*   Updated: 2017/11/17 14:52:42 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_nbmot(char const *s, char c)
+static char		**ft_newsplit(size_t size)
 {
-	int i;
-	int nb;
+	char	**split;
 
-	nb = 0;
-	i = -1;
-	while (s[++i])
-	{
-		if ((s[i] == c && s[i + 1] != c && s[i + 1]) || (i == 0 && s[i] != c))
-			nb++;
-	}
-	return (nb);
+	if (!(split = (char **)malloc((size + 1) * sizeof(char *))))
+		return (NULL);
+	split[size] = NULL;
+	while (size--)
+		((unsigned char *)split)[size] = 0;
+	return (split);
 }
 
-static char	*ft_remplir(char const *s, char c, int i)
+static size_t	ft_nbline(char const *s, char c)
 {
-	char	*str;
-	int		i2;
-	int		i3;
+	size_t nbline;
 
-	i2 = 0;
-	if (s[i] == c)
-		i++;
-	i3 = i;
-	while (s[i] != c && s[i])
+	nbline = 0;
+	while (*s)
 	{
-		i2++;
-		i++;
+		if (*s != c && (*(s - 1) == c || !*(s - 1)))
+			nbline++;
+		s++;
 	}
-	!(str = (char*)malloc(sizeof(*str) * i2 + 1)) ? exit(EXIT_FAILURE) : 0;
-	i2 = 0;
-	while (s[i3] && s[i3] != c)
-		str[i2++] = s[i3++];
-	str[i2] = '\0';
-	return (str);
+	return (nbline);
 }
 
-char		**ft_strsplit(char const *s, char c)
+static size_t	ft_sizeofline(char const *s, char c)
 {
+	size_t size;
+
+	size = 0;
+	while (s[size] != c && s[size])
+		size++;
+	return (size);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	char	**split;
 	int		i;
-	int		i2;
-	char	**tab;
+	int		j;
 
-	if (!s || ft_nbmot(s, c) == 0)
+	i = -1;
+	j = 0;
+	if (!s)
 		return (NULL);
-	i2 = 0;
-	i = 0;
-	if (!(tab = (char**)malloc(sizeof(*tab) * ft_nbmot(s, c) + 1)))
+	if (!(split = ft_newsplit(ft_nbline(s, c))))
 		return (NULL);
-	while (s[i])
+	while (*s)
 	{
-		if (i == 0 && s[i] != c)
-			i2 = 1;
-		else if ((s[i] == c && s[i + 1] != c) && (s[i + 1]))
-			tab[i2++] = ft_remplir(s, c, i);
-		i++;
+		if ((*(s - 1) == c || !*(s - 1)) && *s != c)
+		{
+			if (!(split[++i] = ft_strnew(ft_sizeofline(s, c))))
+				return (NULL);
+			j = 0;
+		}
+		if (*s != c)
+			split[i][j++] = *s;
+		s++;
 	}
-	if (s[0] != c)
-		tab[0] = ft_remplir(s, c, 0);
-	tab[i2] = 0;
-	if (!tab)
-		return (NULL);
-	return (tab);
+	return (split);
 }

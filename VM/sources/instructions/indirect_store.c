@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 17:36:04 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/12/01 12:02:46 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/01 13:30:55 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	indirect_store(t_vm *vm, t_proc *proc, t_instruction *inst)
 	int		param_3;
 
 	if (inst->param_types[1] == IND_CODE)
-		param_2 = four_octets_to_int(vm->ram,
+		param_2 = read_int(vm->ram,
 			mod_adr(proc->pc + (inst->params[1] % IDX_MOD)));
 	else if (inst->param_types[1] == REG_CODE)
 		param_2 = proc->r[inst->params[1] - 1];

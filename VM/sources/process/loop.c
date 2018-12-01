@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/02 17:15:47 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/12/01 12:46:13 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/01 13:32:35 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void			loop(t_vm *vm)
 			break ;
 	}
 	vm->win = 1;
-	//dump_ram(vm);
 	printf("Total cycles = %d\n", vm->cycles_total);
+	dump_ram(vm);
 }
