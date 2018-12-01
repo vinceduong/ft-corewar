@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 20:10:14 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/11/30 18:05:09 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/01 12:46:21 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@ typedef struct	s_instruction
 	int				invalid;
 }				t_instruction;
 
+typedef struct	s_case
+{
+	unsigned char	content;
+	int				player;
+	int				glow;
+}				t_case;
+
 typedef struct	s_proc
 {
 	int				r[REG_NUMBER];
@@ -59,25 +66,23 @@ typedef struct	s_proc
 	char			opcode;
 	int				id;
 	struct s_proc	*next;
+	struct s_proc	*previous;
 }				t_proc;
 
 typedef struct	s_vm
 {
-	unsigned char	ram_glow[MEM_SIZE];
-	unsigned char	ram[MEM_SIZE];
-	unsigned char	ram_color[MEM_SIZE];
-	unsigned char	ram_viewed[MEM_SIZE];
+	t_case			ram[MEM_SIZE];
 	t_proc			*processes;
 	int				num_processes;
 	int				proc_created;
 	int				num_players;
 	t_player		players[MAX_PLAYERS];
-	int				cycle_to_die;
-	int				num_lives;
-	int				tot_lives;
-	int				check_cycles;
-	int				checks;
-	int				cycle;
+	int				cycles_to_die;
+	int				lives_current;
+	int				lives_total;
+	int				cycles_left;
+	int				checks_left;
+	int				cycles_total;
 	int				dump_cycle;
 	int				show_lives;
 	int				win;
@@ -90,55 +95,52 @@ typedef struct	s_vm
 	int				winner;
 }				t_vm;
 
-void			(*g_op_functions[16])(t_vm*, t_proc*, t_instruction*);
-int				ft_printf(const char *format, ...);
-void			init_vm(t_vm *vm);
-void			handle_main_loop(t_vm *vm);
 
-void			create_process(t_vm *vm, int pc, int player_num, int no_init);
-void			kill_process(t_proc *process, t_vm *vm);
-
-void			execute_instruction(t_proc *process, t_vm *vm);
-void			pre_execute_instruction(t_proc *process, t_vm *vm);
-
-void			ocp_to_param_types(t_instruction *inst, unsigned char ocp);
-
-int				check_processes(t_vm *vm);
-
+/*
+** PARSER
+*/
 void			parse(int argc, char **argv, t_vm *vm);
 void			load_player(t_player *p, const char *name, t_vm *vm);
+
+/*
+** GENERAL
+*/
+
+int				ft_printf(const char *format, ...);
+void			init_vm(t_vm *vm);
+void			loop(t_vm *vm);
+void			create_process(t_vm *vm, int pc, int player_num, int no_init);
+void			kill_process(t_proc *process, t_vm *vm);
+void			execute_instruction(t_proc *process, t_vm *vm);
+void			pre_execute_instruction(t_proc *process, t_vm *vm);
+void			ocp_to_param_types(t_instruction *inst, unsigned char ocp);
+int				check_processes(t_vm *vm);
 int				invalid_int(char *s);
-
 void			dump_ram(t_vm *vm);
-
 int				swap_int(int n);
 unsigned int	swap_uint(unsigned int n);
 short			swap_short(short n);
-
-short			two_octets_to_short(unsigned char ram[MEM_SIZE], int pc);
-int				four_octets_to_int(unsigned char ram[MEM_SIZE], int pc);
-
+short			two_octets_to_short(t_case ram[MEM_SIZE], int pc);
+int				four_octets_to_int(t_case ram[MEM_SIZE], int pc);
 void			init_ncurses(t_vm *vm);
 int				sleep_display(t_vm *vm);
 void			display_ram(t_vm *vm);
 void			change_ram_color(t_vm *vm, int pc, int pc_dest, int p_id);
 void			display_players(t_vm *vm, WINDOW *info, int *line);
 void			clear_viewed(t_vm *vm, WINDOW *info, int line);
-
 void			display_winner(t_vm *vm);
 void			display_winner_ncurse(t_vm *vm, WINDOW *info, int line);
 
 /*
-** Instructions
+** INSTRUCTIONS
 */
 
+void			(*g_op_functions[16])(t_vm*, t_proc*, t_instruction*);
 void			add(t_vm *vm, t_proc *proc, t_instruction *inst);
 void			sub(t_vm *vm, t_proc *proc, t_instruction *inst);
-
-void			cor_and(t_vm *vm, t_proc *proc, t_instruction *inst);
-void			cor_or(t_vm *vm, t_proc *proc, t_instruction *inst);
-void			cor_xor(t_vm *vm, t_proc *proc, t_instruction *inst);
-
+void			log_and(t_vm *vm, t_proc *proc, t_instruction *inst);
+void			log_or(t_vm *vm, t_proc *proc, t_instruction *inst);
+void			log_xor(t_vm *vm, t_proc *proc, t_instruction *inst);
 void			direct_load(t_vm *vm, t_proc *proc, t_instruction *inst);
 void			direct_store(t_vm *vm, t_proc *proc, t_instruction *inst);
 void			indirect_load(t_vm *vm, t_proc *proc, t_instruction *inst);
@@ -146,14 +148,11 @@ void			indirect_store(t_vm *vm, t_proc *proc, t_instruction *inst);
 void			long_indirect_load(t_vm *vm, t_proc *proc, t_instruction *inst);
 void			long_direct_load(t_vm *vm, t_proc *proc, t_instruction *inst);
 void			long_direct_store(t_vm *vm, t_proc *proc, t_instruction *inst);
-
 void			live(t_vm *vm, t_proc *proc, t_instruction *inst);
 void			zjmp(t_vm *vm, t_proc *proc, t_instruction *inst);
 int				mod_adr(int adr);
-
-void			cor_fork(t_vm *vm, t_proc *src, t_instruction *inst);
-void			cor_lfork(t_vm *vm, t_proc *src, t_instruction *inst);
-
+void			proc_fork(t_vm *vm, t_proc *src, t_instruction *inst);
+void			proc_lfork(t_vm *vm, t_proc *src, t_instruction *inst);
 void			aff(t_vm *vm, t_proc *proc, t_instruction *inst);
 
 #endif

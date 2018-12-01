@@ -1,0 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/02 17:17:26 by lde-moul          #+#    #+#             */
+/*   Updated: 2018/12/01 12:41:16 by vduong           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "vm.h"
+
+static void	fill_player_in_ram(t_case *ram, t_player *player)
+{
+	int i;
+
+	i = 0;
+	while (i < player->header.prog_size)
+	{
+		ram[i].content = player->prog[i];
+		ram[i].player = player->number;
+		i++;
+	}
+}
+
+static void	init_player(int n, t_vm *vm)
+{
+	t_player	*player;
+	int			pc;
+
+	player = &vm->players[n];
+	player->nb_live = 0;
+	player->last_live = 0;
+	pc = n * MEM_SIZE / vm->num_players;
+	printf("yo\n");
+	fill_player_in_ram(vm->ram + pc, player);
+	printf("yo\n");
+	create_process(vm, pc, player->number, 0);
+}
+
+void		init_vm(t_vm *vm)
+{
+	int	i;
+
+	ft_bzero(vm->ram, MEM_SIZE * sizeof(t_case));
+	vm->processes = NULL;
+	vm->num_processes = 0;
+	i = 0;
+	while (i < vm->num_players)
+	{
+		init_player(i, vm);
+		i++;
+	}
+	vm->cycles_total = 0;
+	vm->win = 0;
+	vm->winner = 0;
+	vm->cycles_to_die = CYCLE_TO_DIE;
+	vm->cycles_left = vm->cycles_to_die;
+	vm->lives_current = 0;
+	vm->lives_total = 0;
+	vm->checks_left = MAX_CHECKS;
+}
