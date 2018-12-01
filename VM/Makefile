@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/30 18:14:05 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/01 11:19:56 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,37 +30,32 @@ LIBFT = ../libft/libft.a
 PRINTF = ../ft_printf/libftprintf.a
 
 
-SRCS = 	op.c\
-		check.c\
-		dump.c\
-		execute_instruction.c\
-		init.c\
-		loop.c\
-		main.c\
-		ocp.c\
-		op_functions.c\
-		process.c\
-		swap.c\
-		instructions/aff.c\
-		instructions/aritmetical.c\
-		instructions/direct_load.c\
-		instructions/direct_store.c\
-		instructions/fork.c\
-		instructions/four_octets_to_int.c\
-		instructions/indirect_load.c\
-		instructions/indirect_store.c\
-		instructions/live.c\
-		instructions/logical.c\
-		instructions/two_octet_to_short.c\
-		instructions/zjmp.c\
-		ncurses/change_ram_color.c\
-		ncurses/display.c\
-		ncurses/display_players.c\
-		ncurses/init.c\
-		ncurses/sleep_display.c\
-		parser/invalid_int.c\
-		parser/load_player.c\
-		parser/parser.c\
+SRCS = 	sources/main.c\
+		sources/instructions/aff.c\
+		sources/instructions/aritmetical.c\
+		sources/instructions/direct_load.c\
+		sources/instructions/direct_store.c\
+		sources/instructions/fork.c\
+		sources/instructions/four_octets_to_int.c\
+		sources/instructions/indirect_load.c\
+		sources/instructions/indirect_store.c\
+		sources/instructions/live.c\
+		sources/instructions/logical.c\
+		sources/instructions/op.c\
+		sources/instructions/op_functions.c\
+		sources/instructions/two_octet_to_short.c\
+		sources/instructions/zjmp.c\
+		sources/parser/invalid_int.c\
+		sources/parser/load_player.c\
+		sources/parser/parser.c\
+		sources/process/check.c\
+		sources/process/execute_instruction.c\
+		sources/process/loop.c\
+		sources/process/ocp.c\
+		sources/process/process.c\
+		sources/tools/dump.c\
+		sources/tools/init.c\
+		sources/tools/swap.c\
 		
 OBJS = $(SRCS:.c=.o)
 
