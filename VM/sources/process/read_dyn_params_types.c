@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ocp.c                                              :+:      :+:    :+:   */
+/*   read_dyn_params_types.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 17:06:30 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/11/30 18:02:22 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/01 14:10:14 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ void	test_valid_param(t_instruction *inst, t_op o)
 	}
 }
 
-void	ocp_to_param_types(t_instruction *inst, unsigned char ocp)
+void	read_dyn_params_types(t_instruction *inst, unsigned char ocp)
 {
-	t_arg_type	*pt;
+	t_arg_type	*params_types;
 	t_op		o;
 
-	pt = inst->param_types;
+	params_types = inst->param_types;
 	o = op_tab[inst->opcode - 1];
-	pt[0] = ocp >> 6;
-	pt[1] = o.nb_param >= 2 ? (ocp >> 4) & 3 : 0;
-	pt[2] = o.nb_param >= 3 ? (ocp >> 2) & 3 : 0;
+	params_types[0] = ocp >> 6;
+	params_types[1] = o.nb_param >= 2 ? (ocp >> 4) & 3 : 0;
+	params_types[2] = o.nb_param >= 3 ? (ocp >> 2) & 3 : 0;
 	test_valid_param(inst, o);
 }
