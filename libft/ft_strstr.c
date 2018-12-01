@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdelabro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/06 17:06:26 by gdelabro          #+#    #+#             */
-/*   Updated: 2016/11/07 16:02:28 by gdelabro         ###   ########.fr       */
+/*   Created: 2017/11/17 14:52:53 by vduong            #+#    #+#             */
+/*   Updated: 2017/11/21 12:05:47 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,28 @@
 
 char	*ft_strstr(const char *big, const char *little)
 {
-	int i;
-	int i2;
-	int i3;
+	int		i;
+	int		j;
+	char	*pt;
 
-	i2 = 0;
 	i = 0;
-	if (big[0] == '\0' && little[0] == '\0')
-		return ((char *)&big[i]);
-	while (big[i])
+	pt = 0;
+	if (little[i] == '\0')
+		return ((char *)big);
+	while (big[i] != '\0')
 	{
-		i3 = i;
-		i2 = 0;
-		while (big[i3] == little[i2] && big[i3] && little[i2])
+		if (big[i] == little[0])
 		{
-			i2++;
-			i3++;
+			pt = (char *)big + i;
+			j = 0;
+			while (big[i + j] == little[j])
+			{
+				if (little[j + 1] == '\0')
+					return (pt);
+				j++;
+			}
+			pt = 0;
 		}
-		if (!little[i2])
-			return ((char *)&big[i]);
 		i++;
 	}
 	return (0);

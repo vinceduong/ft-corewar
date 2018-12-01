@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/01 11:19:56 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/01 13:33:40 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NCURSES = -lncurses
 
 NAME = corewar
 
-INCLUDES = -I ./includes/ -I ../libft -I ../ft_printf/
+INCLUDES = -I ./includes/ -I ../libft/includes -I ../ft_printf/
 
 HEADERS = ./includes/vm.h\
 		  ./includes/op.h\
@@ -36,14 +36,14 @@ SRCS = 	sources/main.c\
 		sources/instructions/direct_load.c\
 		sources/instructions/direct_store.c\
 		sources/instructions/fork.c\
-		sources/instructions/four_octets_to_int.c\
+		sources/tools/read_int.c\
 		sources/instructions/indirect_load.c\
 		sources/instructions/indirect_store.c\
 		sources/instructions/live.c\
 		sources/instructions/logical.c\
 		sources/instructions/op.c\
 		sources/instructions/op_functions.c\
-		sources/instructions/two_octet_to_short.c\
+		sources/tools/read_short.c\
 		sources/instructions/zjmp.c\
 		sources/parser/invalid_int.c\
 		sources/parser/load_player.c\
@@ -72,7 +72,7 @@ $(PRINTF) :
 	@make -C ../ft_printf
 
 clean :
-	@rm -f $(OBJS) $(VISUOBJS)
+	@rm -f $(OBJS)
 	@echo "\033[32mCOREWAR : Object files Removed\033[0m"
 
 fclean : clean

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_char.c                                         :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdelabro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/04 19:22:40 by gdelabro          #+#    #+#             */
-/*   Updated: 2017/05/04 19:34:24 by gdelabro         ###   ########.fr       */
+/*   Created: 2017/11/22 11:47:01 by vduong            #+#    #+#             */
+/*   Updated: 2017/11/22 11:49:40 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	add_char(char *str, char c)
+int	ft_max(int *tab, int size)
 {
-	int i;
+	int max;
 
-	i = ft_strlen(str);
-	str[i + 1] = 0;
-	while (i != -1 && (str[i] = str[i - 1]))
-		--i;
-	str[0] = c;
+	max = tab[--size];
+	while (size--)
+	{
+		if (tab[size] > max)
+			max = tab[size];
+	}
+	return (max);
 }

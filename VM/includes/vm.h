@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 20:10:14 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/12/01 12:46:21 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/01 13:30:13 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ void			dump_ram(t_vm *vm);
 int				swap_int(int n);
 unsigned int	swap_uint(unsigned int n);
 short			swap_short(short n);
-short			two_octets_to_short(t_case ram[MEM_SIZE], int pc);
-int				four_octets_to_int(t_case ram[MEM_SIZE], int pc);
+short			read_short(t_case ram[MEM_SIZE], int pc);
+int				read_int(t_case ram[MEM_SIZE], int pc);
 void			init_ncurses(t_vm *vm);
 int				sleep_display(t_vm *vm);
 void			display_ram(t_vm *vm);

@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_fd.c                                     :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdelabro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/15 11:59:41 by gdelabro          #+#    #+#             */
-/*   Updated: 2016/11/15 14:07:38 by gdelabro         ###   ########.fr       */
+/*   Created: 2017/11/22 11:27:13 by vduong            #+#    #+#             */
+/*   Updated: 2017/11/22 11:36:49 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <unistd.h>
-#include <fcntl.h>
-
-int		ft_strlen_fd(int fd)
+int		ft_power(int n, int exp)
 {
-	int		i;
-	char	lettre;
-
-	i = 0;
-	while (read(fd, &lettre, 1))
-		++i;
-	return (i);
+	if (exp < 0)
+		return (0);
+	else if (exp == 1)
+		return (n);
+	else
+		return (n * (ft_power(n, exp - 1)));
 }

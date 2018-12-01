@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   four_octets_to_int.c                               :+:      :+:    :+:   */
+/*   read_int.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/02 18:45:56 by afourcad          #+#    #+#             */
-/*   Updated: 2018/12/01 12:03:17 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/01 13:28:23 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int	four_octets_to_int(t_case ram[MEM_SIZE], int pc)
+int	read_int(t_case ram[MEM_SIZE], int pc)
 {
 	char	tab[4];
 

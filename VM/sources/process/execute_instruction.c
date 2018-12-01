@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/04 15:22:51 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/12/01 12:26:50 by vduong           ###   ########.fr       */
+/*   Created: 2018/12/01 13:31:46 by vduong            #+#    #+#             */
+/*   Updated: 2018/12/01 13:31:46 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "vm.h"
 
@@ -54,12 +55,12 @@ static void	read_param(t_instruction *inst, int n,
 	}
 	else if (inst->param_types[n] == IND_CODE || op_tab[inst->opcode - 1].d2)
 	{
-		inst->params[n] = two_octets_to_short(ram, *pc);
+		inst->params[n] = read_short(ram, *pc);
 		*pc = (*pc + 2) % MEM_SIZE;
 	}
 	else if (inst->param_types[n] == DIR_CODE)
 	{
-		inst->params[n] = four_octets_to_int(ram, *pc);
+		inst->params[n] = read_int(ram, *pc);
 		*pc = (*pc + 4) % MEM_SIZE;
 	}
 }

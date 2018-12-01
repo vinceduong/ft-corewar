@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_taille_nb.c                                     :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdelabro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/28 16:10:56 by gdelabro          #+#    #+#             */
-/*   Updated: 2017/05/05 20:14:58 by gdelabro         ###   ########.fr       */
+/*   Created: 2017/11/06 15:45:55 by vduong            #+#    #+#             */
+/*   Updated: 2017/11/09 09:48:01 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		ft_taille_nb(long int nb, int base)
+int	ft_sqrt(int nb)
 {
-	int i;
+	int sqrt;
+	int nres;
 
-	i = 0;
-	while (nb && ++i)
-		nb /= base;
-	return (i);
-}
-
-int		ft_taille_size_t(size_t nb, int base)
-{
-	int i;
-
-	i = 0;
-	while (nb && ++i)
-		nb /= base;
-	return (i);
+	sqrt = 1;
+	nres = 1;
+	if (nb <= 0)
+		return (0);
+	else
+	{
+		while (nres < nb)
+		{
+			sqrt++;
+			nres = sqrt * sqrt;
+		}
+		if (nres != nb)
+			return (0);
+		return (sqrt);
+	}
 }

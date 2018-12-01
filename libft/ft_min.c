@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putlong.c                                       :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdelabro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vduong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/14 12:42:56 by gdelabro          #+#    #+#             */
-/*   Updated: 2017/02/14 12:42:59 by gdelabro         ###   ########.fr       */
+/*   Created: 2017/11/22 11:40:19 by vduong            #+#    #+#             */
+/*   Updated: 2017/11/22 11:49:51 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putlong(long long n)
+int	ft_min(int *tab, int size)
 {
-	if (n == -9223372036854775807)
-		ft_putstr("-9223372036854775807");
-	else if (n < 0 && (n *= -1))
-		ft_putchar('-');
-	if (n > 9)
-		ft_putnbr(n / 10);
-	ft_putchar(n % 10 + 48);
+	int min;
+
+	min = tab[--size];
+	while (size--)
+	{
+		if (tab[size] < min)
+			min = tab[size];
+	}
+	return (min);
 }
