@@ -6,19 +6,16 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 17:24:06 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/30 18:56:25 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/03 16:54:05 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void ft_get_content(t_asm *f)
+void error(char *str)
 {
-	while (f->tab[f->x][f->y])
-	{
-
-		f->x++;
-	}
+	ft_printf("Error : %s", str);
+	exit (1);
 }
 
 void ft_file_is_valid(t_asm *f, int fd)
@@ -37,6 +34,8 @@ void ft_file_is_valid(t_asm *f, int fd)
 	}
 	f->tab = ft_strsplit(tmp, '\n');
 	ft_strdel(tmp);
+	ft_get_name(f);
+	ft_get_comment(f);
 	ft_get_content(f);
 }
 
@@ -61,13 +60,13 @@ void malloc_size(t_asm *f)
 	i = 0;
 
 	f->content[0] = (char*)malloc(sizeof(char) * 4);
-	f->content[1] = (char*)malloc(sizeof(char) * NAME_SIZE);
-	f->content[2] = (char*)malloc(sizeof(char) * COMENT_SIZE);
-	f->content[3] = (char*)malloc(sizeof(char) * 700);
-	while (i < 3)
-	{
-		ft_bzero(f->content[i], )
-	}
+	ft_bzero(f->content[0], 4);
+	f->content[1] = (char*)malloc(sizeof(char) * PROG_NAME_LENGTH);
+	ft_bzero(f->content[0], PROG_NAME_LENGTH);
+	f->content[2] = (char*)malloc(sizeof(char) * COMMENT_LENGTH);
+	ft_bzero(f->content[0], COMMENT_LENGTH);
+	f->content[3] = (char*)malloc(sizeof(char) * CHAMP_MAX_SIZE);
+	ft_bzero(f->content[0], CHAMP_MAX_SIZE);
 }
 
 void ft_start(t_asm *f, char **av)
@@ -90,6 +89,7 @@ void ft_start(t_asm *f, char **av)
 		}
 		else
 			ft_printf("The File : %s is not a valide File\n", av[i]);
+		ft_printf("Writing output program to %s.cor", ft_strstr(av[i], ".s"));
 		i++;
 	}
 }
