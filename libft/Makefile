@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/22 14:02:33 by vduong            #+#    #+#              #
-#    Updated: 2018/11/24 10:38:48 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/03 17:26:57 by thescriv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,7 @@ SRCS = ./ft_atoi.c\
 	  ./ft_power.c \
 	  ./ft_min.c \
 	  ./ft_max.c \
+	  ./get_next_line.c\
 
 
 OBJS = $(SRCS:.c=.o)
