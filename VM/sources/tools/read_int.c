@@ -5,20 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 16:32:46 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/24 09:49:04 by vduong           ###   ########.fr       */
+/*   Created: 2017/10/02 18:45:56 by afourcad          #+#    #+#             */
+/*   Updated: 2018/12/01 13:28:23 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int			read_int(t_vm *vm, int pc)
+int	read_int(t_case ram[MEM_SIZE], int pc)
 {
-	char tab[4];
+	char	tab[4];
 
-	tab[0] = vm->ram[(pc + 3) % MEM_SIZE].content;
-	tab[1] = vm->ram[(pc + 2) % MEM_SIZE].content;
-	tab[2] = vm->ram[(pc + 1) % MEM_SIZE].content;
-	tab[3] = vm->ram[pc].content;
+	tab[0] = ram[(pc + 3) % MEM_SIZE].content;
+	tab[1] = ram[(pc + 2) % MEM_SIZE].content;
+	tab[2] = ram[(pc + 1) % MEM_SIZE].content;
+	tab[3] = ram[pc].content;
 	return (*((int*)tab));
 }

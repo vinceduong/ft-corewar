@@ -30,6 +30,7 @@ void initialiser()
     noecho();             /* Desactive l'affichage des caracteres saisis */
     keypad(stdscr, TRUE);	/* Active les touches specifiques */
     refresh();            /* Met a jour l'affichage */
+    nodelay(stdscr, 0);
     curs_set(FALSE);      /* Masque le curseur */
 }
 
@@ -72,6 +73,6 @@ void    create_visualizer(t_vm *vm, t_win *display)
     init_infos();
     init_players(vm);
     vm->speed = 0;
-   // getch();
+    getch();
     nodelay(stdscr, 1);
 }

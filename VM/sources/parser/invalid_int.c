@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dump.c                                             :+:      :+:    :+:   */
+/*   invalid_int.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/18 16:52:07 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/11/30 18:02:48 by vduong           ###   ########.fr       */
+/*   Created: 2017/10/20 19:41:35 by lde-moul          #+#    #+#             */
+/*   Updated: 2018/11/30 18:03:18 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void	dump_ram(t_vm *vm)
+int	invalid_int(char *s)
 {
-	int i;
+	int	len;
 
-	i = -1;
-	while (++i < MEM_SIZE)
+	if (*s == '+')
+		s++;
+	len = ft_strlen(s);
+	if (*s != '-' ?
+	len > 10 || (len == 10 && ft_strncmp(s, "2147483647", 10) > 0) :
+	len > 11 || (len == 11 && ft_strncmp(s, "-2147483648", 11) > 0))
+		return (1);
+	if (*s == '-')
+		s++;
+	while (*s)
 	{
-		i % 32 == 0 ? ft_printf("0x%.4x : ", i) : 0;
-		ft_printf("%.2x ", vm->ram[i]);
-		(i + 1) % 32 == 0 ? ft_putendl("") : 0;
+		if (!(ft_isdigit(*s)))
+			return (1);
+		s++;
 	}
-	exit(1);
+	return (0);
 }

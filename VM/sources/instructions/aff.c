@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dump.c                                             :+:      :+:    :+:   */
+/*   aff.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/18 16:52:07 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/11/30 18:02:48 by vduong           ###   ########.fr       */
+/*   Created: 2017/10/18 19:04:15 by lde-moul          #+#    #+#             */
+/*   Updated: 2018/12/01 11:21:52 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void	dump_ram(t_vm *vm)
+void	aff(t_vm *vm, t_proc *proc, t_instruction *inst)
 {
-	int i;
-
-	i = -1;
-	while (++i < MEM_SIZE)
-	{
-		i % 32 == 0 ? ft_printf("0x%.4x : ", i) : 0;
-		ft_printf("%.2x ", vm->ram[i]);
-		(i + 1) % 32 == 0 ? ft_putendl("") : 0;
-	}
-	exit(1);
+	if (!vm->visu)
+		ft_printf("%c", proc->r[inst->params[0] - 1] % 256);
+	proc->carry = proc->r[inst->params[0] - 1] % 256 == 0 ? 1 : 0;
 }

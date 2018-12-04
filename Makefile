@@ -1,26 +1,26 @@
 VM = ./vm/corewar
 
-ASM = ./asm/asm
-
 LIBFT = libft/libft.a
 
-all : $(VM) $(ASM) $(LIBFT)
-	make -C libft
-	make -C vm
-	make -C asm
+PRINTF = ft_printf/libftprintf.a
+
+all : $(VM) $(LIBFT) $(PRINTF)
+	@make -C libft
+	@make -C ft_printf
+	@make -C vm
 
 clean :
-	make clean -C libft
-	make clean -C vm
-	make clean -C asm
+	@make clean -C libft
+	@make clean -C ft_printf
+	@make clean -C vm
 
 fclean :
-	make fclean -C libft
-	make fclean -C vm
-	make fclean -C asm
+	@make fclean -C libft
+	@make fclean -C ft_printf
+	@make fclean -C vm
 
 re :
-	make re -C libft
-	make re -C vm
-	make re -C asm
+	@make re -C libft
+	@make re -C ft_printf
+	@make re -C vm
 	
