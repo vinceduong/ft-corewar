@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:49:51 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/04 14:49:55 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/04 16:43:55 by aetchego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,16 @@ static void		handle_processes(t_vm *vm)
 
 void			loop(t_vm *vm)
 {
+	int step;
+
+	step = 1;
 	while (1)
 	{
 		vm->sbs = 0;
 		//dump_ram(vm);
+		if (vm->visu == 1)
+			display(vm, step);
+		step++;
 		if (vm->cycles_total == vm->dump_cycle && !vm->visu)
 			dump_ram(vm);
 		vm->cycles_total++;

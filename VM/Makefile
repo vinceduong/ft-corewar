@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
+#    By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/01 15:08:49 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/04 16:45:19 by aetchego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ SRCS = 	sources/main.c\
 		sources/tools/dump.c\
 		sources/tools/init.c\
 		sources/tools/swap.c\
+		sources/display/display.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 20:10:14 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/12/01 15:07:08 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/04 16:58:02 by aetchego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void			load_instruction(t_proc *process, t_vm *vm);
 void			ocp_to_param_types(t_instruction *inst, unsigned char ocp);
 void			read_dyn_params_types(t_instruction *inst, unsigned char ocp);
 void			read_static_params_types(char params_types[3], char arg[3]);
-void	read_param_content(t_instruction *inst, int n, 
+void			read_param_content(t_instruction *inst, int n, 
 		t_case ram[MEM_SIZE], int *pc);
 int				check_processes(t_vm *vm);
 int				invalid_int(char *s);
@@ -126,6 +126,7 @@ unsigned int	swap_uint(unsigned int n);
 short			swap_short(short n);
 short			read_short(t_case ram[MEM_SIZE], int pc);
 int				read_int(t_case ram[MEM_SIZE], int pc);
+void    		display(t_vm *vm, int step);
 void			init_ncurses(t_vm *vm);
 int				sleep_display(t_vm *vm);
 void			display_ram(t_vm *vm);
@@ -134,6 +135,7 @@ void			display_players(t_vm *vm, WINDOW *info, int *line);
 void			clear_viewed(t_vm *vm, WINDOW *info, int line);
 void			display_winner(t_vm *vm);
 void			display_winner_ncurse(t_vm *vm, WINDOW *info, int line);
+void   			print_players_share(t_vm *vm);
 
 /*
 ** INSTRUCTIONS
