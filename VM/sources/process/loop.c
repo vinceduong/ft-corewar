@@ -6,7 +6,7 @@
 /*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:49:51 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/04 16:43:55 by aetchego         ###   ########.fr       */
+/*   Updated: 2018/12/04 17:38:13 by aetchego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void			loop(t_vm *vm)
 		if (vm->cycles_total == vm->dump_cycle && !vm->visu)
 			dump_ram(vm);
 		vm->cycles_total++;
-		printf("Cycle = %d, Number of processes = %d\n", vm->cycles_total, vm->num_processes);
+	//	printf("Cycle = %d, Number of processes = %d\n", vm->cycles_total, vm->num_processes);
 		handle_processes(vm);
 		vm->cycles_left--;
 		if (!vm->cycles_left && !check_processes(vm))

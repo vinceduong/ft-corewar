@@ -6,7 +6,7 @@
 #    By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/04 16:45:19 by aetchego         ###   ########.fr        #
+#    Updated: 2018/12/04 18:11:59 by aetchego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,10 @@ SRCS = 	sources/main.c\
 		sources/tools/dump.c\
 		sources/tools/init.c\
 		sources/tools/swap.c\
-		sources/display/display.c
+		sources/display/display.c\
+		sources/display/create_visualizer.c\
+		sources/display/display_players.c\
+		sources/display/display_pause.c
 
 OBJS = $(SRCS:.c=.o)
 
