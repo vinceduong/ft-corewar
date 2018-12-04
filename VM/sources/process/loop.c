@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/02 17:15:47 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/12/01 13:40:49 by vduong           ###   ########.fr       */
+/*   Created: 2018/12/04 14:49:51 by vduong            #+#    #+#             */
+/*   Updated: 2018/12/04 14:49:55 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void			loop(t_vm *vm)
 		if (vm->cycles_total == vm->dump_cycle && !vm->visu)
 			dump_ram(vm);
 		vm->cycles_total++;
+		printf("Cycle = %d, Number of processes = %d\n", vm->cycles_total, vm->num_processes);
 		handle_processes(vm);
 		vm->cycles_left--;
 		if (!vm->cycles_left && !check_processes(vm))
