@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 17:24:35 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/03 17:29:31 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/04 16:19:14 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,17 @@
 # include <stdarg.h>
 # include <wchar.h>
 
-#define MAGIC 0
-#define NAME 1
-#define COMMENT 2
-#define OPE 3
+#define NAME 0
+#define COMMENT 1
+#define OPE 2
 
 typedef struct	s_asm
 {
 	int			*part;
+	int			fd;
 	int			name;
 	int			comment;
+	unsigned int			magic;
 	int			instruction;
 	int			**label;
 	char		**content;
@@ -42,8 +43,16 @@ typedef struct	s_asm
 	int			y;
 }				t_asm;
 
-void			ft_get_name(t_asm *f);
-void			ft_get_comment(t_asm *f);
+void			ft_get_length(t_asm *f, char *name, char *comment);
+char			*ft_strjoinfree(char *s1, char *s2);
+int ft_check_file(t_asm *f, char *str);
 void			error(char *str);
+void			free_the_whole_word(t_asm *f);
+void			ft_start(t_asm *f, char **av, int ac);
+void			error(char *str);
+void ft_program(t_asm *f);
+void malloc_size(t_asm *f);
+void ft_file_is_valid(t_asm *f, int fd);
+unsigned int	swap_uint(unsigned int n);
 
 #endif
