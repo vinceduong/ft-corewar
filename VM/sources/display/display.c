@@ -14,7 +14,6 @@ void    ft_choose_color(int player)
         attron(COLOR_PAIR(7));
     else if (player == 4)
         attron(COLOR_PAIR(8));
-
 }
 
 void    print_ram(t_case *ram)
@@ -60,10 +59,10 @@ void    print_infos(t_vm *vm)
     attron(COLOR_PAIR(5));
     move_clear_print(margin_top, margin_left, vm->num_players);
     move_clear_print(margin_top + 4, margin_left, vm->num_processes);
-    move_clear_print(margin_top + 8, margin_left, vm->lives);
+    move_clear_print(margin_top + 8, margin_left, vm->lives_current);
     move_clear_print(margin_top + 12, margin_left, vm->cycles_to_die);
     move_clear_print(margin_top + 16, margin_left, vm->cycles_left);
-    move_clear_print(margin_top + 20, margin_left, vm->die_rounds_left);
+    move_clear_print(margin_top + 20, margin_left, vm->checks_left);
   //  getch();
     refresh();
 }
@@ -74,7 +73,7 @@ void    display(t_vm *vm, int step)
    //int  LI = LINES;
  //  printf("COLS = %d - cols = %d\n", COL, vm->display.cols);
    //printf("LINES = %d - lines = %d\n", LI, vm->display.lines);
-  //  display_pause(vm);
+    display_pause(vm);
     usleep(vm->speed);
     if (step == 1 /*|| COLS != vm->display.cols || LINES != vm->display.lines*/)
     {

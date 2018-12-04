@@ -6,7 +6,7 @@
 /*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 20:10:14 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/12/04 16:58:02 by aetchego         ###   ########.fr       */
+/*   Updated: 2018/12/04 18:11:28 by aetchego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,17 @@ typedef struct	s_proc
 	struct s_proc	*previous;
 }				t_proc;
 
+typedef struct	s_win
+{
+	WINDOW 		*win;
+	WINDOW		*win_left;
+	WINDOW		*win_right;
+	WINDOW		*win_down;
+	int			lines;
+	int			cols;
+	size_t		name_len;
+}				t_win;
+
 typedef struct	s_vm
 {
 	t_case			ram[MEM_SIZE];
@@ -89,12 +100,12 @@ typedef struct	s_vm
 	int				visu;
 	int				speed;
 	int				pause;
+	t_win			display;
 	struct timeval	last_display;
 	int				sbs;
 	t_proc			*viewed_process;
 	int				winner;
 }				t_vm;
-
 
 /*
 ** PARSER
@@ -136,6 +147,10 @@ void			clear_viewed(t_vm *vm, WINDOW *info, int line);
 void			display_winner(t_vm *vm);
 void			display_winner_ncurse(t_vm *vm, WINDOW *info, int line);
 void   			print_players_share(t_vm *vm);
+void    		create_visualizer(t_vm *vm, t_win *display);
+void			init_players(t_vm *vm);
+void    		ft_choose_color(int player);
+void    		display_pause(t_vm *vm);
 
 /*
 ** INSTRUCTIONS
