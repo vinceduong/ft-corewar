@@ -34,7 +34,7 @@ void    print_ram(t_case *ram)
             move(col++, 4);
             stop = 3;
         }
-        ft_choose_color(ram[i].pid);
+        ft_choose_color(ram[i].player);
         printw("%.2x ", ram[i]);
         stop = stop + 3;
         i++;
@@ -58,8 +58,8 @@ void    print_infos(t_vm *vm)
     margin_top = LINES / 5;
     margin_left = (COLS / 5) * 4 + 32;
     attron(COLOR_PAIR(5));
-    move_clear_print(margin_top, margin_left, vm->nbplayers);
-    move_clear_print(margin_top + 4, margin_left, vm->stack.nbprocess);
+    move_clear_print(margin_top, margin_left, vm->num_players);
+    move_clear_print(margin_top + 4, margin_left, vm->num_processes);
     move_clear_print(margin_top + 8, margin_left, vm->lives);
     move_clear_print(margin_top + 12, margin_left, vm->cycles_to_die);
     move_clear_print(margin_top + 16, margin_left, vm->cycles_left);
@@ -74,7 +74,7 @@ void    display(t_vm *vm, int step)
    //int  LI = LINES;
  //  printf("COLS = %d - cols = %d\n", COL, vm->display.cols);
    //printf("LINES = %d - lines = %d\n", LI, vm->display.lines);
-    display_pause(vm);
+  //  display_pause(vm);
     usleep(vm->speed);
     if (step == 1 /*|| COLS != vm->display.cols || LINES != vm->display.lines*/)
     {
