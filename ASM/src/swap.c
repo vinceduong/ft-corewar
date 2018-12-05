@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:26:23 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/05 19:17:13 by thescriv         ###   ########.fr       */
+/*   Created: 2018/12/05 19:15:47 by thescriv          #+#    #+#             */
+/*   Updated: 2018/12/05 19:16:46 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int ft_labchar(char c)
+int				swap_int(int n)
 {
-	int i;
-
-	i = -1;
-	while (LABEL_CHARS[++i])
-	{
-		if (LABEL_CHARS[i] == c)
-			return (1);
-	}
-	return(0);
+	return (((n & 0x000000ff) << 24)
+		| ((n & 0x0000ff00) << 8)
+		| ((n & 0x00ff0000) >> 8)
+		| ((n & 0xff000000) >> 24));
 }
 
-char *ft_strjoinfree(char *s1, char *s2)
+unsigned int	swap_uint(unsigned int n)
 {
-	char *tmp;
-
-	tmp = ft_strjoin(s1, s2);
-	ft_strdel(&s1);
-	return (tmp);
+	return (((n & 0x000000ff) << 24)
+		| ((n & 0x0000ff00) << 8)
+		| ((n & 0x00ff0000) >> 8)
+		| ((n & 0xff000000) >> 24));
 }
 
-void error(char *str)
+short			swap_short(short n)
 {
-	ft_putstr("Error : ");
-	ft_putstr(str);
-	ft_putchar('\n');
-	exit (1);
+	return (((n & 0x00ff) << 8)
+		| ((n & 0xff00) >> 8));
 }

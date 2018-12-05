@@ -6,7 +6,7 @@
 #    By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/04 14:30:47 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/05 01:58:50 by tescriva         ###   ########.fr        #
+#    Updated: 2018/12/05 19:17:35 by thescriv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,8 @@ SRCS = 	./src/main.c \
 		./src/ft_ope_arg.c \
 		./src/op.c \
 		./src/test_arg.c \
+		./src/ft_write_to_cor.c \
+		./src/swap.c \
 
 
 
