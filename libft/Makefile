@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vduong <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/22 14:02:33 by vduong            #+#    #+#              #
-#    Updated: 2017/11/22 14:02:41 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/05 21:55:36 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,16 +89,18 @@ SRC = ./ft_atoi.c\
 OBJ = $(SRC:.c=.o)
 
 $(NAME):
-	$(CC) -c $(FLAGS) $(SRC) -I./includes
-	ar r $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@$(CC) -c $(FLAGS) $(SRC) -I./includes
+	@ar r $(NAME) $(OBJ)
+	@anlib $(NAME)
+	@printf "\033[032mLIBFT : libft.a Created\033[0m\n"
 
 all : $(NAME)
 
 clean :
-	/bin/rm -rf $(OBJ)
+	@/bin/rm -rf $(OBJ)
+	@printf "\033[032mLIBFT : Object Files Removed\033[0m\n"
 
 fclean :clean
-	/bin/rm -rf $(NAME)
-
+	@/bin/rm -rf $(NAME)
+	@printf "\033[032mLIBFT : libft.a Removed\033[0m\n"
 re:fclean all

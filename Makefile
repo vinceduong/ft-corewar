@@ -4,10 +4,16 @@ LIBFT = libft/libft.a
 
 PRINTF = ft_printf/libftprintf.a
 
-all : $(VM) $(LIBFT) $(PRINTF)
-	@make -C libft
-	@make -C ft_printf
+all : $(LIBFT) $(PRINTF) $(VM) 
+	
+$(VM):
 	@make -C vm
+
+$(LIBFT):
+	@make -C libft
+
+$(PRINTF):
+	@make -C ft_printf
 
 clean :
 	@make clean -C libft
@@ -23,4 +29,3 @@ re :
 	@make re -C libft
 	@make re -C ft_printf
 	@make re -C vm
-	
