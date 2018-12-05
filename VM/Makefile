@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+         #
+#    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/04 18:11:59 by aetchego         ###   ########.fr        #
+#    Updated: 2018/12/05 21:49:09 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF) 
+$(NAME) : $(SRCS) $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF) 
 	@$(CC) $(NCURSES) $(OBJS) -o $(NAME) $(LIBFT) $(PRINTF)
 	@printf "\033[032mCOREWAR : ./corewar Created\033[0m\n"
 

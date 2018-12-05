@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:49:51 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/04 17:38:13 by aetchego         ###   ########.fr       */
+/*   Updated: 2018/12/05 22:24:55 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void			loop(t_vm *vm)
 	{
 		vm->sbs = 0;
 		//dump_ram(vm);
-		if (vm->visu == 1)
+		if (vm->visu)
 			display(vm, step);
 		step++;
 		if (vm->cycles_total == vm->dump_cycle && !vm->visu)
