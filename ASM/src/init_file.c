@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:43:18 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/04 16:19:22 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/05 00:49:18 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void ft_file_is_valid(t_asm *f, int fd)
 		else
 			n++;
 	}
-	f->x = n;
+	f->x = ft_strstr(f->tab[n], NAME_CMD_STRING)
+		|| ft_strstr(f->tab[n], COMMENT_CMD_STRING) ? n + 1 : n;
 }
 
 void malloc_size(t_asm *f)
