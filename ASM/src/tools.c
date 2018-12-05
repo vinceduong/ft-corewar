@@ -6,11 +6,24 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:26:23 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/04 16:19:10 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/05 00:38:10 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+int ft_labchar(char c)
+{
+	int i;
+
+	i = -1;
+	while (LABEL_CHARS[++i])
+	{
+		if (LABEL_CHARS[i] == c)
+			return (1);
+	}
+	return(0);
+}
 
 char *ft_strjoinfree(char *s1, char *s2)
 {

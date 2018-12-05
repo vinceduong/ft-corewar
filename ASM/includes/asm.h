@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 17:24:35 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/04 16:19:14 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/05 01:58:09 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,40 @@
 #define COMMENT 1
 #define OPE 2
 
+typedef struct s_operation
+{
+	char			*name;
+	char			*p[3];
+	int				param[3];
+	int				t_arg[3];
+	int				value[3];
+	int				nb_param;
+	int				id;
+}				t_operation;
+
+typedef struct s_lab
+{
+	char	*name;
+	int		n;
+	int		i;
+	int		num;
+}			t_lab;
+
 typedef struct	s_asm
 {
+	t_lab *l;
+	t_operation ope;
+	int label;
 	int			*part;
 	int			fd;
 	int			name;
 	int			comment;
 	unsigned int			magic;
 	int			instruction;
-	int			**label;
 	char		**content;
 	char		*filename;
 	char		**tab;
+	int			ope_size;
 	int			error;
 	int			x;
 	int			y;
@@ -54,5 +76,8 @@ void ft_program(t_asm *f);
 void malloc_size(t_asm *f);
 void ft_file_is_valid(t_asm *f, int fd);
 unsigned int	swap_uint(unsigned int n);
+int ft_labchar(char c);
+void ft_ope_arg(char *str, t_asm *f);
+void ft_test_arg(t_asm *f);
 
 #endif

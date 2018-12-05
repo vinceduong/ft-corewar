@@ -6,7 +6,7 @@
 #    By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/04 14:30:47 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/04 15:52:14 by thescriv         ###   ########.fr        #
+#    Updated: 2018/12/05 01:58:50 by tescriva         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,10 @@ SRCS = 	./src/main.c \
 		./src/tools.c \
 		./src/name_and_comment.c \
 		./src/init_file.c \
-		./src/ft_program.c
+		./src/ft_program.c \
+		./src/ft_ope_arg.c \
+		./src/op.c \
+		./src/test_arg.c \
 
 
 
