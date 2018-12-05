@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 17:24:35 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/05 01:58:09 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/12/05 19:17:02 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,15 @@ typedef struct	s_asm
 	int			fd;
 	int			name;
 	int			comment;
+	int			num;
 	unsigned int			magic;
 	int			instruction;
 	char		**content;
 	char		*filename;
 	char		**tab;
 	int			ope_size;
-	int			error;
+	int			no_error;
+	int test;
 	int			x;
 	int			y;
 }				t_asm;
@@ -69,7 +71,6 @@ void			ft_get_length(t_asm *f, char *name, char *comment);
 char			*ft_strjoinfree(char *s1, char *s2);
 int ft_check_file(t_asm *f, char *str);
 void			error(char *str);
-void			free_the_whole_word(t_asm *f);
 void			ft_start(t_asm *f, char **av, int ac);
 void			error(char *str);
 void ft_program(t_asm *f);
@@ -79,5 +80,9 @@ unsigned int	swap_uint(unsigned int n);
 int ft_labchar(char c);
 void ft_ope_arg(char *str, t_asm *f);
 void ft_test_arg(t_asm *f);
+void ft_write_prog(t_asm *f);
+unsigned int	swap_uint(unsigned int n);
+short			swap_short(short n);
+int				swap_int(int n);
 
 #endif
