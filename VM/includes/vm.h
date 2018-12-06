@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 20:10:14 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/12/06 10:49:16 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/06 11:31:54 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <errno.h>
 # include <sys/time.h>
 # include <ncurses.h>
-
 
 typedef struct		s_player
 {
@@ -133,7 +132,13 @@ unsigned int		swap_uint(unsigned int n);
 short				swap_short(short n);
 short				read_short(t_case ram[MEM_SIZE], int pc);
 int					read_int(t_case ram[MEM_SIZE], int pc);
-void				display(t_vm *vm, int step);
+
+
+/*
+** DISPLAY
+*/
+
+void				display(t_vm *vm);
 void				init_ncurses(t_vm *vm);
 int					sleep_display(t_vm *vm);
 void				display_ram(t_vm *vm);

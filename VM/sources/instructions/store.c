@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 13:25:16 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/05 21:46:01 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/06 11:21:14 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	direct_store(t_vm *vm, t_proc *proc, t_instruction *inst)
 	{
 		value =  proc->r[inst->params[0] - 1];
 		adress = proc->pc + (inst->params[1] % IDX_MOD);
-		write_int(vm, adress, value, proc->id);
+		write_int(vm, adress, value, vm->ram[proc->pc].player);
 	}
 	else
 		proc->r[inst->params[1] - 1] = proc->r[inst->params[0] - 1];
@@ -58,6 +58,5 @@ void	indirect_store(t_vm *vm, t_proc *proc, t_instruction *inst)
 	else
 		param_3 = inst->params[2];
 	adress = proc->pc + ((param_2 + param_3) % IDX_MOD);
-	write_int(vm, proc->r[inst->params[0] - 1], adress, proc->id);
-
+	write_int(vm, proc->r[inst->params[0] - 1], adress, vm->ram[proc->pc].player);
 }

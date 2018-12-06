@@ -67,7 +67,7 @@ void    print_infos(t_vm *vm)
     refresh();
 }
 
-void    display(t_vm *vm, int step)
+void    display(t_vm *vm)
 {
   // int COL = COLS;
    //int  LI = LINES;
@@ -75,13 +75,10 @@ void    display(t_vm *vm, int step)
    //printf("LINES = %d - lines = %d\n", LI, vm->display.lines);
     display_pause(vm);
     usleep(vm->speed);
-    if (step == 1 /*|| COLS != vm->display.cols || LINES != vm->display.lines*/)
-    {
-        create_visualizer(vm, &vm->display);
+   
         //print_ram(vm->ram);
       //  vm->display.lines = LINES;
         //vm->display.cols = COLS;
-    }
     print_ram(vm->ram);
     print_infos(vm);
     print_players_share(vm);
