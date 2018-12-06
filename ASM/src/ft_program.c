@@ -6,13 +6,13 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:50:38 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/05 19:03:46 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/06 19:27:11 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void ft_add_label_name(t_asm *f, int n, int i)
+void	ft_add_label_name(t_asm *f, int n, int i)
 {
 	int l;
 	int j;
@@ -30,7 +30,7 @@ void ft_add_label_name(t_asm *f, int n, int i)
 	f->l[nl].i = i;
 }
 
-void ft_add_label(t_asm *f, int n, int i)
+void	ft_add_label(t_asm *f, int n, int i)
 {
 	f->label++;
 	f->l = !f->l ? malloc(sizeof(t_lab) * 1)
@@ -38,11 +38,11 @@ void ft_add_label(t_asm *f, int n, int i)
 	!f->l ? error("malloc Failed") : ft_add_label_name(f, n, i);
 }
 
-void ft_get_operation(t_asm *f)
+void	ft_get_operation(t_asm *f)
 {
-	int n;
-	int i;
-	char c;
+	int		n;
+	int		i;
+	char	c;
 
 	n = f->x;
 	i = 0;
@@ -60,16 +60,9 @@ void ft_get_operation(t_asm *f)
 			ft_add_label(f, n, i);
 		else
 			i = 0;
-		ft_ope_arg(f->tab[n] += i + 1, f);
+		ft_ope_arg(f->tab[n] + i + 1, f);
 		n++;
 	}
-	/*int k = -1;
-	while (++k < f->label)
-	{
-		printf("%c\n", f->tab[f->l[k].n][f->l[k].i]);
-		printf("%s\n", f->tab[f->l[k].n]);
-		printf("%s\n", f->l[k].name);
-	}*/
 	f->test = 1;
 	f->num = 0;
 	i = 0;
@@ -78,11 +71,10 @@ void ft_get_operation(t_asm *f)
 		ft_ope_arg(f->tab[n], f);
 }
 
-void ft_program(t_asm *f)
+void	write_header(t_asm *f)
 {
 	t_header e;
 
-	ft_get_operation(f);
 	f->fd = open(f->filename, O_CREAT | O_WRONLY | O_TRUNC
 		| S_IRUSR | S_IWUSR);
 	if (f->fd == -1)
@@ -91,8 +83,14 @@ void ft_program(t_asm *f)
 	e.magic = swap_uint(COREWAR_EXEC_MAGIC);
 	ft_strcpy(e.prog_name, f->content[NAME]);
 	ft_strcpy(e.comment, f->content[COMMENT]);
-	e.prog_size = swap_uint(f->ope_size);
+	e.prog_size = swap_uint(f->num);
 	write(f->fd, &e, sizeof(e));
-	printf("Writing output program to %s\n", f->filename);
+}
+
+void	ft_program(t_asm *f)
+{
+	ft_get_operation(f);
+	write_header(f);
+	ft_putendl(ft_strjoin("Writing output program to ", f->filename));
 	ft_write_prog(f);
 }

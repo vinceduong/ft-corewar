@@ -6,13 +6,13 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 16:52:05 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/04 16:12:39 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/06 18:29:07 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int ft_get_index(char *str, int i)
+int		ft_get_index(char *str, int i)
 {
 	while (str[++i])
 	{
@@ -27,7 +27,7 @@ int ft_get_index(char *str, int i)
 	return (i);
 }
 
-int ft_get_compteur(char *str, int compteur, int j)
+int		ft_get_compteur(char *str, int compteur, int j)
 {
 	while (str[++j])
 	{
@@ -42,7 +42,7 @@ int ft_get_compteur(char *str, int compteur, int j)
 	return (compteur);
 }
 
-char *ft_check_length(t_asm *f, char *str, int part)
+void	ft_check_length(t_asm *f, char *str, int part)
 {
 	int i;
 	int compteur;
@@ -67,10 +67,10 @@ char *ft_check_length(t_asm *f, char *str, int part)
 	}
 	else
 		part == 1 ? error("check name") : error("check comment");
-	return (ft_strsub(str, 0, i));
+	ft_strncpy(f->content[part == 1 ? NAME : COMMENT], str, i);
 }
 
-void ft_get_length(t_asm *f, char *name, char *comment)
+void	ft_get_length(t_asm *f, char *name, char *comment)
 {
 	int i;
 	int n;
@@ -90,8 +90,8 @@ void ft_get_length(t_asm *f, char *name, char *comment)
 	{
 		i++;
 		n++;
-		f->content[NAME] = ft_check_length(f, name + n, 1);
-		f->content[COMMENT] = ft_check_length(f, comment + i, 2);
+		ft_check_length(f, name + n, 1);
+		ft_check_length(f, comment + i, 2);
 		f->name = n > i ? 1 : 0;
 	}
 }

@@ -6,13 +6,13 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:26:23 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/05 19:17:13 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/06 18:29:56 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int ft_labchar(char c)
+int		ft_labchar(char c)
 {
 	int i;
 
@@ -25,7 +25,7 @@ int ft_labchar(char c)
 	return(0);
 }
 
-char *ft_strjoinfree(char *s1, char *s2)
+char	*ft_strjoinfree(char *s1, char *s2)
 {
 	char *tmp;
 
@@ -34,7 +34,7 @@ char *ft_strjoinfree(char *s1, char *s2)
 	return (tmp);
 }
 
-void error(char *str)
+void	error(char *str)
 {
 	ft_putstr("Error : ");
 	ft_putstr(str);

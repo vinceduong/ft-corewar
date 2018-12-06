@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 14:51:44 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/03 17:50:56 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/06 19:24:57 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ static char			*ft_fill(char const *s, char c, int i, char *tab)
 	while (s[k] != c && s[k] != '\0')
 		k++;
 	mot = (char *)malloc(sizeof(char) * (k + 1));
-	tab = (char *)malloc(sizeof(char) * (k + 1));
-	if (!tab || !mot)
+	if (!mot)
 		return (NULL);
 	k = 0;
 	while (s[i] != c && s[i] != '\0')

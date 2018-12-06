@@ -6,13 +6,13 @@
 /*   By: tescriva <tescriva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 01:34:43 by tescriva          #+#    #+#             */
-/*   Updated: 2018/12/05 18:59:43 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/06 18:29:45 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int				test_arg_label(char *str, t_asm *f)
+int			test_arg_label(char *str, t_asm *f)
 {
 	int i;
 
@@ -45,22 +45,21 @@ int		get_weigth(t_asm *f)
 	return (val);
 }
 
-int ft_test_dir(char *str, t_asm *f, int nb, int res)
+int			ft_test_dir(char *str, t_asm *f, int nb, int res)
 {
 	int i;
 	int lab;
 	int val;
 	int n;
 
-	i = 0;
+	i = -1;
 	val = 0;
 	if (ft_strlen(str) < 2 || str[0] != DIRECT_CHAR)
 	 	return (0);
 	lab = test_arg_label(++str, f);
-	printf("%d\n", lab);
 	lab != -1 && f->test ? f->ope.value[nb] = f->l[lab].num - f->num : 0;
 	n = lab == -1 && str[0] == '-' ? 1 : 0;
-	while (res && lab == -1 && str[++i])
+	while (lab == -1 && str[++i])
 	{
 		(i || !n) && (str[i] > '9' || str[i] < '0') ? res = 0 : (val *= 10);
 		i && n ? val -= str[i] - 48 : 0;
@@ -70,7 +69,7 @@ int ft_test_dir(char *str, t_asm *f, int nb, int res)
 	return (res);
 }
 
-int ft_test_ind(char *str, t_asm *f, int nb, int res)
+int			ft_test_ind(char *str, t_asm *f, int nb, int res)
 {
 	int i;
 	int lab;
@@ -82,7 +81,7 @@ int ft_test_ind(char *str, t_asm *f, int nb, int res)
 	lab = test_arg_label(str, f);
 	lab != -1 && f->test ? f->ope.value[nb] = f->l[lab].num - f->num : 0;
 	n = lab == -1 && str[0] == '-' ? 1 : 0;
-	while (res && lab == -1 && str[++i])
+	while (lab == -1 && str[++i])
 	{
 		(i || !n) && (str[i] > '9' || str[i] < '0') ? res = 0 : (val *= 10);
 		i && n ? val -= str[i] - 48 : 0;
@@ -92,7 +91,7 @@ int ft_test_ind(char *str, t_asm *f, int nb, int res)
 	return (res);
 }
 
-int ft_test_reg(char *str, t_asm *f, int nb, int res)
+int		ft_test_reg(char *str, t_asm *f, int nb, int res)
 {
 	int i;
 	int val;
@@ -111,22 +110,19 @@ int ft_test_reg(char *str, t_asm *f, int nb, int res)
 	return (res);
 }
 
-void ft_test_arg(t_asm *f)
+void	ft_test_arg(t_asm *f)
 {
 	int i;
 	int arg;
 
 	i = -1;
 	arg = 0;
-	printf("Param to check = %d\n", f->ope.nb_param);
-	printf("%d\n", f->label);
 	while (++i != f->ope.nb_param)
 	{
 		arg = 0;
 		arg += ft_test_reg(f->ope.p[i], f, i, T_REG);
 		arg += ft_test_dir(f->ope.p[i], f, i, T_DIR);
 		arg += ft_test_ind(f->ope.p[i], f, i, T_IND);
-		printf("Checking :[%s] and it's a : %d %d\n", f->ope.p[i], arg, op_tab[f->ope.id].arg[i]);
 		!(arg & op_tab[f->ope.id].arg[i]) ? error("wrong param for instruction") : 0;
 		f->ope.t_arg[i] = arg;
 	}
