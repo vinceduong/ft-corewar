@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:49:51 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/06 10:54:05 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/06 11:27:19 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,20 @@ static void		increment_processes(t_vm *vm)
 
 void			loop(t_vm *vm)
 {
-	int step;
-
-	step = 1;
+    create_visualizer(vm, &vm->display);
 	while (1)
 	{
-		//vm->sbs = 0;
-		//dump_ram(vm);
 		if (vm->visu)
-			display(vm, step);
-		step++;
+			display(vm);
 		if (vm->cycles_total == vm->dump_cycle && !vm->visu)
 			dump_ram(vm);
 		vm->cycles_total++;
-		printf("Cycle = %d, Number of processes = %d\n", vm->cycles_total, vm->num_processes);
+		//printf("Cycle = %d, Number of processes = %d\n", vm->cycles_total, vm->num_processes);
 		increment_processes(vm);
 		vm->cycles_left--;
 		if (!vm->cycles_left && !check_processes(vm))
 			break ;
 	}
 	vm->win = 1;
-	printf("Total cycles = %d\n", vm->cycles_total);
-	dump_ram(vm);
+//	dump_ram(vm);
 }
