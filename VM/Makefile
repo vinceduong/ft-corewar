@@ -6,13 +6,13 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/11/29 17:05:11 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/06 10:43:35 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all clean fclean re up
 
-CC = @gcc $(INCLUDES)
+CC = @gcc $(INCLUDES) $(FLAGS)
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -30,56 +30,48 @@ LIBFT = ../libft/libft.a
 PRINTF = ../ft_printf/libftprintf.a
 
 
-SRCS = 	./sources/tools/error.c\
-		./sources/tools/init.c\
-		./sources/loop/loop.c\
-		./sources/main.c\
-		./sources/tools/dump.c\
-		./sources/tools/read_int.c\
-		./sources/tools/read_short.c\
-		./sources/operations/add.c\
-		./sources/operations/aff.c\
-		./sources/operations/bitwise.c\
-		./sources/operations/fork.c\
-		./sources/operations/live.c\
-		./sources/operations/load.c\
-		./sources/operations/sub.c\
-		./sources/operations/op.c\
-		./sources/operations/store.c\
-		./sources/operations/tab_function.c\
-		./sources/operations/zjump.c\
-		./sources/parse/check_args.c\
-		./sources/parse/check_dump.c\
-		./sources/parse/check_is_cor.c\
-		./sources/parse/check_is_flag.c\
-		./sources/parse/check_n.c\
-		./sources/parse/fill_players.c\
-		./sources/parse/parse.c\
-		./sources/process/add_process.c\
-		./sources/process/check_stack.c\
-		./sources/process/delete_process.c\
-		./sources/process/execution/load_next_instruction.c\
-		./sources/process/execution/read_params_type.c\
-		./sources/process/execution/execute_process.o\
-		./sources/process/execution/read_params_content.c\
-		./sources/process/execution/tab_to_type.c\
-		./sources/process/increment_stack.c\
-		./sources/process/init_process.c\
-		./sources/tools/swap.c\
-		./sources/print/print.c\
-		./sources/tools/mod_pc.c\
-		./sources/display/display.c \
-		./sources/display/display_winner.c \
-		./sources/display/create_visualizer.c\
-		./sources/display/display_players.c
-		
-
+SRCS = 	sources/main.c\
+		sources/instructions/aff.c\
+		sources/instructions/aritmetical.c\
+		sources/instructions/direct_load.c\
+		sources/instructions/direct_store.c\
+		sources/instructions/fork.c\
+		sources/tools/read_int.c\
+		sources/instructions/indirect_load.c\
+		sources/instructions/indirect_store.c\
+		sources/instructions/live.c\
+		sources/instructions/logical.c\
+		sources/instructions/op.c\
+		sources/instructions/op_functions.c\
+		sources/tools/read_short.c\
+		sources/instructions/zjmp.c\
+		sources/parser/invalid_int.c\
+		sources/parser/load_player.c\
+		sources/parser/parser.c\
+		sources/process/check.c\
+		sources/process/execute_instruction.c\
+		sources/process/loop.c\
+		sources/process/create_process.c\
+		sources/process/kill_process.c\
+		sources/process/load_instruction.c\
+		sources/process/read_dyn_params_types.c\
+		sources/process/read_static_params_types.c\
+		sources/process/read_param_content.c\
+		sources/tools/dump.c\
+		sources/tools/init.c\
+		sources/tools/swap.c\
+		sources/display/display.c\
+		sources/display/create_visualizer.c\
+		sources/display/display_players.c\
+		sources/display/display_pause.c
 
 OBJS = $(SRCS:.c=.o)
+
 all : $(NAME)
 
-$(NAME) : $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF) 
-	@$(CC) $(FLAGS) $(NCURSES) $(OBJS) -o $(NAME) $(LIBFT) $(PRINTF)
+$(NAME) : $(SRCS) $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF)
+	@printf "\033[032mCOREWAR : Object files Created\033[0m\n"
+	@$(CC) $(NCURSES) $(OBJS) -o $(NAME) $(LIBFT) $(PRINTF)
 	@printf "\033[032mCOREWAR : ./corewar Created\033[0m\n"
 
 $(LIBFT) :
@@ -89,7 +81,7 @@ $(PRINTF) :
 	@make -C ../ft_printf
 
 clean :
-	@rm -f $(OBJS) $(VISUOBJS)
+	@rm -f $(OBJS)
 	@echo "\033[32mCOREWAR : Object files Removed\033[0m"
 
 fclean : clean

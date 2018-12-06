@@ -17,7 +17,9 @@ void    init_infos()
     move(margin_top + 12, margin_left);
     printw("CYCLES TO DIE");
     move(margin_top + 16, margin_left);
-    printw("CURRENT CYCLE");
+    printw("CYCLES LEFT");
+    move(margin_top + 20, margin_left);
+    printw("CHECKS");
     refresh();
 }
 
@@ -28,6 +30,7 @@ void initialiser()
     noecho();             /* Desactive l'affichage des caracteres saisis */
     keypad(stdscr, TRUE);	/* Active les touches specifiques */
     refresh();            /* Met a jour l'affichage */
+    nodelay(stdscr, 0);
     curs_set(FALSE);      /* Masque le curseur */
 }
 
@@ -69,4 +72,7 @@ void    create_visualizer(t_vm *vm, t_win *display)
     init_windows(display->win, display->win_left, display->win_right, display->win_down);
     init_infos();
     init_players(vm);
+    vm->speed = 0;
+    getch();
+    nodelay(stdscr, 1);
 }
