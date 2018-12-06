@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/28 14:56:21 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/12/06 15:45:13 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/06 16:02:14 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	parse_options(int argc, char **argv, int *i, t_vm *vm)
 			vm->show_ops = 1;
 		else if (!ft_strcmp(argv[*i], "-deaths"))
 			vm->show_deaths = 1;
-	/*
+		/*
 		else if (!ft_strcmp(argv[*i], "-pc"))
 			vm->show_pc = 0;*/
 		else
