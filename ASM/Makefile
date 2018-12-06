@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/04 14:30:47 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/06 13:09:57 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/06 19:46:30 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = @gcc $(INCLUDES)
 
 FLAGS = -Wall -Wextra -Werror
 
-NAME = ASM
+NAME = asm
 
 INCLUDES = -I ./includes/ -I ../libft/includes -I ../ft_printf/
 
