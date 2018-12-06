@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/28 14:59:59 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/12/04 17:36:10 by aetchego         ###   ########.fr       */
+/*   Updated: 2018/12/06 13:54:02 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	display_winner(t_vm *vm)
 {
-	ft_printf("Contestant %d, \"%s\" (\"%s\") has won !\n", vm->winner + 1,
-		vm->players[vm->winner].header.prog_name,
-		vm->players[vm->winner].header.comment);
+	ft_printf("Contestant %d, \"%s\", has won !\n", vm->winner + 1,
+		vm->players[vm->winner].header.prog_name);
 }
 
 void	introduction(t_vm *vm)

@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 14:15:59 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/04 14:38:01 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/06 14:52:34 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	create_process(t_vm *vm, int pc, int player_num, int no_init)
 	vm->num_processes++;
 	vm->proc_created = id;
 	process->next = vm->processes;
+	process->last_cycle_alive = vm->cycles_total;
 	process->previous = NULL;
 	if (vm->processes)
 		vm->processes->previous = process;

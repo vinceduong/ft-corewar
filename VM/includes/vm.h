@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 20:10:14 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/12/06 11:31:54 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/06 15:44:40 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct		s_proc
 	int				pc;
 	char			carry;
 	int				cycles;
+	int				last_cycle_alive;
 	int				lives;
 	int				alive;
 	char			opcode;
@@ -89,6 +90,10 @@ typedef struct		s_vm
 	int				cycles_total;
 	int				dump_cycle;
 	int				show_lives;
+	int				show_cycles;
+	int				show_ops;
+	int				show_deaths;
+	//int				show_pc;
 	int				win;
 	int				visu;
 	int				speed;

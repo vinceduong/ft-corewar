@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/28 14:56:21 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/11/30 18:03:23 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/06 15:45:13 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ static void	parse_dump(int argc, char **argv, int *i, t_vm *vm)
 static void	parse_options(int argc, char **argv, int *i, t_vm *vm)
 {
 	vm->dump_cycle = -1;
-	vm->show_lives = 1;
+	vm->show_lives = 0;
 	vm->visu = 0;
+	vm->show_deaths = 0;
+	vm->show_cycles = 0;
+	vm->show_ops = 0;
 	*i = 1;
 	while (*i < argc)
 	{
@@ -40,8 +43,17 @@ static void	parse_options(int argc, char **argv, int *i, t_vm *vm)
 			parse_dump(argc, argv, i, vm);
 		else if (!ft_strcmp(argv[*i], "-v"))
 			vm->visu = 1;
-		else if (!ft_strcmp(argv[*i], "-s"))
-			vm->show_lives = 0;
+		else if (!ft_strcmp(argv[*i], "-lives"))
+			vm->show_lives = 1;
+		else if (!ft_strcmp(argv[*i], "-cycles"))
+			vm->show_cycles = 1;
+		else if (!ft_strcmp(argv[*i], "-ops"))
+			vm->show_ops = 1;
+		else if (!ft_strcmp(argv[*i], "-deaths"))
+			vm->show_deaths = 1;
+	/*
+		else if (!ft_strcmp(argv[*i], "-pc"))
+			vm->show_pc = 0;*/
 		else
 			return ;
 		(*i)++;

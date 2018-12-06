@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:49:51 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/06 11:27:19 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/06 15:46:37 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static void		increment_processes(t_vm *vm)
 
 void			loop(t_vm *vm)
 {
-    create_visualizer(vm, &vm->display);
+	if (vm->visu)
+    	create_visualizer(vm, &vm->display);
 	while (1)
 	{
 		if (vm->visu)
@@ -38,6 +39,8 @@ void			loop(t_vm *vm)
 		if (vm->cycles_total == vm->dump_cycle && !vm->visu)
 			dump_ram(vm);
 		vm->cycles_total++;
+		if (!vm->visu && vm->show_cycles)
+			ft_printf("It is now cycle %d\n", vm->cycles_total);
 		//printf("Cycle = %d, Number of processes = %d\n", vm->cycles_total, vm->num_processes);
 		increment_processes(vm);
 		vm->cycles_left--;
