@@ -6,11 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/22 14:02:33 by vduong            #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2018/12/03 17:26:57 by thescriv         ###   ########.fr        #
-=======
-#    Updated: 2018/12/05 21:55:36 by vduong           ###   ########.fr        #
->>>>>>> new
+#    Updated: 2018/12/06 12:58:53 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,16 +92,16 @@ OBJ = $(SRC:.c=.o)
 $(NAME):
 	@$(CC) -c $(FLAGS) $(SRC) -I./includes
 	@ar r $(NAME) $(OBJ)
-	@anlib $(NAME)
-	@printf "\033[032mLIBFT : libft.a Created\033[0m\n"
+	@ranlib $(NAME)
+	@printf "\033[032mLIBFT   : libft.a Created\033[0m\n"
 
 all : $(NAME)
 
 clean :
 	@/bin/rm -rf $(OBJ)
-	@printf "\033[032mLIBFT : Object Files Removed\033[0m\n"
+	@printf "\033[032mLIBFT   : Object Files Removed\033[0m\n"
 
 fclean :clean
 	@/bin/rm -rf $(NAME)
-	@printf "\033[032mLIBFT : libft.a Removed\033[0m\n"
+	@printf "\033[032mLIBFT   : libft.a Removed\033[0m\n"
 re:fclean all
