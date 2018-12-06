@@ -6,13 +6,13 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:49:51 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/06 10:44:45 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/06 10:54:05 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void		handle_processes(t_vm *vm)
+static void		increment_processes(t_vm *vm)
 {
 	t_proc	*process;
 
@@ -43,14 +43,13 @@ void			loop(t_vm *vm)
 		if (vm->cycles_total == vm->dump_cycle && !vm->visu)
 			dump_ram(vm);
 		vm->cycles_total++;
-	//	printf("Cycle = %d, Number of processes = %d\n", vm->cycles_total, vm->num_processes);
-		handle_processes(vm);
+		printf("Cycle = %d, Number of processes = %d\n", vm->cycles_total, vm->num_processes);
+		increment_processes(vm);
 		vm->cycles_left--;
 		if (!vm->cycles_left && !check_processes(vm))
 			break ;
 	}
 	vm->win = 1;
 	printf("Total cycles = %d\n", vm->cycles_total);
-	while(1);
 	dump_ram(vm);
 }
