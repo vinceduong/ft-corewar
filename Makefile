@@ -5,7 +5,7 @@ LIBFT = libft/libft.a
 PRINTF = ft_printf/libftprintf.a
 
 all : $(LIBFT) $(PRINTF) $(VM) 
-	
+
 $(VM):
 	@make -C vm
 
