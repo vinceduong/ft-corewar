@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/05 21:49:09 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/06 10:43:35 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,8 @@ OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(SRCS) $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF) 
+$(NAME) : $(SRCS) $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF)
+	@printf "\033[032mCOREWAR : Object files Created\033[0m\n"
 	@$(CC) $(NCURSES) $(OBJS) -o $(NAME) $(LIBFT) $(PRINTF)
 	@printf "\033[032mCOREWAR : ./corewar Created\033[0m\n"
 

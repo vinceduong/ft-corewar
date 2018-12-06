@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:49:51 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/05 22:24:55 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/06 10:44:45 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void			loop(t_vm *vm)
 	step = 1;
 	while (1)
 	{
-		vm->sbs = 0;
+		//vm->sbs = 0;
 		//dump_ram(vm);
 		if (vm->visu)
 			display(vm, step);
@@ -51,5 +51,6 @@ void			loop(t_vm *vm)
 	}
 	vm->win = 1;
 	printf("Total cycles = %d\n", vm->cycles_total);
+	while(1);
 	dump_ram(vm);
 }
