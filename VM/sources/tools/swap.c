@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/15 16:42:36 by thescriv          #+#    #+#             */
-/*   Updated: 2018/11/25 13:27:15 by tescriva         ###   ########.fr       */
+/*   Created: 2017/09/28 14:56:00 by lde-moul          #+#    #+#             */
+/*   Updated: 2018/11/30 18:02:31 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "vm.h"
 
 int				swap_int(int n)
 {
@@ -26,4 +24,10 @@ unsigned int	swap_uint(unsigned int n)
 		| ((n & 0x0000ff00) << 8)
 		| ((n & 0x00ff0000) >> 8)
 		| ((n & 0xff000000) >> 24));
+}
+
+short			swap_short(short n)
+{
+	return (((n & 0x00ff) << 8)
+		| ((n & 0xff00) >> 8));
 }

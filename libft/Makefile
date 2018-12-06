@@ -6,19 +6,21 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/22 14:02:33 by vduong            #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2018/12/03 17:26:57 by thescriv         ###   ########.fr        #
+=======
+#    Updated: 2018/12/05 21:55:36 by vduong           ###   ########.fr        #
+>>>>>>> new
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CC = @gcc $(FLAGS) $(INCLUDES)
+CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-INCLUDES = -I./includes
-
-SRCS = ./ft_atoi.c\
+SRC = ./ft_atoi.c\
 	  ./ft_bzero.c\
 	  ./ft_isalnum.c\
 	  ./ft_isalpha.c\
@@ -89,21 +91,21 @@ SRCS = ./ft_atoi.c\
 	  ./get_next_line.c\
 
 
-OBJS = $(SRCS:.c=.o)
+OBJ = $(SRC:.c=.o)
 
-$(NAME): $(OBJS)
-	@ar -rc $(NAME) $(OBJS)
-	@ranlib $(NAME)
+$(NAME):
+	@$(CC) -c $(FLAGS) $(SRC) -I./includes
+	@ar r $(NAME) $(OBJ)
+	@anlib $(NAME)
 	@printf "\033[032mLIBFT : libft.a Created\033[0m\n"
 
 all : $(NAME)
 
 clean :
-	@/bin/rm -rf $(OBJS)
-	@printf "\033[32mLIBFT : Object Files Removed \n\033[0m"
+	@/bin/rm -rf $(OBJ)
+	@printf "\033[032mLIBFT : Object Files Removed\033[0m\n"
 
 fclean :clean
 	@/bin/rm -rf $(NAME)
-	@printf "\033[32mLIBFT : libft.a Removed \n\033[0m"
-
+	@printf "\033[032mLIBFT : libft.a Removed\033[0m\n"
 re:fclean all

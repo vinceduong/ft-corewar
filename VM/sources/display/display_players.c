@@ -1,45 +1,39 @@
 #include "../../includes/vm.h"
 
-void    color_jauge(float green)
+void    color_jauge(float res, int total, int lives)
 {
-    int  red;
-    int  progress;   
-
-    if (green == 0)
-        progress = 0;
-    else
-        progress = (int)green + 1;
-    red = 100 - progress;
     attron(COLOR_PAIR(9));
-    while (progress > 0)
+    while (res > 0)
     {
         addch(' ');
-        progress--;
+        res--;
     }
-    attron(COLOR_PAIR(10));
-    while (red > 0)
+    attron(COLOR_PAIR(3));
+    while (total > -7)
     {
         addch(' ');
-        red--;
+        total--;
     }
+    attron(COLOR_PAIR(5));
+    printw("%d", lives);
     refresh();
 }
 
-void    create_jauge(int player, t_case *ram)
+void    create_jauge(float total_lives, float lives, int int_lives)
 {
-    int i;
-    float green;
+    float   res;
+    int     total;
 
-    i = 0;
-    green = 0;
-    while (i < MEM_SIZE)
+    clrtoeol();
+    refresh();
+    if (lives == 0)
+        color_jauge(0, 100, int_lives);
+    else
     {
-        if (ram[i].pid == player)
-            green++;
-        i++;
+        res = lives / total_lives * 100;
+        total = 100 - res;
+        color_jauge(res, total, int_lives);
     }
-    green = (green / 4096) * 100;
-    color_jauge(green);
 }
 
 void    print_players_share(t_vm *vm)
@@ -50,14 +44,13 @@ void    print_players_share(t_vm *vm)
 
     i = 0;
     top = LINES / 4 * 3 + 4;
-    left = 30;
-    while (i < vm->nbplayers)
+    left = vm->display.name_len + 7;
+    while (i < vm->num_players)
     {
         move(top, left);
-        create_jauge(i + 1, vm->ram);
+        create_jauge((float)vm->lives_current, (float)vm->players[i].nb_live, vm->players[i].nb_live);
         i++;
         top = top + 2;
-        getch();
     }
 }
 
@@ -70,11 +63,14 @@ void    init_players(t_vm *vm)
     i = 0;
     top = LINES / 4 * 3 + 4;
     left = 3;
-    attron(COLOR_PAIR(5));
-    while (i < vm->nbplayers)
+    vm->display.name_len = 0;
+    while (i < vm->num_players)
     {
+        ft_choose_color(i + 1);
         move(top, left);
-        printw("%s", vm->players[i].filename);
+        printw("%s", vm->players[i].header.prog_name);
+        if (ft_strlen(vm->players[i].header.prog_name) > vm->display.name_len)
+            vm->display.name_len = ft_strlen(vm->players[i].header.prog_name);
         top = top + 2;
         i++;
     }

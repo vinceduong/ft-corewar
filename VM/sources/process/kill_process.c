@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dump.c                                             :+:      :+:    :+:   */
+/*   kill_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/18 16:52:07 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/11/30 18:02:48 by vduong           ###   ########.fr       */
+/*   Created: 2018/12/01 14:16:26 by vduong            #+#    #+#             */
+/*   Updated: 2018/12/04 14:41:52 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void	dump_ram(t_vm *vm)
+void	kill_process(t_proc *process, t_vm *vm)
 {
-	int i;
+	t_proc *next;
+	t_proc *previous;
 
-	i = -1;
-	while (++i < MEM_SIZE)
-	{
-		i % 32 == 0 ? ft_printf("0x%.4x : ", i) : 0;
-		ft_printf("%.2x ", vm->ram[i]);
-		(i + 1) % 32 == 0 ? ft_putendl("") : 0;
-	}
-	exit(1);
+	if (vm->processes == process)
+		vm->processes = process->next;
+	next = process->next;
+	previous = process->previous;
+	if (next)
+		next->previous = process->previous;
+	if (previous)
+		previous->next = process->next;	
+	free(process);
+	vm->num_processes--;
 }
