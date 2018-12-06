@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 20:10:14 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/12/05 16:14:14 by aetchego         ###   ########.fr       */
+/*   Updated: 2018/12/06 10:40:36 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@
 # include <sys/time.h>
 # include <ncurses.h>
 
-# define MAX_SPEED 1
-# define MIN_SPEED 1000000
-# define SPEED_STEP 3000
-# define DISPLAY_FREQUENCY 100000
-# define GLOW_CYCLE 49
 
 typedef struct		s_player
 {
@@ -101,7 +96,7 @@ typedef struct		s_vm
 	int				pause;
 	t_win			display;
 	struct timeval	last_display;
-	int				sbs;
+	//int				sbs;
 	t_proc			*viewed_process;
 	int				winner;
 }					t_vm;
