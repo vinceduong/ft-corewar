@@ -6,29 +6,67 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:29:16 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/06 19:22:40 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/06 23:56:11 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
+void ft_print_info(t_asm *f)
+{
+	ft_putstr(RED_BOLD);
+	ft_putstr("\nNAME :	");
+	ft_putstr(NONE);
+	ft_putendl(f->content[NAME]);
+	ft_putstr(YELLOW);
+	ft_putstr("COMMENT : ");
+	ft_putstr(NONE);
+	ft_putendl(f->content[COMMENT]);
+	ft_putstr(MAGENTA);
+	ft_putstr("SIZE (CHAMP) : ");
+	ft_putstr(NONE);
+	ft_putnbr(f->num);
+	ft_putendl(" Bytes");
+	ft_putstr(CYAN);
+	ft_putstr("SIZE (FILE) : ");
+	ft_putstr(NONE);
+	ft_putnbr(f->num + sizeof(t_header));
+	ft_putendl(" Bytes");
+	ft_putstr(GREEN);
+	ft_putstr("NB INSTRUCTION : ");
+	ft_putstr(NONE);
+	ft_putnbr(f->instruction);
+	ft_putchar('\n');
+}
+
 void	free_the_whole_world(t_asm *f)
 {
 	int i;
+	int n;
 
 	i = -1;
-	while (++i < f->label)
+	while (f->label && ++i < f->label)
+	{
+		f->tab[f->l[i].n] -= f->l[i].i;
 		ft_strdel(&f->l[i].name);
+	}
 	i = -1;
 	while (f->tab[++i])
-		free(f->tab[i]);
+		;
+	n = 0;
+	while (n != i)
+	{
+		free(ft_strdup(f->tab[n]));
+		n++;
+	}
 	ft_strdel(&f->content[NAME]);
 	ft_strdel(&f->content[COMMENT]);
 	ft_strdel(&f->filename);
-	free(f->tab);
-	free(f->l);
-	free(f->content);
-	free(f->part);
+	ft_strdel(f->tab);
+	ft_strdel(f->content);
+	f->l ? free(f->l) : 0;
+	f->l = NULL;
+	f = NULL;
 }
 
 void	ft_start(t_asm *f, char **av, int ac)
@@ -40,14 +78,16 @@ void	ft_start(t_asm *f, char **av, int ac)
 	i = 1;
 	while (i < ac)
 	{
+		ft_bzero(f, sizeof(f));
 		fd = ft_check_file(f, av[i]);
 		if (fd != -1)
 		{
-			f->content = (char **)malloc(sizeof(char*) * 2);
+			f->content = (char **)malloc(sizeof(char*) * 1);
 			malloc_size(f);
 			ft_file_is_valid(f, fd);
 			close(fd);
 			ft_program(f);
+			ft_print_info(f);
 			free_the_whole_world(f);
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 17:24:35 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/06 18:34:32 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/06 23:46:28 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@
 # include <stdarg.h>
 # include <wchar.h>
 
+
+# define RED			"\033[31m"
+# define RED_BOLD		"\033[31;1m"
+# define GREEN			"\033[32;1m"
+# define BROWN			"\033[33m"
+# define YELLOW			"\033[33;1m"
+# define BLUE			"\033[34m"
+# define MAGENTA		"\033[35m"
+# define CYAN			"\033[36;1m"
+# define NONE			"\033[0m"
 #define NAME 0
 #define COMMENT 1
 
@@ -52,7 +62,6 @@ typedef struct		s_asm
 	char			*filename;
 	char			**tab;
 	int				label;
-	int				*part;
 	int				fd;
 	int				name;
 	int				comment;

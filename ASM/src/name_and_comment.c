@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 16:52:05 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/06 18:29:07 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/06 23:10:51 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int		ft_get_index(char *str, int i)
 {
 	while (str[++i])
 	{
+		if (str[i] == '\n')
+			str[i] = ' ';
 		if (str[i] == COMMENT_CHAR)
 		{
 			while (str[i] && str[i] != '\n')

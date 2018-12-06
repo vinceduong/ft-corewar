@@ -6,11 +6,38 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:43:18 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/06 19:21:58 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/06 21:42:51 by tescriva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+char *ft_supp_comment(char *str)
+{
+	int i;
+	int n;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n' && i >= 1 && str[i - 1] != '\n')
+		{
+			n = i - 1;
+			while(n >= 0 && str[n] != '\n' && (str[n] == ' ' || str[n] == '\t'))
+				str[n--] = '\n';
+		}
+		if (str[i] == COMMENT_CHAR)
+		{
+			n = i - 1;
+			while (str[i] != '\n')
+				str[i++] = '\n';
+			while(n >= 0 && str[n] != '\n' && (str[n] == ' ' || str[n] == '\t'))
+				str[n--] = '\n';
+		}
+		i++;
+	}
+	return (str);
+}
 
 void	ft_file_is_valid(t_asm *f, int fd)
 {
@@ -30,7 +57,7 @@ void	ft_file_is_valid(t_asm *f, int fd)
 		ft_strdel(&line);
 	}
 	ft_get_length(f, ft_strstr(tmp, NAME_CMD_STRING), ft_strstr(tmp, COMMENT_CMD_STRING));
-	f->tab = ft_strsplit(tmp, '\n');
+	f->tab = ft_strsplit(ft_supp_comment(tmp), '\n');
 	ft_strdel(&tmp);
 	while (1)
 	{
