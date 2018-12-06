@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+         #
+#    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/04 14:30:47 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/05 19:17:35 by thescriv         ###   ########.fr        #
+#    Updated: 2018/12/06 13:09:57 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,9 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF)
+	@echo "\033[32mASM     : Object files Created\033[0m"
 	@$(CC) $(FLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(PRINTF)
-	@printf "\033[032mASM : ./asm Created\033[0m\n"
+	@printf "\033[032mASM     : ./ASM/asm Created\033[0m\n"
 
 $(LIBFT) :
 	@make -C ../libft
@@ -57,11 +58,11 @@ $(PRINTF) :
 
 clean :
 	@rm -f $(OBJS) $(VISUOBJS)
-	@echo "\033[32mASM : Object files Removed\033[0m"
+	@echo "\033[32mASM     : Object files Removed\033[0m"
 
 fclean : clean
 	@rm -f $(NAME)
-	@echo "\033[32mASM : ./ASM Removed\033[0m"
+	@echo "\033[32mASM     : ./ASM/asm Removed\033[0m"
 
 up : all clean
 

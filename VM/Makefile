@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/06 12:42:29 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/06 13:09:51 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ all : $(NAME)
 $(NAME) : $(SRCS) $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF)
 	@printf "\033[032mCOREWAR : Object files Created\033[0m\n"
 	@$(CC) $(NCURSES) $(OBJS) -o $(NAME) $(LIBFT) $(PRINTF)
-	@printf "\033[032mCOREWAR : ./corewar Created\033[0m\n"
+	@printf "\033[032mCOREWAR : ./VM/corewar Created\033[0m\n"
 
 $(LIBFT) :
 	@make -C ../libft
@@ -86,7 +86,7 @@ clean :
 
 fclean : clean
 	@rm -f $(NAME)
-	@echo "\033[32mCOREWAR : ./corewar Removed\033[0m"
+	@echo "\033[32mCOREWAR : ./VM/corewar Removed\033[0m"
 
 up : all clean
 
