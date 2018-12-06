@@ -6,11 +6,11 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 11:06:36 by vduong            #+#    #+#              #
-#    Updated: 2018/12/06 11:13:01 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/06 12:57:02 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re up
 
 VM = ./VM/corewar
 
@@ -43,3 +43,5 @@ re :
 	@make re -C libft
 	@make re -C ft_printf
 	@make re -C VM
+
+up : all clean
