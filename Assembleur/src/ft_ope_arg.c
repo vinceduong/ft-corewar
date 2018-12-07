@@ -6,7 +6,7 @@
 /*   By: tescriva <tescriva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 23:48:00 by tescriva          #+#    #+#             */
-/*   Updated: 2018/12/07 14:30:01 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:05:27 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ void	ft_nb_param(t_asm *f)
 	f->ope.id = -1;
 	while (++f->ope.id < 16 && ft_strcmp(g_op_tab[f->ope.id].name, f->ope.name))
 		;
-	if (f->ope.id == 16)
-	{
-		ft_putstr(f->ope.name);
-		error(" Instruction didn't find");
-	}
+	f->ope.id == 16 ?
+		error(ft_strjoin(f->ope.name, " Instruction didn't find")) : 0;
 	f->ope.nb_param = g_op_tab[f->ope.id].nb_param;
 }
 

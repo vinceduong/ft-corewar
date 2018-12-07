@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:52:06 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/07 16:09:49 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/07 17:06:17 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		load_player(t_player *p, const char *name, t_vm *vm)
 	int	file;
 
 	check_player_number(p->number, vm);
-	file = open(name, O_RDONLY);
+	file = open(name, O_RDONLY | O_NOFOLLOW);
 	if (file < 0)
 		error("Can't open \"%s\"\n", name);
 	if (!check_file_name(name))

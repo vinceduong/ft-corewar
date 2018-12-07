@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:43:18 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/07 14:08:32 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:13:36 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@ char	*ft_supp_comment(char *str)
 
 char	*ft_read_data_for_real(int fd)
 {
-	char *tmp;
-	char *line;
+	char	*tmp;
+	char	*line;
+	int		ret;
 
 	tmp = ft_strnew(1);
 	line = NULL;
-	while (get_next_line(fd, &line) > 0)
+	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		tmp = ft_strjoinfree(tmp, line);
 		tmp = ft_strjoinfree(tmp, "\n");
@@ -94,7 +95,9 @@ void	malloc_size(t_asm *f)
 
 int		ft_check_file(t_asm *f, char *str)
 {
-	int i;
+	int		i;
+	int		fd;
+	char	err[1];
 
 	i = ft_strlen(str);
 	if (i > 3)
@@ -104,7 +107,12 @@ int		ft_check_file(t_asm *f, char *str)
 			f->filename = ft_strdup(str);
 			f->filename[i - 2] = '\0';
 			f->filename = ft_strjoinfree(f->filename, ".cor");
-			return (open(str, O_RDONLY, O_NOFOLLOW));
+			fd = open(str, O_RDONLY | O_NOFOLLOW);
+			fd == -1 ? error("can't open file") : 0;
+			lseek(fd, 0, SEEK_END);
+			read(fd, err, 1) > 0 ? error("can't open file") : 0;
+			lseek(fd, 0, SEEK_SET);
+			return (fd);
 		}
 	}
 	return (-1);
