@@ -36,12 +36,13 @@ int		main(int argc, char **argv)
 {
 	t_vm	vm;
 
+	setlocale(LC_ALL, ""); 
 	parse(argc, argv, &vm);
 	init_vm(&vm);
 	introduction(&vm);
 	loop(&vm);
 	display_winner(&vm);
-	if (vm.visu)
-		endwin();
+//	if (vm.visu)
+//		endwin();
 	return (0);
 }

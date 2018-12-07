@@ -6,7 +6,7 @@ void    init_infos()
     int margin_top;
 
     margin_left = (COLS / 5) * 4 + 12;
-    margin_top = LINES / 5;
+    margin_top = LINES / 6;
     attron(COLOR_PAIR(6) | A_BOLD);
     move(margin_top, margin_left);
     printw("NUMBER OF PLAYERS");
@@ -19,6 +19,8 @@ void    init_infos()
     move(margin_top + 16, margin_left);
     printw("CYCLES LEFT");
     move(margin_top + 20, margin_left);
+    printw("CYCLES TOTAL");
+    move(margin_top + 24, margin_left);
     printw("CHECKS");
     refresh();
 }
@@ -47,6 +49,7 @@ void init_colors()
     init_pair(8, COLOR_CYAN, COLOR_BLACK);
     init_pair(9, COLOR_GREEN, COLOR_GREEN);
     init_pair(10, COLOR_RED, COLOR_RED);
+    init_pair(11, COLOR_BLACK, COLOR_YELLOW);
 }
 
 void    init_windows(WINDOW *win, WINDOW *win_left, WINDOW *win_right, WINDOW *win_down)

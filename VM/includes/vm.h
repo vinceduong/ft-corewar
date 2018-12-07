@@ -22,6 +22,7 @@
 # include <errno.h>
 # include <sys/time.h>
 # include <ncurses.h>
+# include <locale.h>
 
 typedef struct		s_player
 {
@@ -147,12 +148,14 @@ void				change_ram_color(t_vm *vm, int pc, int pc_dest, int p_id);
 void				display_players(t_vm *vm, WINDOW *info, int *line);
 void				clear_viewed(t_vm *vm, WINDOW *info, int line);
 void				display_winner(t_vm *vm);
-void				display_winner_ncurse(t_vm *vm, WINDOW *info, int line);
+void				display_winner_visu(t_vm *vm, t_win *display);
 void				print_players_share(t_vm *vm);
 void				create_visualizer(t_vm *vm, t_win *display);
 void				init_players(t_vm *vm);
 void				ft_choose_color(int player);
 void				display_pause(t_vm *vm);
+void				initialiser();
+void				init_colors();
 
 /*
 ** INSTRUCTIONS

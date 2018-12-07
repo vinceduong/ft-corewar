@@ -47,4 +47,6 @@ void			loop(t_vm *vm)
 			break ;
 	}
 	vm->win = 1;
+	if (vm->visu)
+		display_winner_visu(vm, &vm->display);
 }

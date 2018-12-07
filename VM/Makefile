@@ -62,7 +62,8 @@ SRCS = 	sources/main.c\
 		sources/display/display.c\
 		sources/display/create_visualizer.c\
 		sources/display/display_players.c\
-		sources/display/display_pause.c
+		sources/display/display_pause.c\
+		sources/display/display_winner.c
 
 OBJS = $(SRCS:.c=.o)
 
