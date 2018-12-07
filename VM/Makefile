@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/07 11:50:21 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/07 12:38:39 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror
 
 NCURSES = -lncurses
 
-NAME = corewar
+NAME = ../corewar
 
 INCLUDES = -I ./includes/ -I ../libft/includes -I ../ft_printf/
 
