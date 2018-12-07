@@ -33,7 +33,7 @@ void    print_ram(t_case *ram)
             move(col++, 4);
             stop = 3;
         }
-        ft_choose_color(ram[i].player);
+        ft_choose_color(ram[i].player * -1);
         printw("%.2x ", ram[i]);
         stop = stop + 3;
         i++;
@@ -63,22 +63,13 @@ void    print_infos(t_vm *vm)
     move_clear_print(margin_top + 12, margin_left, vm->cycles_to_die);
     move_clear_print(margin_top + 16, margin_left, vm->cycles_left);
     move_clear_print(margin_top + 20, margin_left, vm->checks_left);
-  //  getch();
     refresh();
 }
 
 void    display(t_vm *vm)
 {
-  // int COL = COLS;
-   //int  LI = LINES;
- //  printf("COLS = %d - cols = %d\n", COL, vm->display.cols);
-   //printf("LINES = %d - lines = %d\n", LI, vm->display.lines);
     display_pause(vm);
     usleep(vm->speed);
-   
-        //print_ram(vm->ram);
-      //  vm->display.lines = LINES;
-        //vm->display.cols = COLS;
     print_ram(vm->ram);
     print_infos(vm);
     print_players_share(vm);

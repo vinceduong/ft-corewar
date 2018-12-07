@@ -25,13 +25,13 @@ void    init_infos()
 
 void initialiser()
 {
-    initscr();	        /* Demarre le mode ncurses */
-    cbreak();	        /* Pour les saisies clavier (desac. mise en buffer) */
-    noecho();             /* Desactive l'affichage des caracteres saisis */
-    keypad(stdscr, TRUE);	/* Active les touches specifiques */
-    refresh();            /* Met a jour l'affichage */
+    initscr();
+    cbreak();
+    noecho();
+    keypad(stdscr, TRUE);
+    refresh();
     nodelay(stdscr, 0);
-    curs_set(FALSE);      /* Masque le curseur */
+    curs_set(FALSE);
 }
 
 void init_colors() 

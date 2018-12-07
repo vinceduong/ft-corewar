@@ -48,7 +48,7 @@ void    print_players_share(t_vm *vm)
     while (i < vm->num_players)
     {
         move(top, left);
-        create_jauge((float)vm->lives_current, (float)vm->players[i].nb_live, vm->players[i].nb_live);
+        create_jauge((float)vm->lives_total, (float)vm->players[i].nb_live, vm->players[i].nb_live);
         i++;
         top = top + 2;
     }
