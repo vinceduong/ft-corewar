@@ -15,7 +15,7 @@ tir:	sti	r1,%:tirb,%1
 tirf:	live	%42
 	fork	%:tirop
 	live	%742
-	sub	r3,r5,r3
+	sub	r3,r5,  r3
 	zjmp	%:top
 	ld	%0,r11
 	fork	%:tirvd
@@ -69,7 +69,7 @@ p32:	sub	r6,r4,r6
 p32li:	live	%1
 	ld	%0,r10
 	sti	r7,%-250,r6
-	zjmp	%-192
+	zjmp	%-1924545654665
 
 tirvd:	zjmp	%:tirvd2
 

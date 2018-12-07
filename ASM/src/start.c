@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:29:16 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/06 23:56:11 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/12/07 12:23:08 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,18 @@ void	free_the_whole_world(t_asm *f)
 
 	i = -1;
 	while (f->label && ++i < f->label)
-	{
-		f->tab[f->l[i].n] -= f->l[i].i;
 		ft_strdel(&f->l[i].name);
-	}
-	i = -1;
-	while (f->tab[++i])
-		;
-	n = 0;
-	while (n != i)
+	i = 0;
+	while (f->tab[i])
 	{
-		free(ft_strdup(f->tab[n]));
-		n++;
+		ft_strdel(&f->tab[i]);
+		i++;
 	}
+	ft_strdel(&f->filename);
 	ft_strdel(&f->content[NAME]);
 	ft_strdel(&f->content[COMMENT]);
-	ft_strdel(&f->filename);
-	ft_strdel(f->tab);
-	ft_strdel(f->content);
+	free(f->tab);
+	free(f->content);
 	f->l ? free(f->l) : 0;
 	f->l = NULL;
 	f = NULL;
@@ -78,7 +72,6 @@ void	ft_start(t_asm *f, char **av, int ac)
 	i = 1;
 	while (i < ac)
 	{
-		ft_bzero(f, sizeof(f));
 		fd = ft_check_file(f, av[i]);
 		if (fd != -1)
 		{
@@ -92,7 +85,7 @@ void	ft_start(t_asm *f, char **av, int ac)
 		}
 		else
 		{
-			tmp = ft_strjoin("the file ", f->filename);
+			tmp = ft_strjoin("the file ", av[i]);
 			error(ft_strjoinfree(tmp, " is not a valid file"));
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:50:38 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/06 23:02:16 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/12/07 12:57:09 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	ft_add_label_name(t_asm *f, int n, int i)
 		l++;
 	i -= l;
 	f->l[nl].name = ft_strsub(f->tab[n] + l, 0, i);
-	f->l[nl].num = f->label;
+	f->l[nl].num = f->num;
 	f->l[nl].n = n;
-	f->l[nl].i = i + 1;
+	f->l[nl].i = i + 2;
 }
 
 void	ft_add_label(t_asm *f, int n, int i)
@@ -43,6 +43,7 @@ void	ft_get_operation(t_asm *f)
 	int		n;
 	int		i;
 	char	c;
+ 	char	*tmp;
 
 	n = f->x;
 	f->label = 0;
@@ -60,7 +61,11 @@ void	ft_get_operation(t_asm *f)
 			ft_add_label(f, n, i);
 		else
 			i = 0;
-		ft_ope_arg(f->tab[n] += i + 1, f);
+		tmp = ft_strdup(f->tab[n] + i + 1);
+		ft_strdel(&f->tab[n]);
+		f->tab[n] = ft_strdup(tmp);
+		ft_strdel(&tmp);
+		ft_ope_arg(f->tab[n], f);
 		n++;
 	}
 	f->test = 1;

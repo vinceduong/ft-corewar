@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 19:03:35 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/06 22:44:19 by tescriva         ###   ########.fr       */
+/*   Updated: 2018/12/07 12:39:14 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ void	put_arg(t_asm *f)
 		arg_char = f->ope.value[i];
 		arg_int = swap_int(f->ope.value[i]);
 		arg_short = swap_short(f->ope.value[i]);
+		(f->ope.t_arg[i] == T_DIR && op_tab[f->ope.id].d2) ||
+			f->ope.t_arg[i] == T_IND ? write(f->fd, &arg_short, 2) : 0;
+		f->ope.t_arg[i] == T_DIR &&
+			!op_tab[f->ope.id].d2 ? write(f->fd, &arg_int, 4) : 0;
 		f->ope.t_arg[i] == T_REG ? write(f->fd, &arg_char, 1) : 0;
-		f->ope.t_arg[i] == T_DIR && !op_tab[f->ope.id].d2 ? write(f->fd, &arg_int, 4) : 0;
-		(f->ope.t_arg[i] == T_DIR && op_tab[f->ope.id].d2) || f->ope.t_arg[i] == T_IND ? write(f->fd, &arg_short, 2) : 0;
 	}
 }
 
