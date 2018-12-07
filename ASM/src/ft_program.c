@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:50:38 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/07 12:57:09 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/07 14:27:15 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,12 @@ void	ft_get_operation(t_asm *f)
 	int		n;
 	int		i;
 	char	c;
- 	char	*tmp;
 
-	n = f->x;
+	n = f->x - 1;
 	f->label = 0;
 	f->l = NULL;
 	f->test = 0;
-	while (f->tab[n])
+	while (f->tab[++n])
 	{
 		i = 0;
 		f->test = 0;
@@ -57,20 +56,12 @@ void	ft_get_operation(t_asm *f)
 			i++;
 		while (f->tab[n][i] && ft_labchar(f->tab[n][i]))
 			i++;
-		if (i >= 1 && f->tab[n][i] == LABEL_CHAR && ft_labchar(f->tab[n][i - 1]))
-			ft_add_label(f, n, i);
-		else
-			i = 0;
-		tmp = ft_strdup(f->tab[n] + i + 1);
-		ft_strdel(&f->tab[n]);
-		f->tab[n] = ft_strdup(tmp);
-		ft_strdel(&tmp);
-		ft_ope_arg(f->tab[n], f);
-		n++;
+		i >= 1 && f->tab[n][i] == LABEL_CHAR && ft_labchar(f->tab[n][i - 1]) ?
+			ft_add_label(f, n, i) : (i = 0);
+		ft_ope_arg(re_malloc(f, n, i), f);
 	}
 	f->test = 1;
 	f->num = 0;
-	i = 0;
 	n = f->x - 1;
 	while (f->tab[++n])
 		ft_ope_arg(f->tab[n], f);

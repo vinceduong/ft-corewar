@@ -6,7 +6,7 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 19:03:35 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/07 12:39:14 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/07 14:14:25 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	put_ocp(t_asm *f)
 {
-	int i;
-	char ocp;
-	char tmp;
+	int		i;
+	char	ocp;
+	char	tmp;
 
 	i = 0;
 	ocp = 0;
@@ -34,28 +34,29 @@ void	put_ocp(t_asm *f)
 
 void	put_arg(t_asm *f)
 {
-	int i;
-	int arg_int;
-	short arg_short;
-	char arg_char;
+	int		i;
+	int		arg_int;
+	short	arg_short;
+	char	arg_char;
+
 	i = -1;
 	while (++i < f->ope.nb_param)
 	{
 		arg_char = f->ope.value[i];
 		arg_int = swap_int(f->ope.value[i]);
 		arg_short = swap_short(f->ope.value[i]);
-		(f->ope.t_arg[i] == T_DIR && op_tab[f->ope.id].d2) ||
+		(f->ope.t_arg[i] == T_DIR && g_op_tab[f->ope.id].d2) ||
 			f->ope.t_arg[i] == T_IND ? write(f->fd, &arg_short, 2) : 0;
 		f->ope.t_arg[i] == T_DIR &&
-			!op_tab[f->ope.id].d2 ? write(f->fd, &arg_int, 4) : 0;
+			!g_op_tab[f->ope.id].d2 ? write(f->fd, &arg_int, 4) : 0;
 		f->ope.t_arg[i] == T_REG ? write(f->fd, &arg_char, 1) : 0;
 	}
 }
 
 void	write_instruction(t_asm *f)
 {
-	write(f->fd, &op_tab[f->ope.id].id, 1);
-	op_tab[f->ope.id].ocp ? put_ocp(f) : 0;
+	write(f->fd, &g_op_tab[f->ope.id].id, 1);
+	g_op_tab[f->ope.id].ocp ? put_ocp(f) : 0;
 	put_arg(f);
 }
 

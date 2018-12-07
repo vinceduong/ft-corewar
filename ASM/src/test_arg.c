@@ -6,7 +6,7 @@
 /*   By: tescriva <tescriva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 01:34:43 by tescriva          #+#    #+#             */
-/*   Updated: 2018/12/06 18:29:45 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/07 14:13:42 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,6 @@ int			test_arg_label(char *str, t_asm *f)
 	return (-1);
 }
 
-int		get_weigth(t_asm *f)
-{
-	int val;
-	int i;
-
-	val = 1;
-	val += op_tab[f->ope.id].ocp;
-	i = -1;
-	while (++i < f->ope.nb_param)
-	{
-		f->ope.t_arg[i] == T_DIR ? val += 4 - op_tab[f->ope.id].d2 * 2 : 0;
-		f->ope.t_arg[i] == T_IND ? val += 2 : 0;
-		f->ope.t_arg[i] == T_REG ? val += 1 : 0;
-	}
-	return (val);
-}
-
 int			ft_test_dir(char *str, t_asm *f, int nb, int res)
 {
 	int i;
@@ -55,7 +38,7 @@ int			ft_test_dir(char *str, t_asm *f, int nb, int res)
 	i = -1;
 	val = 0;
 	if (ft_strlen(str) < 2 || str[0] != DIRECT_CHAR)
-	 	return (0);
+		return (0);
 	lab = test_arg_label(++str, f);
 	lab != -1 && f->test ? f->ope.value[nb] = f->l[lab].num - f->num : 0;
 	n = lab == -1 && str[0] == '-' ? 1 : 0;
@@ -91,7 +74,7 @@ int			ft_test_ind(char *str, t_asm *f, int nb, int res)
 	return (res);
 }
 
-int		ft_test_reg(char *str, t_asm *f, int nb, int res)
+int			ft_test_reg(char *str, t_asm *f, int nb, int res)
 {
 	int i;
 	int val;
@@ -110,7 +93,7 @@ int		ft_test_reg(char *str, t_asm *f, int nb, int res)
 	return (res);
 }
 
-void	ft_test_arg(t_asm *f)
+void		ft_test_arg(t_asm *f)
 {
 	int i;
 	int arg;
@@ -123,7 +106,7 @@ void	ft_test_arg(t_asm *f)
 		arg += ft_test_reg(f->ope.p[i], f, i, T_REG);
 		arg += ft_test_dir(f->ope.p[i], f, i, T_DIR);
 		arg += ft_test_ind(f->ope.p[i], f, i, T_IND);
-		!(arg & op_tab[f->ope.id].arg[i]) ? error("wrong param for instruction") : 0;
+		!(arg & g_op_tab[f->ope.id].arg[i]) ? error("Param invalid") : 0;
 		f->ope.t_arg[i] = arg;
 	}
 	f->num += get_weigth(f);

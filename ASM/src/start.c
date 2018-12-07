@@ -6,13 +6,13 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:29:16 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/07 12:23:08 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/07 14:03:41 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void ft_print_info(t_asm *f)
+void	ft_print_info(t_asm *f)
 {
 	ft_putstr(RED_BOLD);
 	ft_putstr("\nNAME :	");
@@ -65,9 +65,9 @@ void	free_the_whole_world(t_asm *f)
 
 void	ft_start(t_asm *f, char **av, int ac)
 {
-	int fd;
-	int i;
-	char *tmp;
+	int		fd;
+	int		i;
+	char	*tmp;
 
 	i = 1;
 	while (i < ac)

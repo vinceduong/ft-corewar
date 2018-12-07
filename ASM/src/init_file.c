@@ -6,13 +6,13 @@
 /*   By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 14:43:18 by thescriv          #+#    #+#             */
-/*   Updated: 2018/12/07 12:02:04 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/07 14:08:32 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-char *ft_supp_comment(char *str)
+char	*ft_supp_comment(char *str)
 {
 	int i;
 	int n;
@@ -23,7 +23,8 @@ char *ft_supp_comment(char *str)
 		if (str[i] == '\n' && i >= 1 && str[i - 1] != '\n')
 		{
 			n = i - 1;
-			while(n >= 0 && str[n] != '\n' && (str[n] == ' ' || str[n] == '\t'))
+			while (n >= 0 && str[n] != '\n' &&
+				(str[n] == ' ' || str[n] == '\t'))
 				str[n--] = '\n';
 		}
 		if (str[i] == COMMENT_CHAR)
@@ -31,12 +32,29 @@ char *ft_supp_comment(char *str)
 			n = i - 1;
 			while (str[i] != '\n')
 				str[i++] = '\n';
-			while(n >= 0 && str[n] != '\n' && (str[n] == ' ' || str[n] == '\t'))
+			while (n >= 0 && str[n] != '\n' &&
+				(str[n] == ' ' || str[n] == '\t'))
 				str[n--] = '\n';
 		}
 		i++;
 	}
 	return (str);
+}
+
+char	*ft_read_data_for_real(int fd)
+{
+	char *tmp;
+	char *line;
+
+	tmp = ft_strnew(1);
+	line = NULL;
+	while (get_next_line(fd, &line) > 0)
+	{
+		tmp = ft_strjoinfree(tmp, line);
+		tmp = ft_strjoinfree(tmp, "\n");
+		ft_strdel(&line);
+	}
+	return (tmp);
 }
 
 void	ft_file_is_valid(t_asm *f, int fd)
@@ -48,27 +66,22 @@ void	ft_file_is_valid(t_asm *f, int fd)
 
 	i = 0;
 	n = 0;
-	tmp = ft_strnew(1);
-	line = NULL;
-	while (get_next_line(fd, &line) > 0)
-	{
-		tmp = ft_strjoinfree(tmp, line);
-		tmp = ft_strjoinfree(tmp, "\n");
-		ft_strdel(&line);
-	}
-	ft_get_length(f, ft_strstr(tmp, NAME_CMD_STRING), ft_strstr(tmp, COMMENT_CMD_STRING));
+	tmp = ft_read_data_for_real(fd);
+	ft_get_length(f, ft_strstr(tmp, NAME_CMD_STRING),
+		ft_strstr(tmp, COMMENT_CMD_STRING));
 	f->tab = ft_strsplit(ft_supp_comment(tmp), '\n');
 	ft_strdel(&tmp);
 	while (1)
 	{
 		if ((f->name == 1 && ft_strstr(f->tab[n], NAME_CMD_STRING))
 		|| (f->name == 0 && ft_strstr(f->tab[n], COMMENT_CMD_STRING)))
+		{
+			f->x = n + 1;
 			break ;
+		}
 		else
 			n++;
 	}
-	f->x = ft_strstr(f->tab[n], NAME_CMD_STRING)
-		|| ft_strstr(f->tab[n], COMMENT_CMD_STRING) ? n + 1 : n;
 }
 
 void	malloc_size(t_asm *f)

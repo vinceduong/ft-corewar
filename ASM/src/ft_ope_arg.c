@@ -6,7 +6,7 @@
 /*   By: tescriva <tescriva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 23:48:00 by tescriva          #+#    #+#             */
-/*   Updated: 2018/12/07 11:35:43 by thescriv         ###   ########.fr       */
+/*   Updated: 2018/12/07 14:30:01 by thescriv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,14 @@ void	free_ope(t_asm *f)
 void	ft_nb_param(t_asm *f)
 {
 	f->ope.id = -1;
-	while (++f->ope.id < 16 && ft_strcmp(op_tab[f->ope.id].name, f->ope.name))
+	while (++f->ope.id < 16 && ft_strcmp(g_op_tab[f->ope.id].name, f->ope.name))
 		;
-	f->ope.id == 16 ? error(ft_strjoin(f->ope.name, "Instruction didn't find")) : 0;
-	f->ope.nb_param = op_tab[f->ope.id].nb_param;
+	if (f->ope.id == 16)
+	{
+		ft_putstr(f->ope.name);
+		error(" Instruction didn't find");
+	}
+	f->ope.nb_param = g_op_tab[f->ope.id].nb_param;
 }
 
 void	ft_check_param(char *str, t_asm *f)
@@ -47,14 +51,13 @@ void	ft_check_param(char *str, t_asm *f)
 			n++;
 		f->ope.param[nb] = n;
 		f->ope.p[nb] = ft_strsub(str, i, f->ope.param[nb]);
-		while (str[++i] && str[i] != ' ' && str[i] != '\t' && str[i] != SEPARATOR_CHAR)
+		while (str[++i] && str[i] != ' ' &&
+			str[i] != '\t' && str[i] != SEPARATOR_CHAR)
 			;
 		--i;
 		while (str[++i] && (str[i] == ' ' || str[i] == '\t'))
 			;
-		if (str[i] == COMMENT_CHAR)
-			break ;
-		(str[i] && nb == f->ope.nb_param - 1) || (str[i] != SEPARATOR_CHAR && str[i])
+		(str[i] && (nb == f->ope.nb_param - 1 || str[i] != SEPARATOR_CHAR))
 			|| f->ope.p[nb][0] == 0 ? error("Wrong Number of param") : 0;
 		while (str[++i] && (str[i] == ' ' || str[i] == '\t'))
 			;
