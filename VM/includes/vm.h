@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 20:10:14 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/12/07 11:41:55 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/07 12:35:59 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,6 @@ unsigned int		swap_uint(unsigned int n);
 short				swap_short(short n);
 short				read_short(t_case ram[MEM_SIZE], int pc);
 int					read_int(t_case ram[MEM_SIZE], int pc);
-
 
 /*
 ** DISPLAY
