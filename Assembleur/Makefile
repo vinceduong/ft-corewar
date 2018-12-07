@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
+#    By: thescriv <thescriv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/04 14:30:47 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/06 19:46:30 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/07 14:57:14 by thescriv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = @gcc $(INCLUDES)
 
 FLAGS = -Wall -Wextra -Werror
 
-NAME = asm
+NAME = ../asm
 
 INCLUDES = -I ./includes/ -I ../libft/includes -I ../ft_printf/
 
@@ -48,7 +48,7 @@ all : $(NAME)
 $(NAME) : $(OBJS) $(LIBFT) $(HEADERS) $(PRINTF)
 	@echo "\033[32mASM     : Object files Created\033[0m"
 	@$(CC) $(FLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(PRINTF)
-	@printf "\033[032mASM     : ./ASM/asm Created\033[0m\n"
+	@printf "\033[032mASM     : ./Assembleur/asm Created\033[0m\n"
 
 $(LIBFT) :
 	@make -C ../libft
@@ -62,7 +62,7 @@ clean :
 
 fclean : clean
 	@rm -f $(NAME)
-	@echo "\033[32mASM     : ./ASM/asm Removed\033[0m"
+	@echo "\033[32mASM     : ./Assembleur/asm Removed\033[0m"
 
 up : all clean
 
