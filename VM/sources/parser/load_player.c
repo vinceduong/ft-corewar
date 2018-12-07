@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:52:06 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/07 11:44:51 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/07 16:09:49 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		load_player(t_player *p, const char *name, t_vm *vm)
 	if (read(file, &p->header, sizeof(t_header)) != sizeof(t_header))
 		error("\"%s\" is too short\n", name);
 	if (swap_int(p->header.magic) != COREWAR_EXEC_MAGIC)
-		error("Invalid magic number in \"%s\"", name);
+		error("Invalid magic number in \"%s\"\n", name);
 	p->header.prog_size = swap_uint(p->header.prog_size);
 	p->header.prog_name[PROG_NAME_LENGTH] = '\0';
 	p->header.comment[COMMENT_LENGTH] = '\0';
