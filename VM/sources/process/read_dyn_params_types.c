@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/17 17:06:30 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/12/01 14:10:14 by vduong           ###   ########.fr       */
+/*   Created: 2018/12/07 11:24:59 by vduong            #+#    #+#             */
+/*   Updated: 2018/12/07 12:21:55 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	read_dyn_params_types(t_instruction *inst, unsigned char ocp)
 	t_op		o;
 
 	params_types = inst->param_types;
-	o = op_tab[inst->opcode - 1];
+	o = g_op_tab[inst->opcode - 1];
 	params_types[0] = ocp >> 6;
 	params_types[1] = o.nb_param >= 2 ? (ocp >> 4) & 3 : 0;
 	params_types[2] = o.nb_param >= 3 ? (ocp >> 2) & 3 : 0;

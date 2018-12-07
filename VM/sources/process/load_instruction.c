@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 13:37:19 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/01 13:38:07 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/07 12:21:51 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ void		load_instruction(t_proc *proc, t_vm *vm)
 	proc->opcode = vm->ram[proc->pc].content;
 	vm->ram[proc->pc].glow = 1;
 	proc->cycles = proc->opcode > 0 && proc->opcode <= 16 ?
-		op_tab[(int)proc->opcode - 1].cycles : 1;
+		g_op_tab[(int)proc->opcode - 1].cycles : 1;
 }

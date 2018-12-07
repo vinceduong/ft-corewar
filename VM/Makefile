@@ -6,7 +6,7 @@
 #    By: vduong <vduong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 20:07:22 by thescriv          #+#    #+#              #
-#    Updated: 2018/12/06 13:09:51 by vduong           ###   ########.fr        #
+#    Updated: 2018/12/07 11:50:21 by vduong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,10 @@ SRCS = 	sources/main.c\
 		sources/instructions/aff.c\
 		sources/instructions/aritmetical.c\
 		sources/instructions/direct_load.c\
-		sources/instructions/direct_store.c\
+		sources/instructions/store.c\
 		sources/instructions/fork.c\
 		sources/tools/read_int.c\
 		sources/instructions/indirect_load.c\
-		sources/instructions/indirect_store.c\
 		sources/instructions/live.c\
 		sources/instructions/logical.c\
 		sources/instructions/op.c\

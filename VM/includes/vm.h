@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 20:10:14 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/12/06 16:07:02 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/07 11:41:55 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ typedef struct		s_vm
 	int				dump_cycle;
 	int				show_lives;
 	int				show_cycles;
-	int				show_ops;
 	int				show_deaths;
 	int				win;
 	int				visu;
@@ -99,7 +98,6 @@ typedef struct		s_vm
 	int				pause;
 	t_win			display;
 	struct timeval	last_display;
-	//int				sbs;
 	t_proc			*viewed_process;
 	int				winner;
 }					t_vm;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aetchego <aetchego@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/12/05 16:08:35 by aetchego         ###   ########.fr       */
+/*   Updated: 2018/12/07 12:29:02 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef	struct					s_op
 	int							d2;
 }								t_op;
 
-t_op							op_tab[17];
+t_op							g_op_tab[17];
 
 typedef char					t_arg_type;
 

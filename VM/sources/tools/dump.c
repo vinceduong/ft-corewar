@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/18 16:52:07 by gdelabro          #+#    #+#             */
-/*   Updated: 2018/11/30 18:02:48 by vduong           ###   ########.fr       */
+/*   Created: 2018/12/07 11:25:18 by vduong            #+#    #+#             */
+/*   Updated: 2018/12/07 12:01:30 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	dump_ram(t_vm *vm)
 	i = -1;
 	while (++i < MEM_SIZE)
 	{
-		i % 32 == 0 ? ft_printf("0x%.4x : ", i) : 0;
+		i % 64 == 0 ? ft_printf("0x%.4x : ", i) : 0;
 		ft_printf("%.2x ", vm->ram[i]);
-		(i + 1) % 32 == 0 ? ft_putendl("") : 0;
+		(i + 1) % 64 == 0 ? ft_putendl("") : 0;
 	}
 	exit(1);
 }

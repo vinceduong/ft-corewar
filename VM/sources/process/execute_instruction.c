@@ -6,10 +6,9 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 13:31:46 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/01 15:08:12 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/07 12:31:15 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "vm.h"
 
@@ -39,15 +38,14 @@ void		execute_instruction(t_proc *proc, t_vm *vm)
 	}
 	pc = (proc->pc + 1) % MEM_SIZE;
 	inst.invalid = 0;
-	if (op_tab[inst.opcode - 1].ocp)
+	if (g_op_tab[inst.opcode - 1].ocp)
 	{
 		inst.ocp = vm->ram[pc].content;
 		pc = (pc + 1) % MEM_SIZE;
 		read_dyn_params_types(&inst, inst.ocp);
 	}
 	else
-		read_static_params_types(inst.param_types, op_tab[inst.opcode - 1].arg);
+		read_static_params_types(inst.param_types,
+			g_op_tab[inst.opcode - 1].arg);
 	execute_instruction2(&inst, proc, &pc, vm);
 }
-
-

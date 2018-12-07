@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/28 14:56:09 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/11/30 18:03:21 by vduong           ###   ########.fr       */
+/*   Created: 2018/12/07 10:52:06 by vduong            #+#    #+#             */
+/*   Updated: 2018/12/07 11:44:51 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,20 @@ static void	check_player_number(int number, t_vm *vm)
 	}
 }
 
+static int	check_file_name(const char *name)
+{
+	int i;
+
+	i = 0;
+	while (name[i])
+	{
+		if (!ft_strcmp(name + i, ".cor"))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void		load_player(t_player *p, const char *name, t_vm *vm)
 {
 	int	file;
@@ -42,6 +56,8 @@ void		load_player(t_player *p, const char *name, t_vm *vm)
 	file = open(name, O_RDONLY);
 	if (file < 0)
 		error("Can't open \"%s\"\n", name);
+	if (!check_file_name(name))
+		error("\"%s\" is not a .cor file !\n", name);
 	if (read(file, &p->header, sizeof(t_header)) != sizeof(t_header))
 		error("\"%s\" is too short\n", name);
 	if (swap_int(p->header.magic) != COREWAR_EXEC_MAGIC)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/28 14:56:21 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/12/06 16:02:14 by vduong           ###   ########.fr       */
+/*   Created: 2018/12/07 10:51:50 by vduong            #+#    #+#             */
+/*   Updated: 2018/12/07 12:09:29 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	parse_options(int argc, char **argv, int *i, t_vm *vm)
 	vm->visu = 0;
 	vm->show_deaths = 0;
 	vm->show_cycles = 0;
-	vm->show_ops = 0;
 	*i = 1;
 	while (*i < argc)
 	{
@@ -47,13 +46,8 @@ static void	parse_options(int argc, char **argv, int *i, t_vm *vm)
 			vm->show_lives = 1;
 		else if (!ft_strcmp(argv[*i], "-cycles"))
 			vm->show_cycles = 1;
-		else if (!ft_strcmp(argv[*i], "-ops"))
-			vm->show_ops = 1;
 		else if (!ft_strcmp(argv[*i], "-deaths"))
 			vm->show_deaths = 1;
-		/*
-		else if (!ft_strcmp(argv[*i], "-pc"))
-			vm->show_pc = 0;*/
 		else
 			return ;
 		(*i)++;
@@ -92,8 +86,9 @@ void		parse(int argc, char **argv, t_vm *vm)
 	parse_players(argc, argv, &i, vm);
 	if (!vm->num_players)
 	{
-		ft_printf("Usage: ./vm [-v] [-dump nbr_cycles] "
-					"[[-n number] champion1.cor] ...");
+		ft_printf("Usage: ./corewar [-v] [-lives] [-cycles]"
+					" [-deaths] [-dump nbr_cycles] "
+					"[-n number] [champion1.cor] ...\n");
 		exit(1);
 	}
 }

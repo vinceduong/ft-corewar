@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 14:16:26 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/06 15:59:59 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/07 12:30:13 by vduong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ void	kill_process(t_proc *process, t_vm *vm)
 	if (!vm->visu && vm->show_deaths)
 	{
 		ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-		process->id, vm->cycles_total - process->last_cycle_alive,
+			process->id, vm->cycles_total - process->last_cycle_alive,
 		vm->cycles_to_die, vm->cycles_total);
-
 	}
 	if (vm->processes == process)
 		vm->processes = process->next;
@@ -31,7 +30,7 @@ void	kill_process(t_proc *process, t_vm *vm)
 	if (next)
 		next->previous = process->previous;
 	if (previous)
-		previous->next = process->next;	
+		previous->next = process->next;
 	free(process);
 	vm->num_processes--;
 }
