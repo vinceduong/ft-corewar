@@ -6,7 +6,7 @@
 /*   By: vduong <vduong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 11:26:21 by vduong            #+#    #+#             */
-/*   Updated: 2018/12/07 11:26:22 by vduong           ###   ########.fr       */
+/*   Updated: 2018/12/10 18:44:02 by aetchego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,11 @@ int		main(int argc, char **argv)
 {
 	t_vm	vm;
 
-	setlocale(LC_ALL, ""); 
+	setlocale(LC_ALL, "");
 	parse(argc, argv, &vm);
 	init_vm(&vm);
 	introduction(&vm);
 	loop(&vm);
 	display_winner(&vm);
-//	if (vm.visu)
-//		endwin();
 	return (0);
 }
